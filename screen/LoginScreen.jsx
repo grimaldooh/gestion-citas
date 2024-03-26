@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
     },
     input: {
-        width: '100%',
+        width: '99%',
         height: 40,
         borderColor: 'black',
         backgroundColor: 'white',
