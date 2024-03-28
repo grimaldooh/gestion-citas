@@ -26,13 +26,13 @@ export const styles = StyleSheet.create({
     input: {
         width: '99%',
         height: 40,
-        borderColor: 'black',
-        backgroundColor: 'white',
+        borderColor: '#000000',
+        backgroundColor: '#FFFFFF',
         borderWidth: 1,
         marginBottom: 20,
         paddingLeft: 10,
-        borderRadius: 5,
-        color: 'black',
+        borderRadius: 15,
+        color: '#000000',
     },
     description: {
         fontSize: 13,
@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     button: {
         backgroundColor: '#ECB000',
         padding: 10,
-        borderRadius: 5,
+        borderRadius: 20,
         width: '100%',
         alignItems: 'center',
     },
@@ -52,7 +52,16 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     facebookText: {
-        color: 'white',
+        color: '#FFFFFF',
         marginTop: 15,
+    },
+    logoContainer: {
+        width: 280,
+        height: 100,
+        position: 'absolute',
+        top: 100,
+        left: 65,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });

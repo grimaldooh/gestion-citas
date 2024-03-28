@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground } from 'react-native';
+import { View, Text, ImageBackground, Image } from 'react-native';
 import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 import FacebookLoginButton from '../components/FacebookLoginButton';
@@ -38,10 +38,14 @@ const LoginScreen = () => {
 
     return (
         <ImageBackground
-            source={{ uri: '../assets/img/fondo.jpg' }}
+            source={require('../assets/images/fondo.jpg')}
             style={styles.backgroundImage}
             resizeMode="cover"
         >
+            <Image 
+                source={require('../assets/images/camaleonLogo.png')} 
+                style={styles.logoContainer} />
+
             <View style={styles.overlay}>
                 <Text style={styles.title}>¡Bienvenido a FastBooking!</Text>
                 <Text style={styles.description}>Ingresa tus datos para iniciar sesión.</Text>
