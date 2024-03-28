@@ -51,9 +51,24 @@ export const styles = StyleSheet.create({
         color: '#000000',
         fontWeight: 'bold',
     },
-    facebookText: {
-        color: '#FFFFFF',
+    facebookButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#3169FF',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
         marginTop: 15,
+    },
+    facebookLogo: {
+        width: 20,
+        height: 20,
+        marginRight: 10,
+    },
+    facebookButtonText: {
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+        fontSize: 15,
     },
     logoContainer: {
         width: 280,
