@@ -8,6 +8,7 @@ const Button = ({ onPress, title }) => {
             <Text style={styles.buttonText}>{title}</Text>
             Buenas noches gente
         </TouchableOpacity>
+        //Firma de diego papa jaja salu2
     );
 };
 
