@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, ImageBackground, Image } from 'react-native';
+
 import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 import FacebookLoginButton from '../components/FacebookLoginButton';
 import { styles } from '../theme';
+import { LoginAPI } from '../services/authService';
+
 import { useNavigation } from '@react-navigation/native'; // Import the hook that helps us to navigate between screens
 
 const LoginScreen = () => {
@@ -16,31 +19,19 @@ const LoginScreen = () => {
     }
 
 
-    /* const handleLogin = () => {
-        const data = {
-            username: username,
-            password: password
-        };
-
-        fetch('URL_DE_TU_API', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => {
+    /*
+    const handleLogin = async () => {
+        try {
+            const response = await LoginAPI(username, password);
             if (response.ok) {
                 Alert.alert('Inicio de sesión exitoso');
             } else {
-
                 Alert.alert('Error', 'Inicio de sesión fallido. Por favor, verifica tus credenciales.');
             }
-        })
-        .catch(error => {
+        } catch (error) {
             console.error('Error:', error);
             Alert.alert('Error', 'Ocurrió un error al intentar iniciar sesión. Por favor, intenta nuevamente más tarde.');
-        });
+        }
     };
     */
 
@@ -50,8 +41,8 @@ const LoginScreen = () => {
             style={styles.backgroundImage}
             resizeMode="cover"
         >
-            <Image 
-                source={require('../assets/images/camaleonLogo.png')} 
+            <Image
+                source={require('../assets/images/camaleonLogo.png')}
                 style={styles.logoContainer} />
 
             <View style={styles.overlay}>
@@ -71,9 +62,9 @@ const LoginScreen = () => {
                 <Button onPress={handleLogin} title="Iniciar Sesión" />
                 <FacebookLoginButton title="Inicia sesion con Facebook" />
 
-                <Text style={styles.signupText}>¿Aun no tienes cuenta? 
-                    <Text 
-                        style={styles.signupButton} 
+                <Text style={styles.signupText}>¿Aun no tienes cuenta?
+                    <Text
+                        style={styles.signupButton}
                         onPress={() => navigation.navigate('Register')}>
                         Registrate
                     </Text>

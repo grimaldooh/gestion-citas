@@ -4,6 +4,7 @@ import { View, Text, ImageBackground, Image, Alert } from 'react-native';
 import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 import { styles } from '../theme';
+import { RegisterAPI } from '../services/authService';
 
 import { useNavigation } from '@react-navigation/native';
 import FacebookLoginButton from '../components/FacebookLoginButton';
@@ -16,32 +17,21 @@ const RegisterScreen = () => {
     const [fullName, setFullName] = useState('');
     const navigation = useNavigation();
 
-    // const handleRegister = () => {
-    //     const data = {
-    //         password: password,
-    //         email: email,
-    //         fullName: fullName
-    //     };
-    
-    //     fetch('URL_DE_TU_API', {
-    //         method: 'PUT',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    //     .then(response => {
-    //         if (response.ok) {
-    //             Alert.alert('Registro exitoso');
-    //         } else {
-    //             Alert.alert('Error', 'Error en el registro. Por favor, inténtalo de nuevo más tarde.');
-    //         }
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //         Alert.alert('Error', 'Ocurrió un error al intentar registrar. Por favor, inténtalo de nuevo más tarde.');
-    //     });
-    // };
+ /*
+    const handleLogin = async () => {
+        try {
+            const response = await RegisterAPI(fullName, email, password);
+            if (response.ok) {
+                Alert.alert('Inicio de sesión exitoso');
+            } else {
+                Alert.alert('Error', 'Inicio de sesión fallido. Por favor, verifica tus credenciales.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Alert.alert('Error', 'Ocurrió un error al intentar iniciar sesión. Por favor, intenta nuevamente más tarde.');
+        }
+    };
+*/
 
     return (
         <ImageBackground
