@@ -79,4 +79,18 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    signupText: {
+        position: 'absolute',
+        bottom: 100,
+        left: 0,
+        right: 0,
+        textAlign: 'center',
+        color: '#FFFFFF',
+        fontSize: 15,
+    },
+    signupButton: {
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+        textDecorationLine: 'underline',
+    }
 });
