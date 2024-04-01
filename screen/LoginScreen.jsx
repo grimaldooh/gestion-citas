@@ -4,12 +4,19 @@ import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 import FacebookLoginButton from '../components/FacebookLoginButton';
 import { styles } from '../theme';
+import { useNavigation } from '@react-navigation/native'; // Import the hook that helps us to navigate between screens
 
 const LoginScreen = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigation = useNavigation(); // Initialize the hook to use it in the handleLogin function
 
     const handleLogin = () => {
+        navigation.navigate('AppointmentScreen'); // Navigate to the Appointments screen
+    }
+
+
+    /* const handleLogin = () => {
         const data = {
             username: username,
             password: password
@@ -35,6 +42,7 @@ const LoginScreen = () => {
             Alert.alert('Error', 'Ocurrió un error al intentar iniciar sesión. Por favor, intenta nuevamente más tarde.');
         });
     };
+    */
 
     return (
         <ImageBackground

@@ -6,7 +6,6 @@ const Button = ({ onPress, title }) => {
     return (
         <TouchableOpacity style={styles.button} onPress={onPress}>
             <Text style={styles.buttonText}>{title}</Text>
-            Buenas noches gente
         </TouchableOpacity>
         //Firma de diego papa jaja salu2
     );
