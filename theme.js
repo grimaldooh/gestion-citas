@@ -94,3 +94,13 @@ export const styles = StyleSheet.create({
         textDecorationLine: 'underline',
     }
 });
+
+export const navigationStyles = {
+    headerStyle: {
+        backgroundColor: '#001D3D',
+    },
+    headerTintColor: '#ffffff',
+    headerTitleStyle: {
+        fontWeight: 'bold',
+    },
+};
