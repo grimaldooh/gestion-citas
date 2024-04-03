@@ -17,7 +17,7 @@ const LoginScreen = () => {
 
     // const handleLogin = () => {
     //     navigation.navigate('AppointmentScreen'); // Navigate to the Appointments screen
-    // }
+    // } Buenas noches diego
 
 
     const handleLogin = async () => {
