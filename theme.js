@@ -28,11 +28,12 @@ export const styles = StyleSheet.create({
         height: 40,
         borderColor: '#000000',
         backgroundColor: '#FFFFFF',
-        borderWidth: 1,
+        borderWidth: 0,
         marginBottom: 20,
         paddingLeft: 10,
-        borderRadius: 15,
+        borderRadius: 20,
         color: '#000000',
+        textAlign: 'center',
     },
     description: {
         fontSize: 13,
@@ -43,7 +44,7 @@ export const styles = StyleSheet.create({
     button: {
         backgroundColor: '#ECB000',
         padding: 10,
-        borderRadius: 20,
+        borderRadius: 10,
         width: '100%',
         alignItems: 'center',
     },
@@ -57,7 +58,7 @@ export const styles = StyleSheet.create({
         backgroundColor: '#3169FF',
         paddingVertical: 10,
         paddingHorizontal: 20,
-        borderRadius: 5,
+        borderRadius: 10,
         marginTop: 15,
     },
     facebookLogo: {
@@ -71,11 +72,11 @@ export const styles = StyleSheet.create({
         fontSize: 15,
     },
     logoContainer: {
-        width: 280,
-        height: 100,
+        width: 150, // 280 con logo camaleon
+        height: 150, // 100 con logo camaleon
         position: 'absolute',
-        top: 100,
-        left: 65,
+        top: 50,
+        left: 130,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -89,10 +90,17 @@ export const styles = StyleSheet.create({
         fontSize: 15,
     },
     signupButton: {
-        color: '#FFFFFF',
+        color: '#FFC300',
         fontWeight: 'bold',
         textDecorationLine: 'underline',
-    }
+    },
+    // Aqui es la screen de AppointmentScreen
+    container: {
+        flex: 1,
+        backgroundColor: '#001D3D',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });
 
 export const navigationStyles = {

@@ -17,7 +17,7 @@ const RegisterScreen = () => {
     const [fullName, setFullName] = useState('');
     const navigation = useNavigation();
 
- /*
+/*
     const handleLogin = async () => {
         try {
             const response = await RegisterAPI(fullName, email, password);
@@ -35,14 +35,13 @@ const RegisterScreen = () => {
 
     return (
         <ImageBackground
-            source={require('../assets/images/fondo.jpg')}
+            source={require('../assets/images/fondo.png')}
             style={styles.backgroundImage}
             resizeMode="cover"
         >
             <Image 
-                source={require('../assets/images/camaleonLogo.png')} 
+                source={require('../assets/images/logo.png')} 
                 style={styles.logoContainer} />
-
             <View style={styles.overlay}>
                 <Text style={styles.title}>¡Registro a FastBooking!</Text>
                 <Text style={styles.description}>Completa los siguientes campos para registrarte</Text>
