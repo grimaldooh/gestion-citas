@@ -13,7 +13,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        screenOptions={navigationStyles}>
+        screenOptions={{...navigationStyles,
+          headerShown: false,}}>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="AppointmentScreen" component={AppointmentScreen} /> 
         <Stack.Screen name="Register" component={RegisterScreen} />
@@ -21,5 +22,6 @@ const App = () => {
     </NavigationContainer>
   );
 };
+// Prueba de stash
 
 export default App;

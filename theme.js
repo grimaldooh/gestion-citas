@@ -88,8 +88,11 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#FFFFFF',
         fontSize: 15,
+        width: '130%',
+        height: '17%',
     },
     signupButton: {
+        position: 'absolute',
         color: '#FFC300',
         fontWeight: 'bold',
         textDecorationLine: 'underline',
