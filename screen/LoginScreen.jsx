@@ -14,26 +14,27 @@ const LoginScreen = () => {
     const [password, setPassword] = useState('');
     const navigation = useNavigation(); // Initialize the hook to use it in the handleLogin function
 
-    const handleLogin = () => {
-        navigation.navigate('AppointmentScreen'); // Navigate to the Appointments screen
-    }
+    // const handleLogin = () => {
+    //     navigation.navigate('AppointmentScreen'); // Navigate to the Appointments screen
+    // }
 
 
-    /*
     const handleLogin = async () => {
         try {
             const response = await LoginAPI(username, password);
-            if (response.ok) {
-                Alert.alert('Inicio de sesión exitoso');
+            if (response.success) {
+                console.log('Inicio de sesión exitoso');
+                
+
             } else {
-                Alert.alert('Error', 'Inicio de sesión fallido. Por favor, verifica tus credenciales.');
+                console.log('Error', 'Inicio de sesión fallido. Por favor, verifica tus credenciales.');
+                console.log (LoginAPI(username, password));
             }
         } catch (error) {
             console.error('Error:', error);
-            Alert.alert('Error', 'Ocurrió un error al intentar iniciar sesión. Por favor, intenta nuevamente más tarde.');
+            console.log('Error', 'Ocurrió un error al intentar iniciar sesión. Por favor, intenta nuevamente más tarde.');
         }
     };
-    */
 
     return (
         <ImageBackground
