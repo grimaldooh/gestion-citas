@@ -68,12 +68,11 @@ const LoginScreen = () => {
                         value={password}
                         secureTextEntry={true}
                     />
-                    <Text style={styles.signupText}>¿Aun no tienes cuenta? {' '}
-                        <Text
-                            style={styles.signupButton}
-                            onPress={() => navigation.navigate('Register')}>
-                            Registrate!
-                        </Text>
+                    <Text
+                        style={styles.signupText}
+                        onPress={() => navigation.navigate('Register')}
+                    >
+                        ¿Aun no tienes cuenta? {' '} Registrate!
                     </Text>
                     <Button onPress={handleLogin} title="Iniciar Sesión" />
                     <FacebookLoginButton title="Inicia sesion con Facebook" />

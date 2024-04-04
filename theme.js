@@ -92,10 +92,9 @@ export const styles = StyleSheet.create({
         height: '17%',
     },
     signupButton: {
-        position: 'absolute',
         color: '#FFC300',
         fontWeight: 'bold',
-        textDecorationLine: 'underline',
+        textDecorationLine: 'underline'
     },
     // Aqui es la screen de AppointmentScreen
     container: {
