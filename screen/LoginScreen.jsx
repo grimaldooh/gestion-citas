@@ -23,8 +23,9 @@ const LoginScreen = () => {
     const handleLogin = async () => {
         try {
             const response = await LoginAPI(username, password);
-            if (response.success) {
+            if (response.ok) {
                 console.log('Inicio de sesión exitoso');
+                navigation.navigate('AppointmentScreen');
                 
             } else {
                 console.log('Error', 'Inicio de sesión fallido. Por favor, verifica tus credenciales.');
