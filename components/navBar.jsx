@@ -4,10 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // Importamos los componentes de las pantallas
-import SolicitudCitasScreen from '../screen/SolicitudCitasScreen';
-import CitasActivasScreen from '../screen/CitasActivasScreen';
-import CalendarioScreen from '../screen/CalendarioScreen';
-import AjustesScreen from '../screen/SettingsScreen';
+import SolicitudCitasScreen from '../screen/dashboard/SolicitudCitasScreen';
+import CitasActivasScreen from '../screen/dashboard/CitasActivasScreen';
+import CalendarioScreen from '../screen/dashboard/CalendarioScreen';
+import AjustesScreen from '../screen/dashboard/SettingsScreen';
 
 // Importamos los estilos
 import { screenOptions } from '../theme';
