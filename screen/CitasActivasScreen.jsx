@@ -1,11 +1,10 @@
 import React from 'react';
 import Card from '../components/Card';
+import CardButton from '../components/CardButton';
 
 const CitasActivasScreen = () => {
     return (
-        <>
-            <Card title="Holaa 2" content="Holaaa xd 2" />
-        </>
+        <CardButton />
     );
 };
 
