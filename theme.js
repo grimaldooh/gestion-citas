@@ -100,17 +100,29 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#001D3D',
-        justifyContent: 'center',
-        alignItems: 'center',
     },
 });
 
-export const navigationStyles = {
-    headerStyle: {
-        backgroundColor: '#001D3D',
+export const screenOptions = {
+    tabBarActiveTintColor: '#FFBB00',
+    tabBarInactiveTintColor: '#282828',
+    tabBarInactiveBackgroundColor: '#FFFFFF',
+    tabBarShowLabel: false,
+    tabBarStyle: {
+        position: 'absolute',
+        left: 20,
+        right: 20,
+        bottom: 25,
+        borderRadius: 15,
+        borderTopWidth: 20,
+        borderTopColor: '#FFFFFF',
+        height: 70,
+        paddingBottom: 14,
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
-    headerTintColor: '#ffffff',
-    headerTitleStyle: {
-        fontWeight: 'bold',
+    tabBarIcon: {
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 };
+
