@@ -5,9 +5,9 @@ import { styles } from '../theme';
 
 const AppointmentScreen = () => {
     return (
-        <View style={styles.container}>
-            <NavBar />
-        </View>
+        <>
+            <Card title="Cita" content="Fecha: 12/12/2021 - Hora: 10:00" />
+        </>
     );
 };
 

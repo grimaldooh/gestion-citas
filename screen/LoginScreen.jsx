@@ -19,20 +19,21 @@ const LoginScreen = () => {
         navigation.navigate('AppointmentScreen'); // Navigate to the Appointments screen
     };
 
-    // const handleLogin = async () => {
-    //     try {
-    //         const response = await LoginAPI(username, password);
-    //         if (response.success) {
-    //             console.log('Inicio de sesión exitoso');
-    //         } else {
-    //             console.log('Error', 'Inicio de sesión fallido. Por favor, verifica tus credenciales.');
-    //             console.log (LoginAPI(username, password));
-    //         }
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //         console.log('Error', 'Ocurrió un error al intentar iniciar sesión. Por favor, intenta nuevamente más tarde.');
-    //     }
-    // };
+    const handleLogin = async () => {
+        try {
+            const response = await LoginAPI(username, password);
+            if (response.success) {
+                console.log('Inicio de sesión exitoso');
+                
+            } else {
+                console.log('Error', 'Inicio de sesión fallido. Por favor, verifica tus credenciales.');
+                console.log (LoginAPI(username, password));
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            console.log('Error', 'Ocurrió un error al intentar iniciar sesión. Por favor, intenta nuevamente más tarde.');
+        }
+    };
 
     return (
         // El keyboardAvoidingView es un componente que nos ayuda a evitar que el teclado del dispositivo tape los inputs y
