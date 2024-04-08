@@ -1,6 +1,6 @@
 // ModalForm.js
 import React from 'react';
-import { Modal, Text, View, TouchableOpacity } from 'react-native';
+import { Modal, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 
 import { modalStyle, modalContentStyle, buttonSave, buttonReturn, styles } from '../theme';
 
@@ -16,28 +16,31 @@ const ModalForm = ({ onClose }) => {
             onRequestClose={onClose}
         >
             <View style={modalStyle}>
-                <View style={modalContentStyle}>
-                    {fields.map((field, index) => (
-                        <>
-                            <Text>{field.label}</Text>
-                            <TextInputModal key={index} {...field} />
-                        </>
-                    ))}
-                    <View style={styles.buttonsContainer}>
-                        <TouchableOpacity
-                            onPress={onClose}
-                            style={buttonSave}
-                        >
-                            <Text>Guardar</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={onClose}
-                            style={buttonReturn}
-                        >
-                            <Text>Regresar</Text>
-                        </TouchableOpacity>
+                <ScrollView>
+                    <View style={modalContentStyle}>
+                        <Text style={styles.titleModal}>Registra una Cita</Text>
+                        {fields.map((field, index) => (
+                            <>
+                                <Text>{field.label}</Text> 
+                                <TextInputModal key={index} {...field} />
+                            </>
+                        ))}
+                        <View style={styles.buttonsContainer}>
+                            <TouchableOpacity
+                                onPress={onClose}
+                                style={buttonSave}
+                            >
+                                <Text>Guardar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={onClose}
+                                style={buttonReturn}
+                            >
+                                <Text>Regresar</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                </View>
+                </ScrollView>
             </View>
         </Modal>
     );

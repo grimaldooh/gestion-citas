@@ -15,11 +15,11 @@ export const fields = [
 
 const InputField = ({ label, placeholder }) => (
     <>
-        <Text>{label}:</Text>
+        <Text style={styles.labelStyle}>{label}</Text>
         <TextInput 
-            style={styles.inputModal}
+            style={styles.inputStyle}
             placeholder={placeholder}
-            secureTextEntry={false}
+            secureTextEntry={true}
         />
     </>
 );

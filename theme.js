@@ -164,20 +164,26 @@ export const styles = StyleSheet.create({
     },
     //Entradas de texto de la modal
     inputModal: {
+        width: '100%',
         height: 40,
-        borderColor: '#CFCFCF',
+        borderColor: 'rgba(0, 0, 0, 0.2)',
         borderWidth: 1,
-        borderRadius: 5,
-        borderColor: '#000000',
-        marginBottom: 20,
-        marginLeft: 10,
-        marginRight: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
+        borderRadius: 15,
+        marginBottom: 10,
+        paddingLeft: 10,
         backgroundColor: 'white',
     },
+    labelStyle: {
+    },
+    titleModal: {
+        fontSize: 18,
+        marginTop: -15,
+        marginBottom: 20,
+        fontWeight: 'bold',
+        color: '#000000',
+    },
     //Botones de la modal
-    buttonsContainer:{
+    buttonsContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 10,
