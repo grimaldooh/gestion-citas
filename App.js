@@ -21,7 +21,7 @@ const App = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+};w
 // Prueba de stash
 // prueba 2 papapa
 // prueba Jorge AAAAAAAAAAAAAAAAAAAAAA
