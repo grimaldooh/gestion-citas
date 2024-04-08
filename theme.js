@@ -98,6 +98,63 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         textDecorationLine: 'underline'
     },
+    //Entradas de texto de la modal
+    inputModal: {
+        height: 40,
+        borderColor: '#CFCFCF',
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#000000',
+        marginBottom: 20,
+        marginLeft: 10,
+        marginRight: 10,
+        paddingLeft: 20,
+        paddingRight: 20,
+        backgroundColor: 'white',
+    },
+    //Botones de la modal
+    buttonsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+    },
+    modal: {
+        container: {
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        },
+        modal: {
+            backgroundColor: '#FFF',
+            padding: 20,
+            borderRadius: 10,
+        },
+        closeButton: {
+            position: 'absolute',
+            top: 10,
+            right: 10,
+        },
+        buttonContainer: {
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            marginTop: 20,
+        },
+        modifyButton: {
+            backgroundColor: '#334fcf',
+            fontSize: 11,
+            alignItems: 'center',
+            fontFamily: 'Plus Jakarta Sans',
+            borderRadius: 10,
+            width: 75,
+            height: 20,
+        },
+        closePosition: {
+            flexDirection: 'row',
+            placeContent: 'space-between',
+
+        }
+    },
     // Estilos para la pantalla de SolicitudCitasScreen
     card: {
         position: 'relative', // Para poder posicionar la imagen de manera absoluta
@@ -110,7 +167,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center', // Para alinear verticalmente el contenido
         alignSelf: 'center', // Para centrar la tarjeta en la pantalla  
         marginVertical: 15, // Para agregar un margen vertical entre las tarjetas
-
         image: {
             position: 'absolute', // Para posicionar la imagen encima del rectángulo
             top: '0%', // Para centrar verticalmente la imagen
@@ -127,6 +183,7 @@ export const styles = StyleSheet.create({
             fontSize: 15,
             fontWeight: '600',
             fontFamily: 'Plus Jakarta Sans',
+            marginVertical: 5,
         },
         body: {
             fontSize: 11,
@@ -189,6 +246,7 @@ export const styles = StyleSheet.create({
         marginTop: 10,
     },
 });
+
 
 export const screenOptions = {
     tabBarActiveTintColor: '#FFBB00',
