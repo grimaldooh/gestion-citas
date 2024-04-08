@@ -21,8 +21,8 @@ const App = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};w
-// Prueba de stash
+};
+// Prueba de stah
 // prueba 2 papapa
 // prueba Jorge AAAAAAAAAAAAAAAAAAAAAA
 export default App;
