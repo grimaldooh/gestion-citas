@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
     },
+    // Estilos para la pantalla de RegistroScreen
     title: {
         fontSize: 24,
         marginBottom: 20,
@@ -41,6 +42,7 @@ export const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center',
     },
+    // Estilos para la pantalla de LoginScreen
     button: {
         backgroundColor: '#ECB000',
         padding: 10,
@@ -96,11 +98,7 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         textDecorationLine: 'underline'
     },
-    // Aqui es la screen de AppointmentScreen
-    container: {
-        flex: 1,
-        backgroundColor: '#001D3D',
-    },
+    // Estilos para la pantalla de SolicitudCitasScreen
     card: {
         position: 'relative', // Para poder posicionar la imagen de manera absoluta
         padding: 5,
@@ -112,7 +110,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center', // Para alinear verticalmente el contenido
         alignSelf: 'center', // Para centrar la tarjeta en la pantalla  
         marginVertical: 15, // Para agregar un margen vertical entre las tarjetas
-        
+
         image: {
             position: 'absolute', // Para posicionar la imagen encima del rectángulo
             top: '0%', // Para centrar verticalmente la imagen
@@ -121,27 +119,27 @@ export const styles = StyleSheet.create({
             height: 100, // Altura de la imagen circular
             borderRadius: 50, // Para hacer la imagen circular
             zIndex: 1, // Para asegurar que la imagen esté encima del rectángulo de la tarjeta
-          },
-          textContainer: {
+        },
+        textContainer: {
             marginLeft: 50, // Ajusta el margen entre la imagen y el texto según sea necesario
-          },
-          title: {
+        },
+        title: {
             fontSize: 15,
             fontWeight: '600',
             fontFamily: 'Plus Jakarta Sans',
-          },
-          body: {
+        },
+        body: {
             fontSize: 11,
             fontWeight: '300',
             fontFamily: 'Plus Jakarta Sans',
-          },
-          buttonContainer: {
+        },
+        buttonContainer: {
             flexDirection: 'row',
             justifyContent: 'space-between',
             marginTop: 10,
-            width:100
-          },
-          acceptButton: {
+            width: 100
+        },
+        acceptButton: {
             backgroundColor: '#33cf65',
             fontSize: 10,
             fontFamily: 'Plus Jakarta Sans',
@@ -150,8 +148,8 @@ export const styles = StyleSheet.create({
             marginRight: 5,
             width: 75,
             height: 20,
-          },
-          rejectButton: {
+        },
+        rejectButton: {
             backgroundColor: '#cf334f',
             fontSize: 11,
             alignItems: 'center',
@@ -159,15 +157,31 @@ export const styles = StyleSheet.create({
             borderRadius: 10,
             width: 75,
             height: 20,
-        
-          },
-          buttonText:{
+        },
+        buttonText: {
             color: '#ffffff',
-            
-          }
-    }
-    ,
-    
+        }
+    },
+    //Entradas de texto de la modal
+    inputModal: {
+        height: 40,
+        borderColor: '#CFCFCF',
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#000000',
+        marginBottom: 20,
+        marginLeft: 10,
+        marginRight: 10,
+        paddingLeft: 20,
+        paddingRight: 20,
+        backgroundColor: 'white',
+    },
+    //Botones de la modal
+    buttonsContainer:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+    },
 });
 
 export const screenOptions = {
@@ -193,3 +207,56 @@ export const screenOptions = {
     },
 };
 
+export const fabStyle = {
+    position: 'absolute',
+    backgroundColor: '#FFBB00',
+    margin: 80,
+    right: 0,
+    bottom: 0,
+    marginRight: 180,
+};
+
+export const modalContentStyle = {
+    margin: 20,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    marginTop: 100,
+};
+
+export const button = {
+    backgroundColor: '#FFBB00',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginVertical: 10,
+};
+
+export const buttonSave = {
+    backgroundColor: '#059500',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginVertical: 10,
+    width: 100,
+    marginHorizontal: 20,
+};
+
+export const buttonReturn = {
+    backgroundColor: '#FF0000',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginVertical: 10,
+    width: 100,
+    marginHorizontal: 20,
+};

@@ -4,7 +4,9 @@ import CardButton from '../../components/CardButton';
 
 const CitasActivasScreen = () => {
     return (
-        <CardButton />
+        <>
+            <Card title="Citas Activas pa" content="Aqui tendremos las citas activas" />
+        </>
     );
 };
 

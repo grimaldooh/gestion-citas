@@ -4,7 +4,7 @@ import Card from '../../components/Card';
 const SettingsScreen = () => {
     return (
         <>
-            <Card title="Holaa 5" content="Holaaa xd 55" />
+            <Card title="Tus configs papasito" content="Aqui le moveras porque si..." />
         </>
     );
 };
