@@ -29,7 +29,7 @@ const onModify = () => {
     <View style={styles.card}>
       <Image
         style={styles.card.image}
-        source={{ uri: img }}
+        source={img}
       />
       <View style={styles.card.textContainer}>
         <Text style={styles.card.title}>{title}</Text>

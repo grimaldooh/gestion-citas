@@ -161,8 +161,8 @@ export const styles = StyleSheet.create({
         padding: 5,
         backgroundColor: '#FFD353',
         width: 290, // Ancho de la tarjeta
-        height: 90, // Altura de la tarjeta
-        borderRadius: 10,
+        height: 100, // Altura de la tarjeta
+        borderRadius: 20,
         flexDirection: 'row', // Para alinear la imagen y el texto en la misma fila
         alignItems: 'center', // Para alinear verticalmente el contenido
         alignSelf: 'center', // Para centrar la tarjeta en la pantalla  
