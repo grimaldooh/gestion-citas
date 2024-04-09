@@ -156,6 +156,12 @@ export const styles = StyleSheet.create({
         }
     },
     // Estilos para la pantalla de SolicitudCitasScreen
+    container: {
+        flex: 1,
+        backgroundColor: '#001D3D',
+        //alignItems: 'center',
+        //justifyContent: 'center',
+    },
     card: {
         position: 'relative', // Para poder posicionar la imagen de manera absoluta
         padding: 5,
@@ -163,10 +169,12 @@ export const styles = StyleSheet.create({
         width: 290, // Ancho de la tarjeta
         height: 100, // Altura de la tarjeta
         borderRadius: 20,
+        marginLeft: 45, // Margen izquierdo para separar las tarjetas
+        marginTop: 100, // Margen superior para separar las tarjetas
         flexDirection: 'row', // Para alinear la imagen y el texto en la misma fila
         alignItems: 'center', // Para alinear verticalmente el contenido
         alignSelf: 'center', // Para centrar la tarjeta en la pantalla  
-        marginVertical: 15, // Para agregar un margen vertical entre las tarjetas
+        marginVertical: -80, // Para agregar un margen vertical entre las tarjetas
         image: {
             position: 'absolute', // Para posicionar la imagen encima del rectángulo
             top: '0%', // Para centrar verticalmente la imagen
@@ -175,6 +183,7 @@ export const styles = StyleSheet.create({
             height: 100, // Altura de la imagen circular
             borderRadius: 50, // Para hacer la imagen circular
             zIndex: 1, // Para asegurar que la imagen esté encima del rectángulo de la tarjeta
+            shadowColor: '#000000',
         },
         textContainer: {
             marginLeft: 50, // Ajusta el margen entre la imagen y el texto según sea necesario
@@ -258,6 +267,7 @@ export const screenOptions = {
     tabBarInactiveTintColor: '#282828',
     tabBarInactiveBackgroundColor: '#FFFFFF',
     tabBarShowLabel: false,
+    backgroundColor: 'transparent',
     tabBarStyle: {
         position: 'absolute',
         left: 20,

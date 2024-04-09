@@ -14,6 +14,7 @@ import AjustesScreen from '../screen/dashboard/SettingsScreen';
 // Importamos los estilos
 import { screenOptions } from '../theme';
 import { fabStyle } from '../theme';
+import { navigationStyle } from '../theme';
 
 const Tab = createBottomTabNavigator()
 
@@ -22,7 +23,8 @@ const Navegacion = () => {
     return (
         <>
             <Tab.Navigator
-                screenOptions={screenOptions}
+                screenOptions={{...screenOptions,
+                    headerShown: false,}}
             >    
                 <Tab.Screen
                     name="SolicitudCitas" 
