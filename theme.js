@@ -223,14 +223,19 @@ export const styles = StyleSheet.create({
     inputModal: {
         width: '100%',
         height: 40,
-        borderColor: 'rgba(0, 0, 0, 0.2)',
+        borderColor: '#DDDDDD',
         borderWidth: 1,
-        borderRadius: 15,
+        borderRadius: 20,
         marginBottom: 10,
-        paddingLeft: 10,
-        backgroundColor: 'white',
+        paddingLeft: 15,
+        backgroundColor: '#f8f8f8',
+        fontSize: 16,
+        color: '#333333',
     },
     labelStyle: {
+        fontSize: 15,
+        fontWeight: '500',
+        color: '#000000',
     },
     titleModal: {
         fontSize: 18,

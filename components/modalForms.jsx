@@ -21,7 +21,7 @@ const ModalForm = ({ onClose }) => {
                         <Text style={styles.titleModal}>Registra una Cita</Text>
                         {fields.map((field, index) => (
                             <>
-                                <Text>{field.label}</Text> 
+                                {/* <Text style={styles.labelStyle}>{field.label}</Text>  */}
                                 <TextInputModal key={index} {...field} />
                             </>
                         ))}

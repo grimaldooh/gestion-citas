@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, View, Text, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Importa el ícono de Ionicons
+import { Ionicons } from '@expo/vector-icons';
 import CardButton from './CardButton';
 import { styles } from '../theme';
 
