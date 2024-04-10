@@ -15,7 +15,6 @@ import AjustesScreen from '../screen/dashboard/SettingsScreen';
 import { screenOptions } from '../theme';
 import { fabStyle } from '../theme';
 import { navigationStyle } from '../theme';
-
 const Tab = createBottomTabNavigator()
 
 const Navegacion = () => {
@@ -25,6 +24,7 @@ const Navegacion = () => {
             <Tab.Navigator
                 screenOptions={{...screenOptions,
                     headerShown: false,}}
+                    animationType="spring"
             >    
                 <Tab.Screen
                     name="SolicitudCitas" 

@@ -1,11 +1,11 @@
 import React from 'react';
 import Card from '../../components/Card';
+import { Text } from 'react-native';
+import { styles } from '../../theme';
 
 const CalendarioScreen = () => {
     return (
-        <>
-            <Card title="Este es el calenraio" content="Aqui tendremos el calendario paa.." />
-        </>
+        <Text>CalendarioScreen</Text>
     );
 };
 

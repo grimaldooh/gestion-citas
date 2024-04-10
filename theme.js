@@ -6,6 +6,18 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    boxShadow: {
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0, // No desplazamiento horizontal
+            height: 7, // Desplazamiento vertical hacia abajo
+        },
+        shadowOpacity: 1.43,
+        shadowRadius: 1.51,
+        borderBottomWidth: 3,
+        borderBottomColor: '#000000',
+        elevation: 10,
+    },
     overlay: {
         backgroundColor: '#001D3D',
         padding: 50,
@@ -162,11 +174,25 @@ export const styles = StyleSheet.create({
         //alignItems: 'center',
         //justifyContent: 'center',
     },
+    cardBackground: {
+        position: 'absolute', // Para posicionar la tarjeta detrás de la tarjeta original
+        top: 50, // Aumenta este valor para mover la tarjeta más hacia abajo
+        left: 20, // Para mover la tarjeta hacia la derecha
+        right: 10, // Para hacer la tarjeta más pequeña
+        bottom: 10, // Para hacer la tarjeta más pequeña
+        width: 260, // Ancho de la tarjeta
+        height: 90, // Altura de la tarjeta
+        backgroundColor: '#FFD353', // Color de fondo de la tarjeta
+        borderRadius: 20, // Borde redondeado de la tarjeta
+        zIndex: -99999, // Para asegurar que la tarjeta esté detrás de la tarjeta original
+        justifyContent: 'center', // Para centrar el contenido de la tarjeta
+        alignItems: 'center', // Para centrar el contenido de la tarjeta
+    },
     card: {
         position: 'relative', // Para poder posicionar la imagen de manera absoluta
         padding: 5,
         backgroundColor: '#FFD353',
-        width: 290, // Ancho de la tarjeta
+        width: 300, // Ancho de la tarjeta
         height: 100, // Altura de la tarjeta
         borderRadius: 20,
         marginLeft: 45, // Margen izquierdo para separar las tarjetas
@@ -174,7 +200,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row', // Para alinear la imagen y el texto en la misma fila
         alignItems: 'center', // Para alinear verticalmente el contenido
         alignSelf: 'center', // Para centrar la tarjeta en la pantalla  
-        marginVertical: -80, // Para agregar un margen vertical entre las tarjetas
+        marginVertical: -80, // Para agregar un margen vertical entre las tarjetas,
         image: {
             position: 'absolute', // Para posicionar la imagen encima del rectángulo
             top: '0%', // Para centrar verticalmente la imagen
@@ -184,13 +210,15 @@ export const styles = StyleSheet.create({
             borderRadius: 50, // Para hacer la imagen circular
             zIndex: 1, // Para asegurar que la imagen esté encima del rectángulo de la tarjeta
             shadowColor: '#000000',
+            borderWidth: 2,
+            borderColor: '#FFC300',
         },
         textContainer: {
             marginLeft: 50, // Ajusta el margen entre la imagen y el texto según sea necesario
         },
         title: {
-            fontSize: 15,
-            fontWeight: '600',
+            fontSize: 14,
+            fontWeight: '800',
             fontFamily: 'Plus Jakarta Sans',
             marginVertical: 5,
         },
@@ -198,6 +226,13 @@ export const styles = StyleSheet.create({
             fontSize: 11,
             fontWeight: '300',
             fontFamily: 'Plus Jakarta Sans',
+            color: '#FFFFFF',
+            backgroundColor: '#003C89', // Color de fondo
+            borderRadius: 5, // Borde redondeado
+            width: "100%",
+            padding: 2, // Espacio interior para que el texto no toque el borde
+            paddingLeft: 5, // Espacio interior a la izquierda
+            paddingRight: 5, // Espacio interior a la derecha
         },
         buttonContainer: {
             flexDirection: 'row',
@@ -214,6 +249,8 @@ export const styles = StyleSheet.create({
             marginRight: 5,
             width: 75,
             height: 20,
+            top: 37,
+            left: 15,
         },
         rejectButton: {
             backgroundColor: '#cf334f',
