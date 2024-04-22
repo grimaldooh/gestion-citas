@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
-import { styles } from '../theme';
+import { styles } from '../themes/Appointments/CardTheme';
 import CardButton from './CardButton';
 import ModalComponent from './ModalComponent'; // Importa el componente Modal existente
 

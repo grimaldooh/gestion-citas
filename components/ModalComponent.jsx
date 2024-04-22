@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import CardButton from './CardButton';
-import { styles } from '../theme';
+import { styles } from '../themes/Appointments/ModalTheme';
 
 const ModalComponent = ({ title, message, visible, onClose }) => {
     
@@ -31,7 +31,7 @@ const ModalComponent = ({ title, message, visible, onClose }) => {
                     <Text>{message}</Text>
                     <View style={styles.modal.buttonContainer}>
                         <CardButton onPress={onModify} title="Modificar" buttonStyle={styles.modal.modifyButton}  />
-                        <CardButton onPress={onReject} title="Rechazar" buttonStyle={styles.card.rejectButton}  />
+                        <CardButton onPress={onReject} title="Rechazar" buttonStyle={styles.modal.rejectButton}  />
                     </View>
                 </View>
             </View>
