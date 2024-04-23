@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
     },
     //Aqui termina el estilo del boton generico
 
-    // Estilos Generales de Titulo, Descripción y Entradas de Texto
+// Estilos Generales de Titulo, Descripción y Entradas de Texto
     title: {
         fontSize: 24,
         marginBottom: 20,
@@ -69,6 +69,8 @@ export const styles = StyleSheet.create({
         backgroundColor: '#001D3D',
     },
     
+    
+//Estilo del componente ModalForms
     //Entradas de texto de la modal
     inputModal: {
         height: 40,
@@ -89,8 +91,6 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: 10,
     },
-    
-    //Entradas de texto de la modal
     inputModal: {
         width: '100%',
         height: 40,
