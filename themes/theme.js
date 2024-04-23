@@ -123,40 +123,6 @@ export const styles = StyleSheet.create({
     },
 });
 
-
-export const screenOptions = {
-    tabBarActiveTintColor: '#FFBB00',
-    tabBarInactiveTintColor: '#282828',
-    tabBarInactiveBackgroundColor: '#FFFFFF',
-    tabBarShowLabel: false,
-    backgroundColor: 'transparent',
-    tabBarStyle: {
-        position: 'absolute',
-        left: 20,
-        right: 20,
-        bottom: 25,
-        borderRadius: 15,
-        borderTopWidth: 20,
-        borderTopColor: '#FFFFFF',
-        height: 70,
-        paddingBottom: 14,
-        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
-    },
-    tabBarIcon: {
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-};
-
-export const fabStyle = {
-    position: 'absolute',
-    backgroundColor: '#FFBB00',
-    margin: 80,
-    right: 0,
-    bottom: 0,
-    marginRight: 180,
-};
-
 export const modalContentStyle = {
     margin: 20,
     backgroundColor: '#FFFFFF',
@@ -201,7 +167,6 @@ export const buttonReturn = {
     width: 100,
     marginHorizontal: 20,
 };
-
 
 export const rejectButtonStyle = {
     backgroundColor: '#cf334f',

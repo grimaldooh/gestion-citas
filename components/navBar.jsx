@@ -12,9 +12,9 @@ import CalendarioScreen from '../screen/dashboard/CalendarioScreen';
 import AjustesScreen from '../screen/dashboard/SettingsScreen';
 
 // Importamos los estilos
-import { screenOptions } from '../themes/theme';
-import { fabStyle } from '../themes/theme';
-import { navigationStyle } from '../themes/theme';
+import { screenOptions } from '../themes/Appointments/NavBar';
+import { fabStyle } from '../themes/Appointments/NavBar';
+
 const Tab = createBottomTabNavigator()
 
 const Navegacion = () => {
@@ -31,7 +31,7 @@ const Navegacion = () => {
                     component={SolicitudCitasScreen}
                     options={{
                         tabBarIcon: ({ color }) => (
-                            <Icon name="home" color={color} size={30} />
+                            <Icon name="time" color={color} size={30} />
                         ),
                     }}
                 />
@@ -40,7 +40,7 @@ const Navegacion = () => {
                     component={CitasActivasScreen} 
                     options={{
                         tabBarIcon: ({ color }) => (
-                            <Icon name="calendar" color={color} size={30} />
+                            <Icon name="checkmark-circle" color={color} size={30} />
                         ),
                     }}
                 />
