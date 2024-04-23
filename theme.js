@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
 
+
     backgroundImage: {
         flex: 1,
         justifyContent: 'center',
@@ -62,6 +63,38 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         width: '100%',
         alignItems: 'center',
+        accept: {
+            backgroundColor: '#33cf65', // Color de fondo para botones de aceptación
+        },
+        
+        reject: {
+            backgroundColor: '#f44336', // Color de fondo para botones de rechazo
+        },
+        modify: {
+            backgroundColor: '#2196f3', // Color de fondo para botones de modificación
+        },
+        
+        // Estilos para botones pequeños
+        smallButton: {
+            height: 40,
+            width: 100,
+        },
+        
+        // Estilos para botones grandes
+        largeButton: {
+            height: 60,
+            width: 200,
+        },
+        
+        // Estilos de texto para botones pequeños
+        smallButtonText: {
+            fontSize: 8,
+        },
+        
+        // Estilos de texto para botones grandes
+        largeButtonText: {
+            fontSize: 20,
+        },
     },
     buttonText: {
         color: '#000000',
@@ -266,7 +299,6 @@ export const buttonReturn = {
     marginHorizontal: 20,
 };
 
-// In theme.js
 
 export const rejectButtonStyle = {
     backgroundColor: '#cf334f',
@@ -278,3 +310,42 @@ export const rejectButtonStyle = {
     height: 20,
 };
 
+export const acceptButton = {
+    fontFamily: 'Plus Jakarta Sans',
+    alignItems: 'center',
+    borderRadius: 10,
+    marginRight: 5,
+    top: 37,
+    left: 15,
+};
+
+export const buttonGeneric = {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    accept: {
+        backgroundColor: '#33cf65'
+    },
+    reject: {
+        backgroundColor: '#f44336'
+    },
+    modify: {
+        backgroundColor: '#2196f3' 
+    },
+    smallButton: {
+        height: 40,
+        width: 100,
+      },
+      largeButton: {
+        height: 60,
+        width: 200,
+      },
+      smallButtonText: {
+        fontSize: 14,
+      },
+      largeButtonText: {
+        fontSize: 20,
+      },
+}
