@@ -7,10 +7,14 @@ const buttonStyles = {
         accept: styles.button.accept,
         reject: styles.button.reject,
         modify: styles.button.modify,
+        loginColor: styles.button.loginColor,
     },
     fontSize: {
         small: styles.button.smallButtonText,
         large: styles.button.largeButtonText,
+    },
+    typeFont: {
+        bold: styles.button.fontBold,
     },
     height: {
         small: styles.button.smallButton,
@@ -30,12 +34,19 @@ const ButtonGeneric = ({ children, backgroundColor, fontSize, width, height, onP
         backgroundColor === 'accept' && buttonStyles.backgroundColor.accept,
         backgroundColor === 'reject' && buttonStyles.backgroundColor.reject,
         backgroundColor === 'modify' && buttonStyles.backgroundColor.modify,
+        backgroundColor === 'loginColor' && buttonStyles.backgroundColor.loginColor,
+        
         fontSize === 'small' && buttonStyles.fontSize.small,
         fontSize === 'large' && buttonStyles.fontSize.large,
+        
         height === 'small' && buttonStyles.height.small,
         height === 'large' && buttonStyles.height.large,
+        
         width === 'small' && buttonStyles.width.small,
         width === 'large' && buttonStyles.width.large,
+
+        width === 'extraLarge' && buttonStyles.width.extraLarge,
+        height === 'extraLarge' && buttonStyles.height.extraLarge,
     ];
 
     return (

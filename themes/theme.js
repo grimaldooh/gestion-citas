@@ -1,6 +1,44 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+    //Estilo del componente de boton generico
+    button: {
+        backgroundColor: '#ECB000',
+        padding: 10,
+        borderRadius: 10,
+        width: '100%',
+        alignItems: 'center',
+        accept: {
+            backgroundColor: '#33cf65', // Color de fondo para botones de aceptación
+        },
+    
+        reject: {
+            backgroundColor: '#f44336', // Color de fondo para botones de rechazo
+        },
+        modify: {
+            backgroundColor: '#2196f3', // Color de fondo para botones de modificación
+        },
+        // Estilos para botones pequeños
+        smallButton: {
+            height: 40,
+            width: 100,
+        },
+        // Estilos para botones grandes
+        largeButton: {
+            height: 60,
+            width: 200,
+        },
+        // Estilos de texto para botones pequeños
+        smallButtonText: {
+            fontSize: 8,
+        },
+        // Estilos de texto para botones grandes
+        largeButtonText: {
+            fontSize: 20,
+        },
+    },
+    //Aqui termina el estilo del boton generico
+
     // Estilos Generales de Titulo, Descripción y Entradas de Texto
     title: {
         fontSize: 24,
@@ -26,51 +64,11 @@ export const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center',
     },
-
-    // Estilos para el boton de iniciar sesión en la pantalla de Login
-    button: {
-        backgroundColor: '#ECB000',
-        padding: 10,
-        borderRadius: 10,
-        width: '100%',
-        alignItems: 'center',
-        accept: {
-            backgroundColor: '#33cf65', // Color de fondo para botones de aceptación
-        },
-
-        reject: {
-            backgroundColor: '#f44336', // Color de fondo para botones de rechazo
-        },
-        modify: {
-            backgroundColor: '#2196f3', // Color de fondo para botones de modificación
-        },
-
-        // Estilos para botones pequeños
-        smallButton: {
-            height: 40,
-            width: 100,
-        },
-
-        // Estilos para botones grandes
-        largeButton: {
-            height: 60,
-            width: 200,
-        },
-
-        // Estilos de texto para botones pequeños
-        smallButtonText: {
-            fontSize: 8,
-        },
-
-        // Estilos de texto para botones grandes
-        largeButtonText: {
-            fontSize: 20,
-        },
+    container: {
+        flex: 1,
+        backgroundColor: '#001D3D',
     },
-    buttonText: {
-        color: '#000000',
-        fontWeight: 'bold',
-    },
+    
     //Entradas de texto de la modal
     inputModal: {
         height: 40,
@@ -91,29 +89,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: 10,
     },
-
-    // Estilos para la pantalla de SolicitudCitasScreen
-    container: {
-        flex: 1,
-        backgroundColor: '#001D3D',
-        //alignItems: 'center',
-        //justifyContent: 'center',
-    },
-    cardBackground: {
-        position: 'absolute', // Para posicionar la tarjeta detrás de la tarjeta original
-        top: 50, // Aumenta este valor para mover la tarjeta más hacia abajo
-        left: 20, // Para mover la tarjeta hacia la derecha
-        right: 10, // Para hacer la tarjeta más pequeña
-        bottom: 10, // Para hacer la tarjeta más pequeña
-        width: 260, // Ancho de la tarjeta
-        height: 90, // Altura de la tarjeta
-        backgroundColor: '#FFD353', // Color de fondo de la tarjeta
-        borderRadius: 20, // Borde redondeado de la tarjeta
-        zIndex: -99999, // Para asegurar que la tarjeta esté detrás de la tarjeta original
-        justifyContent: 'center', // Para centrar el contenido de la tarjeta
-        alignItems: 'center', // Para centrar el contenido de la tarjeta
-    },
-
+    
     //Entradas de texto de la modal
     inputModal: {
         width: '100%',
@@ -261,6 +237,9 @@ export const buttonGeneric = {
     modify: {
         backgroundColor: '#2196f3'
     },
+    loginColor: {
+        backgroundColor: '#ECB000'
+    },
     smallButton: {
         height: 40,
         width: 100,
@@ -274,5 +253,9 @@ export const buttonGeneric = {
     },
     largeButtonText: {
         fontSize: 20,
+    },
+    extraLarge: {
+        height: 80,
+        width: 300,
     },
 }

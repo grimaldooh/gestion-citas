@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, Image } from 'react-native';
 import { styles } from '../themes/theme';
-import { Login } from '../themes/Login/LoginTheme';
+import { Login } from '../themes/PantallasStyles/LoginTheme';
 
 const FacebookLoginButton = ({title}) => {
     return (

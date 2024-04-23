@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, ImageBackground, Image } from 'react-native';
+import { KeyboardAvoidingView, Platform } from 'react-native';
 
 import TextInput from '../components/TextInput';
-import Button from '../components/Button';
 import FacebookLoginButton from '../components/FacebookLoginButton';
+import ButtonGeneric from '../components/ButtonGeneric';
+
 //importamos los estilos de la pantalla de login
-import { Login } from '../themes/Login/LoginTheme';
+import { Login } from '../themes/PantallasStyles/LoginTheme';
 import { styles } from '../themes/theme';
-import { KeyboardAvoidingView, Platform } from 'react-native';
+
+//Importamos los servicios
 import { LoginAPI } from '../services/authService';
 
 import { useNavigation } from '@react-navigation/native'; // Import the hook that helps us to navigate between screens between screens
@@ -76,7 +79,15 @@ const LoginScreen = () => {
                         <Text style={Login.signupButton}
                             onPress={() => navigation.navigate('Register')}>Registrate! </Text>
                     </Text>
-                    <Button onPress={handleLogin} title="Iniciar Sesión" />
+                    <ButtonGeneric
+                        backgroundColor="loginColor"
+                        fontSize="small"
+                        width="extraLarge"
+                        height="extraLarge"
+                        onPress={handleLogin}
+                    >
+                        Iniciar Sesión
+                    </ButtonGeneric>
                     <FacebookLoginButton title="Inicia sesion con Facebook" />
                 </View>
             </ImageBackground>

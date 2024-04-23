@@ -13,20 +13,20 @@ const SolicitudCitasScreen = () => {
     };
     return (
         <View style={styles.container}>
-            <Card img={img} title="Diego Merino" content="10/04/2024 - 01:00PM"/>
-        <View>
-        <ButtonGeneric
-                backgroundColor="reject"
-                fontSize="small"
-                width="small"
-                height="small"
-                onPress={handleAcceptPress}
-            >
-                Accept
-            </ButtonGeneric>
+            <Card img={img} title="Diego Merino" content="10/04/2024 - 01:00PM" />
+            <View>
+                <ButtonGeneric
+                    backgroundColor="reject"
+                    fontSize="small"
+                    width="small"
+                    height="small"
+                    onPress={handleAcceptPress}
+                >
+                    Accept
+                </ButtonGeneric>
+            </View>
         </View>
-        </View>
-        
+
     );
 };
 
