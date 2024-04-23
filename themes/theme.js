@@ -46,6 +46,15 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#FFFFFF',
     },
+    titleScreen:{
+        fontFamily: 'Plus Jakarta Sans',
+        fontSize: 20,
+        marginBottom: 20,
+        fontWeight: 'bold',
+        color: '#9C9C9C',
+        textAlign: 'center',
+        top: 50,
+    },
     input: {
         width: '99%',
         height: 40,
