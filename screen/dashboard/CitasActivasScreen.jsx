@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../../components/Card';
 import CardButton from '../../components/CardButton';
 import { View } from 'react-native';
-import { styles } from '../../theme';
+import { styles } from '../../themes/theme';
 
 import img from '../../assets/images/persona.jpg';
 import img2 from '../../assets/images/persona2.jpg';

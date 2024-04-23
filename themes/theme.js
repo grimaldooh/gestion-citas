@@ -1,37 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-
-
-    backgroundImage: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    boxShadow: {
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0, // No desplazamiento horizontal
-            height: 7, // Desplazamiento vertical hacia abajo
-        },
-        shadowOpacity: 1.43,
-        shadowRadius: 1.51,
-        borderBottomWidth: 3,
-        borderBottomColor: '#000000',
-        elevation: 10,
-    },
-    overlay: {
-        backgroundColor: '#001D3D',
-        padding: 50,
-        borderTopLeftRadius: 25,
-        borderTopRightRadius: 25,
-        width: '100%',
-        height: '65%',
-        alignItems: 'center',
-        position: 'absolute',
-        bottom: 0,
-    },
-    // Estilos para la pantalla de RegistroScreen
+    // Estilos Generales de Titulo, Descripción y Entradas de Texto
     title: {
         fontSize: 24,
         marginBottom: 20,
@@ -56,7 +26,8 @@ export const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center',
     },
-    // Estilos para la pantalla de LoginScreen
+
+    // Estilos para el boton de iniciar sesión en la pantalla de Login
     button: {
         backgroundColor: '#ECB000',
         padding: 10,
@@ -66,31 +37,31 @@ export const styles = StyleSheet.create({
         accept: {
             backgroundColor: '#33cf65', // Color de fondo para botones de aceptación
         },
-        
+
         reject: {
             backgroundColor: '#f44336', // Color de fondo para botones de rechazo
         },
         modify: {
             backgroundColor: '#2196f3', // Color de fondo para botones de modificación
         },
-        
+
         // Estilos para botones pequeños
         smallButton: {
             height: 40,
             width: 100,
         },
-        
+
         // Estilos para botones grandes
         largeButton: {
             height: 60,
             width: 200,
         },
-        
+
         // Estilos de texto para botones pequeños
         smallButtonText: {
             fontSize: 8,
         },
-        
+
         // Estilos de texto para botones grandes
         largeButtonText: {
             fontSize: 20,
@@ -99,50 +70,6 @@ export const styles = StyleSheet.create({
     buttonText: {
         color: '#000000',
         fontWeight: 'bold',
-    },
-    facebookButton: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: '#3169FF',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 10,
-        marginTop: 15,
-    },
-    facebookLogo: {
-        width: 20,
-        height: 20,
-        marginRight: 10,
-    },
-    facebookButtonText: {
-        color: '#FFFFFF',
-        fontWeight: 'bold',
-        fontSize: 15,
-    },
-    logoContainer: {
-        width: 150, // 280 con logo camaleon
-        height: 150, // 100 con logo camaleon
-        position: 'absolute',
-        top: 50,
-        left: 130,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    signupText: {
-        position: 'absolute',
-        bottom: 100,
-        left: 0,
-        right: 0,
-        textAlign: 'center',
-        color: '#FFFFFF',
-        fontSize: 15,
-        width: '130%',
-        height: '17%',
-    },
-    signupButton: {
-        color: '#FFC300',
-        fontWeight: 'bold',
-        textDecorationLine: 'underline'
     },
     //Entradas de texto de la modal
     inputModal: {
@@ -164,7 +91,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: 10,
     },
-   
+
     // Estilos para la pantalla de SolicitudCitasScreen
     container: {
         flex: 1,
@@ -186,7 +113,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center', // Para centrar el contenido de la tarjeta
         alignItems: 'center', // Para centrar el contenido de la tarjeta
     },
-    
+
     //Entradas de texto de la modal
     inputModal: {
         width: '100%',
@@ -332,20 +259,20 @@ export const buttonGeneric = {
         backgroundColor: '#f44336'
     },
     modify: {
-        backgroundColor: '#2196f3' 
+        backgroundColor: '#2196f3'
     },
     smallButton: {
         height: 40,
         width: 100,
-      },
-      largeButton: {
+    },
+    largeButton: {
         height: 60,
         width: 200,
-      },
-      smallButtonText: {
+    },
+    smallButtonText: {
         fontSize: 14,
-      },
-      largeButtonText: {
+    },
+    largeButtonText: {
         fontSize: 20,
-      },
+    },
 }

@@ -4,7 +4,9 @@ import { View, Text, ImageBackground, Image } from 'react-native';
 import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 import FacebookLoginButton from '../components/FacebookLoginButton';
-import { styles } from '../theme';
+//importamos los estilos de la pantalla de login
+import { Login } from '../themes/Login/LoginTheme';
+import { styles } from '../themes/theme';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { LoginAPI } from '../services/authService';
 
@@ -24,7 +26,7 @@ const LoginScreen = () => {
     //         const response = await LoginAPI(username, password);
     //         if (response.success) {
     //             console.log('Inicio de sesión exitoso');
-                
+
     //         } else {
     //             console.log('Error', 'Inicio de sesión fallido. Por favor, verifica tus credenciales.');
     //             console.log (LoginAPI(username, password));
@@ -45,14 +47,14 @@ const LoginScreen = () => {
         >
             <ImageBackground
                 source={require('../assets/images/fondo.png')}
-                style={styles.backgroundImage}
+                style={Login.backgroundImage}
                 resizeMode="cover"
             >
                 <Image
                     source={require('../assets/images/logo.png')}
-                    style={styles.logoContainer} />
+                    style={Login.logoContainer} />
 
-                <View style={styles.overlay}>
+                <View style={Login.overlay}>
                     <Text style={styles.title}>¡Bienvenido a FastBooking!</Text>
                     <Text style={styles.description}>Ingresa tus datos para iniciar sesión.</Text>
                     <TextInput
@@ -68,10 +70,11 @@ const LoginScreen = () => {
                         secureTextEntry={true}
                     />
                     <Text
-                        style={styles.signupText}
-                        onPress={() => navigation.navigate('Register')}
+                        style={Login.signupText}
                     >
-                        ¿Aun no tienes cuenta? {' '} Registrate!
+                        ¿Aun no tienes cuenta? {' '}
+                        <Text style={Login.signupButton}
+                            onPress={() => navigation.navigate('Register')}>Registrate! </Text>
                     </Text>
                     <Button onPress={handleLogin} title="Iniciar Sesión" />
                     <FacebookLoginButton title="Inicia sesion con Facebook" />

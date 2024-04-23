@@ -12,9 +12,9 @@ import CalendarioScreen from '../screen/dashboard/CalendarioScreen';
 import AjustesScreen from '../screen/dashboard/SettingsScreen';
 
 // Importamos los estilos
-import { screenOptions } from '../theme';
-import { fabStyle } from '../theme';
-import { navigationStyle } from '../theme';
+import { screenOptions } from '../themes/theme';
+import { fabStyle } from '../themes/theme';
+import { navigationStyle } from '../themes/theme';
 const Tab = createBottomTabNavigator()
 
 const Navegacion = () => {

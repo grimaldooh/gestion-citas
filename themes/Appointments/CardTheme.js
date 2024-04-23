@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { rejectButtonStyle } from '../../theme';
+import { rejectButtonStyle } from '../../themes/theme';
 
 export const styles = StyleSheet.create({
     

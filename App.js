@@ -1,7 +1,7 @@
 import React, {useEffect,useState} from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { navigationStyles } from './theme.js';
+import { navigationStyles } from './themes/theme';
 
 import * as Font from 'expo-font';
 
@@ -39,9 +39,9 @@ const App = () => {
         screenOptions={{...navigationStyles,
           headerShown: false,}}>
                 
-        <Stack.Screen name="AppointmentScreen" component={AppointmentScreen} /> 
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="AppointmentScreen" component={AppointmentScreen} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );

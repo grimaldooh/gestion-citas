@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../../components/Card';
 import { Text } from 'react-native';
-import { styles } from '../../theme';
+import { styles } from '../../themes/theme';
 
 const CalendarioScreen = () => {
     return (

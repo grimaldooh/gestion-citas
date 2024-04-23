@@ -2,7 +2,7 @@
 import React from 'react';
 import { Modal, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 
-import { modalStyle, modalContentStyle, buttonSave, buttonReturn, styles } from '../theme';
+import { modalStyle, modalContentStyle, buttonSave, buttonReturn, styles } from '../themes/theme';
 
 import TextInputModal from './TextInputModal';
 import { fields } from './InputField';

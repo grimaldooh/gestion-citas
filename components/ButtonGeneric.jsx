@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
-import { acceptButton, styles } from '../theme';
+import { acceptButton, styles } from '../themes/theme';
 
 const buttonStyles = {
     backgroundColor: {

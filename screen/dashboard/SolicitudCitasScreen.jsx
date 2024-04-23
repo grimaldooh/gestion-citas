@@ -5,7 +5,7 @@ import ButtonGeneric from '../../components/ButtonGeneric';
 import img from '../../assets/images/persona.jpg';
 import img2 from '../../assets/images/persona2.jpg';
 import { View } from 'react-native';
-import { styles } from '../../theme';
+import { styles } from '../../themes/theme';
 
 const SolicitudCitasScreen = () => {
     const handleAcceptPress = () => {

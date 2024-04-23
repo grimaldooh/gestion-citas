@@ -3,11 +3,12 @@ import { View, Text, ImageBackground, Image, Alert } from 'react-native';
 
 import TextInput from '../components/TextInput';
 import Button from '../components/Button';
-import { styles } from '../theme';
+import { styles } from '../themes/theme';
 import { RegisterAPI } from '../services/authService';
 
 import { useNavigation } from '@react-navigation/native';
 import FacebookLoginButton from '../components/FacebookLoginButton';
+import { Login } from '../themes/Login/LoginTheme';
 
 const RegisterScreen = () => {
     //Aqui sale que no se usan por que esta comentado el fetch
@@ -36,13 +37,13 @@ const RegisterScreen = () => {
     return (
         <ImageBackground
             source={require('../assets/images/fondo.png')}
-            style={styles.backgroundImage}
+            style={Login.backgroundImage}
             resizeMode="cover"
         >
             <Image 
                 source={require('../assets/images/logo.png')} 
-                style={styles.logoContainer} />
-            <View style={styles.overlay}>
+                style={Login.logoContainer} />
+            <View style={Login.overlay}>
                 <Text style={styles.title}>¡Registro a FastBooking!</Text>
                 <Text style={styles.description}>Completa los siguientes campos para registrarte</Text>
                 <TextInput
