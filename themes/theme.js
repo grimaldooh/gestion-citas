@@ -130,6 +130,12 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: 10,
     },
+    fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
+    },
 });
 
 export const modalContentStyle = {
