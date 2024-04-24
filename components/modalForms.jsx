@@ -1,13 +1,35 @@
-// ModalForm.js
-import React from 'react';
-import { Modal, Text, View, TouchableOpacity, ScrollView } from 'react-native';
-
-import { modalStyle, modalContentStyle, buttonSave, buttonReturn, styles } from '../themes/theme';
-
-import TextInputModal from './TextInputModal';
-import { fields } from './InputField';
+import React, { useState } from 'react';
+import { Modal, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const ModalForm = ({ onClose }) => {
+    const [name, setName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [date, setDate] = useState(new Date());
+    const [time, setTime] = useState(new Date());
+    const [showDatePicker, setShowDatePicker] = useState(false);
+    const [showTimePicker, setShowTimePicker] = useState(false);
+
+    const onChangeDate = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShowDatePicker(false);
+        setDate(currentDate);
+    };
+
+    const onChangeTime = (event, selectedTime) => {
+        const currentTime = selectedTime || time;
+        setShowTimePicker(false);
+        setTime(currentTime);
+    };
+
+    const saveAppointment = () => {
+        console.log(`Nombre: ${name}`);
+        console.log(`Número de Teléfono: ${phoneNumber}`);
+        console.log(`Fecha: ${date.toLocaleDateString()}`);
+        console.log(`Hora: ${time.toLocaleTimeString()}`);
+        onClose(); // Cerrar el modal después de guardar
+    };
+
     return (
         <Modal
             animationType="slide"
@@ -15,35 +37,73 @@ const ModalForm = ({ onClose }) => {
             visible={true}
             onRequestClose={onClose}
         >
-            <View style={modalStyle}>
-                <ScrollView>
-                    <View style={modalContentStyle}>
-                        <Text style={styles.titleModal}>Registra una Cita</Text>
-                        {fields.map((field, index) => (
-                            <>
-                                {/* <Text style={styles.labelStyle}>{field.label}</Text>  */}
-                                <TextInputModal key={index} {...field} />
-                            </>
-                        ))}
-                        <View style={styles.buttonsContainer}>
-                            <TouchableOpacity
-                                onPress={onClose}
-                                style={buttonSave}
-                            >
-                                <Text>Guardar</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={onClose}
-                                style={buttonReturn}
-                            >
-                                <Text>Regresar</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </ScrollView>
+            <View style={styles.container}>
+                <Text style={styles.label}>Nombre:</Text>
+                <TextInput style={styles.input} value={name} onChangeText={setName} />
+
+                <Text style={styles.label}>Número de Teléfono:</Text>
+                <TextInput style={styles.input} value={phoneNumber} onChangeText={setPhoneNumber} keyboardType="numeric" />
+
+                <Text style={styles.label}>Fecha:</Text>
+                <TextInput style={styles.input} value={date.toLocaleDateString()} editable={false} />
+                <TouchableOpacity style={styles.button} onPress={() => setShowDatePicker(true)}>
+                    <Text style={styles.buttonText}>Seleccionar Fecha</Text>
+                </TouchableOpacity>
+                {showDatePicker && <DateTimePicker value={date} mode="date" display="default" onChange={onChangeDate} />}
+
+                <Text style={styles.label}>Hora:</Text>
+                <TextInput style={styles.input} value={time.toLocaleTimeString()} editable={false} />
+                <TouchableOpacity style={styles.button} onPress={() => setShowTimePicker(true)}>
+                    <Text style={styles.buttonText}>Seleccionar Hora</Text>
+                </TouchableOpacity>
+                {showTimePicker && <DateTimePicker value={time} mode="time" display="default" onChange={onChangeTime} />}
+
+                <TouchableOpacity style={styles.button} onPress={saveAppointment}>
+                    <Text style={styles.buttonText}>Guardar Cita</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.button} onPress={onClose}>
+                    <Text style={styles.buttonText}>Regresar</Text>
+                </TouchableOpacity>
             </View>
         </Modal>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    label: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginVertical: 10,
+        color: '#FFD353',
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#DDD',
+        padding: 10,
+        fontSize: 16,
+        borderRadius: 6,
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        width: '80%',
+        marginBottom: 10,
+    },
+    button: {
+        backgroundColor: '#4B9ACF',
+        margin: 10,
+        borderRadius: 6,
+        alignItems: 'center',
+        padding: 10,
+        width: '80%',
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 16,
+    },
+});
 
 export default ModalForm;

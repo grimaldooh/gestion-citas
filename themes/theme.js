@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-    //Estilo del componente de boton generico
+//Estilo del componente de boton generico
     button: {
         backgroundColor: '#ECB000',
         padding: 10,
