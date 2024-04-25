@@ -52,7 +52,7 @@ const LoginScreen = () => {
                 source={require('../assets/images/fondo.png')}
                 style={Login.backgroundImage}
                 resizeMode="cover"
-            >
+                />
                 <Image
                     source={require('../assets/images/logo.png')}
                     style={Login.logoContainer} />
@@ -72,13 +72,6 @@ const LoginScreen = () => {
                         value={password}
                         secureTextEntry={true}
                     />
-                    <Text
-                        style={Login.signupText}
-                    >
-                        ¿Aun no tienes cuenta? {' '}
-                        <Text style={Login.signupButton}
-                            onPress={() => navigation.navigate('Register')}>Registrate! </Text>
-                    </Text>
                     <ButtonGeneric
                         backgroundColor="loginColor"
                         fontSize="small"
@@ -89,8 +82,14 @@ const LoginScreen = () => {
                         Iniciar Sesión
                     </ButtonGeneric>
                     <FacebookLoginButton title="Inicia sesion con Facebook" />
+                    <Text
+                        style={Login.signupText}
+                    >
+                        ¿Aun no tienes cuenta? {' '}
+                        <Text style={Login.signupButton}
+                            onPress={() => navigation.navigate('Register')}>Registrate! </Text>
+                    </Text>
                 </View>
-            </ImageBackground>
         </KeyboardAvoidingView>
     );
 };

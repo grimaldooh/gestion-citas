@@ -52,12 +52,19 @@ export const styles = StyleSheet.create({
         buttonContainer: {
             flexDirection: 'row',
             justifyContent: 'space-between',
-            marginLeft: 5,
-            marginTop: 10,
-            margin: 0,
-            top: -5,
-            width: 100
+            //marginTop: 10,
+            margin: -10,
+            padding: 10,
+            borderRadius: 15,
+            top: 40,
+            width: '100%',
+            height: '100%',
+            alignItems: 'center',
+            backgroundColor: '#FFD353', // Reemplaza 'yourColor' con el color que desees
+        },
+        iconButton: {
+            justifyContent: 'flex-end',
+            marginLeft: 30,
         },
     },
-
 });
