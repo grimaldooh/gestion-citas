@@ -17,10 +17,12 @@ const buttonStyles = {
         bold: styles.button.fontBold,
     },
     height: {
+        extraSmall: styles.button.extraSmallButton,
         small: styles.button.smallButton,
         large: styles.button.largeButton,
     },
     width: {
+        extraSmall: styles.button.extraSmallButton,
         small: styles.button.smallButton,
         large: styles.button.largeButton,
         
@@ -39,9 +41,11 @@ const ButtonGeneric = ({ children, backgroundColor, fontSize, width, height, onP
         fontSize === 'small' && buttonStyles.fontSize.small,
         fontSize === 'large' && buttonStyles.fontSize.large,
         
+        height === 'extraSmall' && buttonStyles.height.extraSmall,
         height === 'small' && buttonStyles.height.small,
         height === 'large' && buttonStyles.height.large,
         
+        width === 'extraSmall' && buttonStyles.width.extraSmall,
         width === 'small' && buttonStyles.width.small,
         width === 'large' && buttonStyles.width.large,
 

@@ -36,6 +36,10 @@ export const styles = StyleSheet.create({
         largeButtonText: {
             fontSize: 20,
         },
+        extraSmallButton: {
+            height: 30,
+            width: 80,
+        },
     },
     //Aqui termina el estilo del boton generico
 

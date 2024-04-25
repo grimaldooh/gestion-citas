@@ -37,16 +37,16 @@ const handleReject = () => {
               onPress={handleAccept}
               backgroundColor="accept"
               fontSize="small"
-              width="small"
-              height="small">
+              width="extraSmall"
+              height="extraSmall">
               Aceptar
             </ButtonGeneric>
             <ButtonGeneric
                 onPress={handleReject}
               backgroundColor="reject"
               fontSize="small"
-              width="small"
-              height="small">
+              width="extraSmall"
+              height="extraSmall">
               Rechazar
             </ButtonGeneric>
           </View>
