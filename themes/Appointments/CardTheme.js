@@ -1,15 +1,14 @@
 import { StyleSheet } from 'react-native';
-import { rejectButtonStyle } from '../theme';
 
 export const styles = StyleSheet.create({
-    
     card: {
         position: 'relative', // Para poder posicionar la imagen de manera absoluta
         padding: 5,
         backgroundColor: '#FFD353',
-        width: 300, // Ancho de la tarjeta
-        height: 100, // Altura de la tarjeta
-        borderRadius: 20,
+        width: 315, // Ancho de la tarjeta
+        height: 70, // Altura de la tarjeta
+        borderRadius: 10,
+        top: -30,
         marginLeft: 45, // Margen izquierdo para separar las tarjetas
         marginTop: 100, // Margen superior para separar las tarjetas
         flexDirection: 'row', // Para alinear la imagen y el texto en la misma fila
@@ -18,10 +17,10 @@ export const styles = StyleSheet.create({
         marginVertical: -80, // Para agregar un margen vertical entre las tarjetas,
         image: {
             position: 'absolute', // Para posicionar la imagen encima del rectángulo
-            top: '0%', // Para centrar verticalmente la imagen
+            top: -5, // Para centrar verticalmente la imagen
             left: -50, // Para mover la imagen hacia la izquierda y superponerla parcialmente fuera del rectángulo
-            width: 100, // Ancho de la imagen circular
-            height: 100, // Altura de la imagen circular
+            width: 85, // Ancho de la imagen circular
+            height: 85, // Altura de la imagen circular
             borderRadius: 50, // Para hacer la imagen circular
             zIndex: 1, // Para asegurar que la imagen esté encima del rectángulo de la tarjeta
             shadowColor: '#000000',
@@ -29,7 +28,8 @@ export const styles = StyleSheet.create({
             borderColor: '#FFC300',
         },
         textContainer: {
-            marginLeft: 50, // Ajusta el margen entre la imagen y el texto según sea necesario
+            top: -5,
+            marginLeft: 40, // Ajusta el margen entre la imagen y el texto según sea necesario
         },
         title: {
             fontSize: 14,
@@ -52,25 +52,12 @@ export const styles = StyleSheet.create({
         buttonContainer: {
             flexDirection: 'row',
             justifyContent: 'space-between',
+            marginLeft: 5,
             marginTop: 10,
+            margin: 0,
+            top: -5,
             width: 100
         },
-        acceptButton: {
-            backgroundColor: '#33cf65',
-            fontSize: 10,
-            fontFamily: 'Plus Jakarta Sans',
-            alignItems: 'center',
-            borderRadius: 10,
-            marginRight: 5,
-            width: 75,
-            height: 20,
-            top: 37,
-            left: 15,
-        },
-        rejectButton: rejectButtonStyle,
-        buttonText: {
-            color: '#ffffff',
-        }
     },
 
 });

@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
         accept: {
             backgroundColor: '#33cf65', // Color de fondo para botones de aceptación
         },
-    
         reject: {
             backgroundColor: '#f44336', // Color de fondo para botones de rechazo
         },
@@ -70,6 +69,7 @@ export const styles = StyleSheet.create({
     description: {
         fontSize: 13,
         color: 'rgba(255, 255, 255, 0.7)',
+        top: -15,
         marginBottom: 20,
         textAlign: 'center',
     },

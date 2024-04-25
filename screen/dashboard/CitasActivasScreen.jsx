@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '../../components/Card';
-import CardButton from '../../components/CardButton';
 import { View, Text } from 'react-native';
 import { styles } from '../../themes/theme';
 
