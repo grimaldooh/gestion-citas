@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+
 //Estilo del componente de boton generico
     button: {
         backgroundColor: '#ECB000',
@@ -76,6 +77,11 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#001D3D',
+    },
+    calendarContainer: {
+        flex: 1,
+        width: '100%',
+        marginTop: 40,
     },
     
     
