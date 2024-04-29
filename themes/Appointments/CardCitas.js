@@ -9,14 +9,14 @@ export const styles = StyleSheet.create({
         width: 315,
         height: 70,
         borderRadius: 10,
-        top: -30,
+        top: -50,
         marginLeft: 45,
         marginTop: 100,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         alignSelf: 'center',
-        marginVertical: -80,
+        marginVertical: -45,
     },
     // Estilos para la imagen en la tarjeta
     image: {

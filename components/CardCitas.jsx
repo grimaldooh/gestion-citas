@@ -1,14 +1,33 @@
-import React, { useState } from "react";
-import { View, Text, Image } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import { View, Text, Image, TouchableOpacity, Animated, LayoutAnimation, Platform, UIManager } from "react-native";
 import { styles } from "../themes/Appointments/CardCitas";
-import ButtonGeneric from "./ButtonGeneric";
+import Button from "./CardCitas/Button";
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import Icon from "react-native-vector-icons/Ionicons";
+if (
+  Platform.OS === "android" &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 const Card = ({ title, content, img }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const fadeAnim = useRef(new Animated.Value(0)).current;  // Initial value for opacity: 0
+
+  useEffect(() => {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: 1,
+        duration: 800,
+        useNativeDriver: true,
+      }
+    ).start();
+  }, [fadeAnim])
 
   const toggleCollapse = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setIsCollapsed(!isCollapsed);
   };
 
@@ -17,13 +36,13 @@ const Card = ({ title, content, img }) => {
     // Lógica para aceptar la cita
   };
 
-const handleReject = () => {
+  const handleReject = () => {
     console.log("Rechazar");
     // Lógica para rechazar la cita
-  }
+  };
 
   return (
-    <View style={[styles.card, styles.boxShadow]}>
+    <Animated.View style={[styles.card, styles.boxShadow, {opacity: fadeAnim}]}>
       <View style={styles.cardBackground} />
       <Image style={styles.image} source={img} />
 
@@ -33,34 +52,34 @@ const handleReject = () => {
 
         {!isCollapsed && (
           <View style={styles.buttonContainer}>
-            <ButtonGeneric
-              onPress={handleAccept}
-              backgroundColor="accept"
-              fontSize="small"
-              width="extraSmall"
-              height="extraSmall">
-              Aceptar
-            </ButtonGeneric>
-            <ButtonGeneric
-                onPress={handleReject}
-              backgroundColor="reject"
-              fontSize="small"
-              width="extraSmall"
-              height="extraSmall">
-              Rechazar
-            </ButtonGeneric>
+            <Button 
+              onPress={handleAccept} 
+              iconName="check-circle" 
+              backgroundColor="#00A416" 
+              iconColor="white">
+                Aceptar
+            </Button>
+            <Button 
+              onPress={handleReject} 
+              iconName="times-circle" 
+              backgroundColor="#FF0000" 
+              iconColor="white">
+                Rechazar
+            </Button>
           </View>
         )}
       </View>
 
-      <Icon
+      <TouchableOpacity
         style={styles.iconButton}
-        name={isCollapsed ? "arrow-down" : "arrow-up"}
-        size={24}
-        color="black"
-        onPress={toggleCollapse}
-      />
-    </View>
+        onPress={toggleCollapse}>
+        <Icon
+          name={isCollapsed ? "arrow-down" : "arrow-up"}
+          size={19}
+          color="black"
+        />
+      </TouchableOpacity>
+    </Animated.View>
   );
 };
 

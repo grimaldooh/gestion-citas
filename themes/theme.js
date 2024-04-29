@@ -30,15 +30,18 @@ export const styles = StyleSheet.create({
         },
         // Estilos de texto para botones pequeños
         smallButtonText: {
-            fontSize: 8,
+            fontSize: 13,
         },
         // Estilos de texto para botones grandes
         largeButtonText: {
             fontSize: 20,
         },
         extraSmallButton: {
-            height: 30,
-            width: 80,
+            height: 33,
+            width: 110,
+        },
+        extraSmallButtonText: {
+            fontSize: 10,
         },
     },
     //Aqui termina el estilo del boton generico
@@ -86,6 +89,9 @@ export const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         marginTop: 40,
+    },
+    iconStyle: {
+        marginRight: 10,
     },
     
     
