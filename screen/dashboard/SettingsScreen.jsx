@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 
 // Importamos los componentes necesarios
-import CardSettings from '../../components/CardSettings';
+import CardSettings from '../../components/CardsTypes/CardSettings';
 
 // Importamos los estilos
 import { styles } from '../../themes/theme';

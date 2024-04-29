@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, ImageBackground, Image, Alert } from 'react-native';
 
-import TextInput from '../components/TextInput';
+import TextInput from '../components/InputsType/TextInput';
 import { styles } from '../themes/theme';
 import ButtonGeneric from '../components/ButtonGeneric';
 import { RegisterAPI } from '../services/authService';
