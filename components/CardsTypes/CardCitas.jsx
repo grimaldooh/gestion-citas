@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { View, Text, Image, TouchableOpacity, Animated, LayoutAnimation, Platform, UIManager } from "react-native";
-import { styles } from "../themes/Appointments/CardCitas";
-import Button from "./CardCitas/Button";
+import { styles } from "../../themes/Appointments/CardCitas";
+import Button from "../CardCitas/Button";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 if (

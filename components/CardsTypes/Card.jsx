@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
-import { styles } from '../themes/Appointments/CardTheme';
+import { styles } from '../../themes/Appointments/CardTheme';
 
 const Card = ({ title, content, img }) => {
 

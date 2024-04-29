@@ -3,7 +3,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { FAB } from 'react-native-paper';
-import ModalForm from './modalForms';
+import ModalForm from './Modals/modalForms';
 
 // Importamos los componentes de las pantallas
 import SolicitudCitasScreen from '../screen/dashboard/SolicitudCitasScreen';

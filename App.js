@@ -46,7 +46,4 @@ const App = () => {
     </NavigationContainer>
   );
 };
-// Prueba de stah
-// prueba 2 papapa
-// prueba Jorge AAAAAAAAAAAAAAAAAAAAAA
 export default App;

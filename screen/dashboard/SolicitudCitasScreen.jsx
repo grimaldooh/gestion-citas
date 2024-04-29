@@ -1,5 +1,5 @@
 import React from 'react';
-import CardCitas from '../../components/CardCitas';
+import CardCitas from '../../components/CardsTypes/CardCitas';
 
 //se importan las imagenes de las personas
 import img from '../../assets/images/persona.jpg';

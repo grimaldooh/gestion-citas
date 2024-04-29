@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 
 import TextInput from './TextInput';
-import { styles } from '../themes/theme';
+import { styles } from '../../themes/theme';
 
 export const fields = [
     { label: 'Nombre', placeholder: 'Ingrese su nombre' },

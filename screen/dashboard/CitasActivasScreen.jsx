@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../components/Card';
+import Card from '../../components/CardsTypes/Card';
 import { View, Text, ScrollView } from 'react-native';
 import { styles } from '../../themes/theme';
 
