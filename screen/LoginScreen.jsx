@@ -48,11 +48,11 @@ const LoginScreen = () => {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={{ flex: 1 }}
         >
-            <ImageBackground
+            {/* <ImageBackground
                 source={require('../assets/images/fondo.png')}
                 style={Login.backgroundImage}
                 resizeMode="cover"
-                />
+                /> */}
                 <Image
                     source={require('../assets/images/logo.png')}
                     style={Login.logoContainer} />
