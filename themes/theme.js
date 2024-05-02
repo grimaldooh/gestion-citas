@@ -44,10 +44,11 @@ export const styles = StyleSheet.create({
             fontSize: 10,
         },
     },
-    //Aqui termina el estilo del boton generico
+ //Aqui termina el estilo del boton generico
 
 // Estilos Generales de Titulo, Descripción y Entradas de Texto
     title: {
+        fontFamily: 'Plus Jakarta Sans',
         fontSize: 24,
         marginBottom: 20,
         fontWeight: 'bold',
@@ -75,6 +76,7 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
     },
     description: {
+        fontFamily: 'Plus Jakarta Sans',
         fontSize: 13,
         color: 'rgba(255, 255, 255, 0.7)',
         top: -15,
@@ -92,6 +94,13 @@ export const styles = StyleSheet.create({
     },
     iconStyle: {
         marginRight: 10,
+    },
+    textGeneral: {
+        fontFamily: 'Plus Jakarta Sans',
+        color: '#fff',
+        fontSize: 12,
+        top: -15,
+        marginBottom: 20,
     },
     
     

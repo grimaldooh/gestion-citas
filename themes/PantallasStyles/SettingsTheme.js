@@ -28,4 +28,12 @@ export const CardConfig = StyleSheet.create({
     description: {
         fontSize: 13,
     },
+    logoCamaleon: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
+        width: 300,
+        height: 150,
+        top: -25,
+    },
 });

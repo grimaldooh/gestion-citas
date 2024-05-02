@@ -9,6 +9,7 @@ import { RegisterAPI } from '../services/authService';
 import { useNavigation } from '@react-navigation/native';
 import FacebookLoginButton from '../components/FacebookLoginButton';
 import { Login } from '../themes/PantallasStyles/LoginTheme';
+import PayPalButton from '../components/PaypalButton';
 
 const RegisterScreen = () => {
     //Aqui sale que no se usan por que esta comentado el fetch
@@ -17,6 +18,10 @@ const RegisterScreen = () => {
     const [email, setEmail] = useState('');
     const [fullName, setFullName] = useState('');
     const navigation = useNavigation();
+
+    const PaypalHandle = () => {
+        Alert.alert('Paypal', 'Pago exitoso');
+    };
 
     /*
         const handleLogin = async () => {
@@ -72,6 +77,8 @@ const RegisterScreen = () => {
                     Registrate
                 </ButtonGeneric>
                 <FacebookLoginButton title="Registrate con Facebook" />
+                <PayPalButton
+                 onPress={PaypalHandle} />
             </View>
         </ImageBackground>
     );

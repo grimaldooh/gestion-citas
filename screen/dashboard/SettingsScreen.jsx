@@ -1,16 +1,20 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Modal, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-
-// Importamos los componentes necesarios
+//Importamos los componentes nesesarios
 import CardSettings from '../../components/CardsTypes/CardSettings';
+import ButtonGeneric from '../../components/ButtonGeneric'
+import NotificationSettingsModal from '../../components/Modals/notificationsSettingsModal';
+import AboutAppModal from '../../components/Modals/AboutAppModal';
 
 // Importamos los estilos
 import { styles } from '../../themes/theme';
 
 const SettingsScreen = () => {
     const navigation = useNavigation();
+    const [modalVisibleAbout, setModalVisibleAbout] = useState(false);
+    const [ModalVisibleNotification, setModalVisibleNotification] = useState(false);
 
     const handleLogout = () => {
         // Lógica de cierre de sesión...
@@ -22,7 +26,7 @@ const SettingsScreen = () => {
             routes: [{ name: 'Login' }],
         });
     };
-    
+
     return (
         <View style={[styles.container, { alignItems: 'center' }]}>
             <Text style={styles.titleScreen}>Configuraciones</Text>
@@ -38,7 +42,7 @@ const SettingsScreen = () => {
                 rightIconName="chevron-right"
                 title="Configurar Notificaciones"
                 description="Desactivar notificaciones, sonido, etc."
-                onRightIconPress={() => console.log('Notificaciones presionado')}
+                onRightIconPress={() => setModalVisibleNotification(true)}
             />
             <CardSettings
                 leftIconName="globe"
@@ -50,16 +54,24 @@ const SettingsScreen = () => {
             <CardSettings
                 leftIconName="info-circle"
                 rightIconName="chevron-right"
-                title="Acerda de la aplicación"
-                description="Informacion del desarrollador, version, etc."
-                onRightIconPress={() => console.log('Acerca de presionado')}
+                title="Acerca de la aplicación"
+                description="Información del desarrollador, versión, etc."
+                onRightIconPress={() => setModalVisibleAbout(true)}
             />
             <CardSettings
-                leftIconName="globe"
+                leftIconName="sign-out"
                 rightIconName="chevron-right"
-                title="Cerrar sesión"
-                description="Cerrar la sesión de la aplicación"
+                title="Cerrar Sesión"
+                description="Salir de la aplicación"
                 onRightIconPress={handleLogout}
+            />
+            <NotificationSettingsModal
+                visible={ModalVisibleNotification}
+                onClose={() => setModalVisibleNotification(false)}
+            />
+            <AboutAppModal
+                visible={modalVisibleAbout}
+                onClose={() => setModalVisibleAbout(false)}
             />
         </View>
     );

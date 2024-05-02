@@ -64,7 +64,7 @@ const CalendarioScreen = () => {
           textSectionTitleDisabledColor: '#C7C7C7',
           textDisabledColor: 'rgba(98, 98, 98, 0.3)',
           textInactiveColor: '#fff',
-          backgroundColor: '#001D3D',
+          backgroundColor: 'transparent',
           agendaDayNumColor: '#001D3D',
           todayBackgroundColor: '#001D3D',
           agenda: {
@@ -72,6 +72,9 @@ const CalendarioScreen = () => {
               backgroundColor: '#001D3D', // Cambia el fondo de la agenda
             },
           },
+        }}
+        style={{
+          backgroundColor: '#001D3D'
         }}
       />
     </View>
