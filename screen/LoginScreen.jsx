@@ -21,7 +21,14 @@ const LoginScreen = () => {
     const navigation = useNavigation(); // Initialize the hook to use it in the handleLogin function}
 
     const handleLogin = () => {
-        navigation.navigate('AppointmentScreen'); // Navigate to the Appointments screen
+        // Simula un inicio de sesión exitoso
+        console.log('Inicio de sesión exitoso');
+
+        // Una vez que el usuario ha iniciado sesión correctamente, restablece la pila de navegación
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'AppointmentScreen' }],  // Reemplaza 'AppointmentScreen' con el nombre de tu pantalla principal
+        });
     };
 
     // const handleLogin = async () => {
@@ -48,48 +55,48 @@ const LoginScreen = () => {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={{ flex: 1 }}
         >
-            {/* <ImageBackground
+            <ImageBackground
                 source={require('../assets/images/fondo.png')}
                 style={Login.backgroundImage}
                 resizeMode="cover"
-                /> */}
-                <Image
-                    source={require('../assets/images/logo.png')}
-                    style={Login.logoContainer} />
+            />
+            <Image
+                source={require('../assets/images/logo.png')}
+                style={Login.logoContainer} />
 
-                <View style={Login.overlay}>
-                    <Text style={styles.title}>¡Bienvenido a FastBooking!</Text>
-                    <Text style={styles.description}>Ingresa tus datos para iniciar sesión.</Text>
-                    <TextInput
-                        placeholder="Nombre de Usuario"
-                        onChangeText={(text) => setUsername(text)}
-                        value={username}
-                        secureTextEntry={false}
-                    />
-                    <TextInput
-                        placeholder="Contraseña"
-                        onChangeText={(text) => setPassword(text)}
-                        value={password}
-                        secureTextEntry={true}
-                    />
-                    <ButtonGeneric
-                        backgroundColor="loginColor"
-                        fontSize="small"
-                        width="extraLarge"
-                        height="extraLarge"
-                        onPress={handleLogin}
-                    >
-                        Iniciar Sesión
-                    </ButtonGeneric>
-                    <FacebookLoginButton title="Inicia sesion con Facebook" />
-                    <Text
-                        style={Login.signupText}
-                    >
-                        ¿Aun no tienes cuenta? {' '}
-                        <Text style={Login.signupButton}
-                            onPress={() => navigation.navigate('Register')}>Registrate 😃</Text>
-                    </Text>
-                </View>
+            <View style={Login.overlay}>
+                <Text style={styles.title}>¡Bienvenido a FastBooking!</Text>
+                <Text style={styles.description}>Ingresa tus datos para iniciar sesión.</Text>
+                <TextInput
+                    placeholder="Nombre de Usuario"
+                    onChangeText={(text) => setUsername(text)}
+                    value={username}
+                    secureTextEntry={false}
+                />
+                <TextInput
+                    placeholder="Contraseña"
+                    onChangeText={(text) => setPassword(text)}
+                    value={password}
+                    secureTextEntry={true}
+                />
+                <ButtonGeneric
+                    backgroundColor="loginColor"
+                    fontSize="small"
+                    width="extraLarge"
+                    height="extraLarge"
+                    onPress={handleLogin}
+                >
+                    Iniciar Sesión
+                </ButtonGeneric>
+                <FacebookLoginButton title="Inicia sesion con Facebook" />
+                <Text
+                    style={Login.signupText}
+                >
+                    ¿Aun no tienes cuenta? {' '}
+                    <Text style={Login.signupButton}
+                        onPress={() => navigation.navigate('Register')}>Registrate 😃</Text>
+                </Text>
+            </View>
         </KeyboardAvoidingView>
     );
 };

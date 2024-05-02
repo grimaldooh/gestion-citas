@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 // Importamos los componentes necesarios
 import CardSettings from '../../components/CardsTypes/CardSettings';
@@ -8,6 +10,19 @@ import CardSettings from '../../components/CardsTypes/CardSettings';
 import { styles } from '../../themes/theme';
 
 const SettingsScreen = () => {
+    const navigation = useNavigation();
+
+    const handleLogout = () => {
+        // Lógica de cierre de sesión...
+        console.log("Cerrado de Sesion con Exito!");
+
+        // Una vez que el usuario ha cerrado la sesión correctamente, restablece la pila de navegación
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Login' }],
+        });
+    };
+    
     return (
         <View style={[styles.container, { alignItems: 'center' }]}>
             <Text style={styles.titleScreen}>Configuraciones</Text>
@@ -40,11 +55,11 @@ const SettingsScreen = () => {
                 onRightIconPress={() => console.log('Acerca de presionado')}
             />
             <CardSettings
-                leftIconName="sign-out"
+                leftIconName="globe"
                 rightIconName="chevron-right"
                 title="Cerrar sesión"
-                description="Cerrar sesión de la aplicación"
-                onRightIconPress={() => console.log('Cerrar sesión presionado')}
+                description="Cerrar la sesión de la aplicación"
+                onRightIconPress={handleLogout}
             />
         </View>
     );

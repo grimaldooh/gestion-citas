@@ -8,13 +8,14 @@ export const styles = StyleSheet.create({
         width: 315, // Ancho de la tarjeta
         height: 70, // Altura de la tarjeta
         borderRadius: 10,
-        top: -30,
+        top: -55,
         marginLeft: 45, // Margen izquierdo para separar las tarjetas
         marginTop: 100, // Margen superior para separar las tarjetas
         flexDirection: 'row', // Para alinear la imagen y el texto en la misma fila
         alignItems: 'center', // Para alinear verticalmente el contenido
         alignSelf: 'center', // Para centrar la tarjeta en la pantalla  
         marginVertical: -80, // Para agregar un margen vertical entre las tarjetas,
+        
         image: {
             position: 'absolute', // Para posicionar la imagen encima del rectángulo
             top: -5, // Para centrar verticalmente la imagen
