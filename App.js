@@ -8,7 +8,6 @@ import * as Font from 'expo-font';
 import LoginScreen from './screen/LoginScreen';
 import AppointmentScreen from './screen/AppointmentScreen';
 import RegisterScreen from './screen/RegisterScreen';
-import CalendarioScreen from './screen/dashboard/CalendarioScreen';
 
 const Stack = createNativeStackNavigator();
 

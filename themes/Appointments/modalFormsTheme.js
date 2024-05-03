@@ -39,6 +39,9 @@ export const ModalForms = StyleSheet.create({
         padding: 8,
         width: '100%', // Ajustar al ancho del contenedor
         left: -5,
+        reject:{
+            backgroundColor: 'red',
+        },
     },
     buttonText: {
         color: '#000000',

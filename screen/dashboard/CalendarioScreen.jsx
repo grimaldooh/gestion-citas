@@ -6,9 +6,10 @@ import { Agenda } from 'react-native-calendars';
 import { styles } from '../../themes/theme';
 import Card from '../../components/CardsTypes/Card';
 import img5 from '../../assets/images/persona5.jpg';
+import { List } from 'react-native-paper';
 
 const CalendarioScreen = () => {
-  const [items, setItems] = useState({});
+  const [items, setItems] = useState({}); 
 
   const loadItems = (day) => {
     setTimeout(() => {
@@ -62,7 +63,7 @@ const CalendarioScreen = () => {
           arrowColor: '#ECB000', // Color de las flechas de navegación
           textSectionTitleColor: '#FFF',
           textSectionTitleDisabledColor: '#C7C7C7',
-          textDisabledColor: 'rgba(98, 98, 98, 0.3)',
+          textDisabledColor: 'rgba(98, 98, 98, 0.9)',
           textInactiveColor: '#fff',
           backgroundColor: 'transparent',
           agendaDayNumColor: '#001D3D',
@@ -70,6 +71,9 @@ const CalendarioScreen = () => {
           agenda: {
             main: {
               backgroundColor: '#001D3D', // Cambia el fondo de la agenda
+            },
+            list: {
+              backgroundColor: '#001D3D'
             },
           },
         }}
