@@ -3,22 +3,21 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
 const WeekCalendar = () => {
-  // Obtener la fecha actual
   const today = new Date();
-  // Establecer la fecha seleccionada y la fecha actual en formato de cadena
   const [selectedDate, setSelectedDate] = useState(today.toISOString().split('T')[0]);
   const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDayIndex, setSelectedDayIndex] = useState(today.getDay()); // Día actual por defecto
+  const [selectedDayIndex, setSelectedDayIndex] = useState(today.getDay());
+
   const toggleCalendar = () => {
     setShowCalendar(!showCalendar);
   };
 
   const getWeekRange = () => {
-    const currentDay = today.getDay(); // Sunday is 0, Monday is 1, ..., Saturday is 6
+    const currentDay = today.getDay();
     const startDate = new Date(today);
-    startDate.setDate(startDate.getDate() - currentDay); // Start from the beginning of the current week
+    startDate.setDate(startDate.getDate() - currentDay);
     const endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() + 6); // End at the end of the current week
+    endDate.setDate(endDate.getDate() + 6);
     return { startDate, endDate };
   };
 
@@ -33,16 +32,12 @@ const WeekCalendar = () => {
 
   const onDayPress = (day) => {
     setSelectedDate(day.dateString);
-    // Obtener el índice del día seleccionado en la semana
     const selectedIndex = weekDays.findIndex((d) => d.date.toISOString().split('T')[0] === day.dateString);
     setSelectedDayIndex(selectedIndex);
   };
 
   const renderDayItem = (day, index) => {
-    // Determinar si el día actual está seleccionado
     const isSelected = selectedDayIndex === index;
-    
-    // Aplicar estilos diferentes según si el día está seleccionado o no
     const dayItemStyles = isSelected ? styles.selectedDayItem : styles.dayItem;
 
     return (
@@ -62,12 +57,12 @@ const WeekCalendar = () => {
     <View>
       <View style={styles.dayCarousel}>
         {weekDays.map((day, index) => renderDayItem(day, index))}
-        <TouchableOpacity style={styles.buttonCalendar} onPress={toggleCalendar}>
-          <Text>Calendario</Text>
-        </TouchableOpacity>
       </View>
+      <TouchableOpacity style={styles.buttonCalendar} onPress={toggleCalendar}>
+        <Text>Calendario</Text>
+      </TouchableOpacity>
       {showCalendar && (
-        <View style={styles.calendarContainer}>
+        <View>
           <Calendar
             current={selectedDate}
             onDayPress={onDayPress}
@@ -90,34 +85,37 @@ const styles = StyleSheet.create({
   dayItem: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
     paddingVertical: 5,
-    opacity: 0.15, // Hacer que los días no seleccionados se vean más opacos
+    opacity: 0.15,
   },
   selectedDayItem: {
     borderRadius: 20,
+    paddingHorizontal: 8,
     justifyContent: 'center',
-    alignItems: 'center', // Hacer el seleccionador de día más redondo cuando está seleccionado
+    alignItems: 'center',
   },
   dayText: {
-    fontWeight: 'bold',
-    color: '#FFD353', // Color de texto personalizado
+    color: '#FFD353',
+    fontSize: 12,
   },
   numberDay: {
     fontWeight: 'light',
     color: '#FFD353',
     justifyContent: 'center',
-    alignItems: 'center',// Numero no seleccionados
+    alignItems: 'center',
+    fontSize: 18
   },
   calendarContainer: {
-    borderRadius: 20, // Hacer el seleccionador de día más redondo
-    opacity: 0.7, // Ajustar la transparencia del seleccionador de día
-    overflow: 'hidden', // Asegurar que el borde redondo sea visible
+    
   },
   buttonCalendar: {
     backgroundColor: '#FFD353',
     padding: 10,
     borderRadius: 20,
+    marginHorizontal: 50,
+    marginBottom: 10,
+    alignItems: 'center',
   },
 });
 
