@@ -36,4 +36,29 @@ export const CardConfig = StyleSheet.create({
         height: 150,
         top: -25,
     },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      input: {
+        height: 40,
+        borderColor: 'black',
+        borderWidth: 1,
+        marginTop: 5,
+        marginBottom: 10,
+        paddingLeft: 10,
+        borderRadius : 20,
+        
+      },
 });

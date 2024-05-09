@@ -9,8 +9,18 @@ import img5 from '../../assets/images/persona5.jpg';
 import { List } from 'react-native-paper';
 
 
-const CalendarioScreen = () => {
+const CalendarioScreen = (citas) => {
   const [items, setItems] = useState({}); 
+  //const fechas = citas.map(cita => cita.fecha.split(",")[0]);
+
+  /*const markedDates = fechas.reduce((acc, fecha) => {
+    acc[fecha] = {
+      selected: true,
+      marked: true,
+      selectedColor: "darkgreen",
+    };
+    return acc;
+  }, {});*/
 
   const loadItems = (day) => {
     setTimeout(() => {
@@ -55,6 +65,7 @@ const CalendarioScreen = () => {
             />
           );
         }}
+        //markedDates={markedDates}
         theme={{
           calendarBackground: '#001D3D', // Fondo del calendario
           todayButtonTextColor: '#ECB000', // Color del texto del botón de hoy
