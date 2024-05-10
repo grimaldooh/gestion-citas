@@ -11,6 +11,8 @@ import img5 from '../../assets/images/persona5.jpg';
 import CardCitas from '../../components/CardsTypes/CardCitas';
 import { styles } from '../../themes/theme';
 
+import { StyleSheet } from 'react-native';
+
 const SolicitudCitasScreen = () => {
     const handleAcceptPress = () => {
         console.log('Accept button pressed');
@@ -26,9 +28,8 @@ const SolicitudCitasScreen = () => {
             <CardCitas img={img} title="Carlos Rodríguez Pérez" content="20/04/2024 - 12:45PM" />
             <CardCitas img={img2} title="Elena Sánchez Martínez" content="21/04/2024 - 08:00AM" />
             <CardCitas img={img3} title="Luis López García" content="22/04/2024 - 04:20PM" />
+            <View style={{height: 180}} />
         </ScrollView>
-
     );
 };
-
 export default SolicitudCitasScreen;

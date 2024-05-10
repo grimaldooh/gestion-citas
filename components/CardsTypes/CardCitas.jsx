@@ -1,8 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, Text, Image, TouchableOpacity, Animated, LayoutAnimation, Platform, UIManager } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Animated,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+  Modal,
+  TouchableHighlight,
+} from "react-native";
 import { styles } from "../../themes/Appointments/CardCitas";
-import Button from "../CardCitas/Button";
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Button from "../Buttons/Button";
+import Icon from "react-native-vector-icons/FontAwesome5";
+import ModalConfirmacion from "../Modals/ModalConfirmacion";
 
 if (
   Platform.OS === "android" &&
@@ -12,37 +24,57 @@ if (
 }
 
 const Card = ({ title, content, img }) => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
-  const fadeAnim = useRef(new Animated.Value(0)).current;  // Initial value for opacity: 0
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isAccepted, setIsAccepted] = useState(false);
+  const [isRejected, setIsRejected] = useState(false);
+  const [cardColor, setCardColor] = useState("#FFD353");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [action, setAction] = useState(null);
+
+  const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
 
   useEffect(() => {
-    Animated.timing(
-      fadeAnim,
-      {
-        toValue: 1,
-        duration: 800,
-        useNativeDriver: true,
-      }
-    ).start();
-  }, [fadeAnim])
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 800,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeAnim]);
 
   const toggleCollapse = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setIsCollapsed(!isCollapsed);
+    setCardColor("#FFD35");
+  };
+
+  const handleConfirm = () => {
+    if (action === "accept") {
+      handleAccept();
+    } else if (action === "reject") {
+      handleReject();
+    }
+    setModalVisible(false);
+    setIsCollapsed(true);
   };
 
   const handleAccept = () => {
     console.log("Aceptar");
-    // Lógica para aceptar la cita
+    setIsAccepted(true);
+    setCardColor("#36A831");
+    setIsRejected(false);
+    // Lógica para aceptar la cita con API
   };
 
   const handleReject = () => {
     console.log("Rechazar");
-    // Lógica para rechazar la cita
+    setIsRejected(true);
+    setCardColor("#D23737");
+    setIsAccepted(false);
+    // Lógica para rechazar la cita con API
   };
 
   return (
-    <Animated.View style={[styles.card, styles.boxShadow, {opacity: fadeAnim}]}>
+    <Animated.View style={{ ...styles.card, backgroundColor: cardColor }}>
       <View style={styles.cardBackground} />
       <Image style={styles.image} source={img} />
 
@@ -52,33 +84,44 @@ const Card = ({ title, content, img }) => {
 
         {!isCollapsed && (
           <View style={styles.buttonContainer}>
-            <Button 
-              onPress={handleAccept} 
-              iconName="check-circle" 
-              backgroundColor="#00A416" 
+            <Button
+              onPress={() => {
+                setAction("accept");
+                setModalVisible(true);
+              }}
+              iconName="check-circle"
+              backgroundColor="#00A416"
               iconColor="white">
-                Aceptar
+              Aceptar
             </Button>
-            <Button 
-              onPress={handleReject} 
-              iconName="times-circle" 
-              backgroundColor="#FF0000" 
+            <Button
+              onPress={() => {
+                setAction("reject");
+                setModalVisible(true);
+              }}
+              iconName="times-circle"
+              backgroundColor="#D23737"
               iconColor="white">
-                Rechazar
+              Rechazar
             </Button>
           </View>
         )}
       </View>
 
-      <TouchableOpacity
-        style={styles.iconButton}
-        onPress={toggleCollapse}>
-        <Icon
-          name={isCollapsed ? "arrow-down" : "arrow-up"}
-          size={19}
-          color="black"
-        />
+      <TouchableOpacity style={styles.iconButton} onPress={toggleCollapse}>
+        {isAccepted ? (
+          <Icon name="check" size={18} color="#000" />
+        ) : isRejected ? (
+          <Icon name="times" size={18} color="#000" />
+        ) : (
+          <Icon name="chevron-down" size={18} color="#000" />
+        )}
       </TouchableOpacity>
+      <ModalConfirmacion
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        handleConfirm={handleConfirm}
+      />
     </Animated.View>
   );
 };
