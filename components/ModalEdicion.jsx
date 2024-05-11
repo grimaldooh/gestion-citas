@@ -17,7 +17,7 @@ import {
   Button,
   Text,
 } from "native-base";
-import { settingsStyle } from "'../themes/PantallasStyles/SettingsTheme";
+import { CardConfig } from "../themes/PantallasStyles/SettingsTheme";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import backArrow from "../../Imagenes/backArrow.png";
 
@@ -104,9 +104,9 @@ const ModalEdicion = ({
         visible={modalVisible}
         onRequestClose={onClose}
       >
-        <View style={settingsStyle.overlay}>
+        <View style={CardConfig.overlay}>
           <View
-            style={[settingsStyle.modalView, { justifyContent: "flex-start" }]}
+            style={[CardConfig.modalView, { justifyContent: "flex-start" }]}
           >
             <View
               style={{
@@ -163,7 +163,7 @@ const ModalEdicion = ({
             </Text>
             <TextInput
               style={[
-                settingsStyle.input,
+                CardConfig.input,
                 {
                   justifyContent: "flex-start",
                   padding: 10,
@@ -183,7 +183,7 @@ const ModalEdicion = ({
             />
             {/* <Text style={{ marginTop: 10, marginLeft: 10 }}>Fecha : </Text>
             <TextInput
-              style={settingsStyle.input}
+              style={CardConfig.input}
               onChangeText={setFecha}
               placeholder={cita ? cita.fecha : ""}
             /> */}
