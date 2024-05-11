@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
 import { styles } from '../../themes/Appointments/CardTheme';
 
-const Card = ({ title, content, img }) => {
+const Card = ({ name, date, time, img }) => {
 
   return (
     <View style={[styles.card, styles.boxShadow]}>
@@ -12,8 +12,8 @@ const Card = ({ title, content, img }) => {
         source={img}
       />
       <View style={styles.card.textContainer}>
-        <Text style={styles.card.title}>{title}</Text>
-        <Text style={styles.card.body}>{content}</Text>
+        <Text style={styles.card.title}>{name}</Text>
+        <Text style={styles.card.body}>{date} at {time}</Text>
       </View>
     </View>
   );
