@@ -1,3 +1,6 @@
+
+import CalendarComponent from "../../components/Calendar";
+import  citasData from '../../data/citas.json'; // Importa los datos del archivo JSON
 import React, { useState } from 'react';
 import { View, Text, Alert } from 'react-native';
 import { Agenda } from 'react-native-calendars';
@@ -10,7 +13,7 @@ import img5 from '../../assets/images/persona5.jpg';
 import { List } from 'react-native-paper';
 
 
-const CalendarioScreen = (citas) => {
+const CalendarioScreen = () => {
   const [items, setItems] = useState({}); 
   //const fechas = citas.map(cita => cita.fecha.split(",")[0]);
 
