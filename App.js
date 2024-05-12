@@ -8,6 +8,7 @@ import * as Font from 'expo-font';
 import LoginScreen from './screen/LoginScreen';
 import AppointmentScreen from './screen/AppointmentScreen';
 import RegisterScreen from './screen/RegisterScreen';
+import CalendarioScreen from './screen/dashboard/CalendarioScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,7 @@ const App = () => {
       <Stack.Navigator
         screenOptions={{...navigationStyles,
           headerShown: false,}}>
+        <Stack.Screen name ="CalendarioScreen" component={CalendarioScreen}/>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="AppointmentScreen" component={AppointmentScreen} /> 

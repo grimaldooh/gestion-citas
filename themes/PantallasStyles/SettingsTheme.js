@@ -61,4 +61,21 @@ export const CardConfig = StyleSheet.create({
         borderRadius : 20,
         
       },
+    container: {
+		flex: 1,
+		justifyContent : "flex-start",
+		backgroundColor: 'white',
+	},
+    userContainer: {
+        backgroundColor: "white",
+        width: '90%',
+        borderRadius: 16,
+        marginTop: 20,
+        padding: 20
+    },
+    userInformation:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 10
+    },
 });
