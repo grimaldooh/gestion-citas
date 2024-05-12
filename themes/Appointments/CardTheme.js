@@ -65,7 +65,9 @@ export const styles = StyleSheet.create({
         },
         iconButton: {
             justifyContent: 'flex-end',
-            marginLeft: 30,
+            marginLeft: 40,
+            right: 10,
+            left: 55,
         },
     },
 });

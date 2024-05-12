@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
 import { styles } from '../../themes/Appointments/CardTheme';
+import Icon from "react-native-vector-icons/FontAwesome5";
 
-const Card = ({ title, content, img }) => {
+const Card = ({ title, content, img, iconName }) => {
 
   return (
     <View style={[styles.card, styles.boxShadow]}>
@@ -15,6 +16,7 @@ const Card = ({ title, content, img }) => {
         <Text style={styles.card.title}>{title}</Text>
         <Text style={styles.card.body}>{content}</Text>
       </View>
+        <Icon style={styles.card.iconButton} name={iconName} size={18} color="#000" />
     </View>
   );
 };

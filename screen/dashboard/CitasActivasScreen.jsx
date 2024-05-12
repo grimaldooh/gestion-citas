@@ -13,7 +13,7 @@ const CitasActivasScreen = () => {
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.titleScreen}>Citas Activas</Text>
-            <Card img={img} title="María Rodríguez" content="12/04/2024 - 02:30PM" />
+            <Card img={img} title="María Rodríguez" content="12/04/2024 - 02:30PM" iconName='edit' />
             <Card img={img2} title="Juan Pérez" content="13/04/2024 - 10:45AM" />
             <Card img={img3} title="Luisa Gómez" content="14/04/2024 - 03:15PM" />
             <Card img={img4} title="Carlos Martínez" content="15/04/2024 - 11:20AM" />
