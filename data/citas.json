@@ -21,8 +21,9 @@
     {
         "img": "persona3.jpg",
         "name": "Karla Martínez",
-        "date": "15-05-2024",
-        "time": "11:20AM"    
+        "datetime": "2024-04-14, 12:30 p.m",
+        "id" : 1,
+        "status": "pendiente"
     },
     {
         "img": "persona4.jpg",

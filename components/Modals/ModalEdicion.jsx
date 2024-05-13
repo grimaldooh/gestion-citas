@@ -17,9 +17,9 @@ import {
   Button,
   Text,
 } from "native-base";
-import { CardConfig } from "../themes/PantallasStyles/SettingsTheme";
+import { CardConfig } from "../../themes/PantallasStyles/SettingsTheme";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import backArrow from "../../Imagenes/backArrow.png";
+import backArrow from "../../assets/images/backArrow.png";
 
 const ModalEdicion = ({
   cita,
@@ -30,17 +30,24 @@ const ModalEdicion = ({
   oldCita,
 }) => {
   const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState(new Date());
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
+  const [isTimePickerVisible, setIsTimePickerVisible] = useState(false);
   const [isDateChangeAllowed, setIsDateChangeAllowed] = useState(false);
   const [isOldCita, setIsOldCita] = useState(oldCita);
 
-  const [nombre, setNombre] = useState(cita.nombre);
-  const [fecha, setFecha] = useState(cita.fecha);
-  const [state, setState] = useState(cita.state);
+  const [mode, setMode] = useState("date"); // Add this line
+
+  const [name, setName] = useState(cita.name);
+  const [dateCita, setDateCita] = useState(cita.date);
+  const [timeCita, setTimeCita] = useState(cita.time);
+  const [status, setStatus] = useState(cita.status);
 
   useEffect(() => {
-    setNombre(cita.nombre);
-    setFecha(cita.fecha);
+    setName(cita.name);
+    setDateCita(cita.date);
+    setTimeCita(cita.time);
+    setTime(cita.time);
     setIsDatePickerVisible(false);
     setIsDateChangeAllowed(false);
     setIsOldCita(oldCita);
@@ -48,22 +55,30 @@ const ModalEdicion = ({
 
   // modalVisible = true;
 
-  const onDateChange = (event, selectedDate) => {
-    setIsDateChangeAllowed(true);
-    if (isDateChangeAllowed) {
-      const currentDate = selectedDate || date;
-      setIsDatePickerVisible(Platform.OS === "ios");
-      setFecha(
-        `${currentDate.getFullYear()}-${(
-          "0" +
-          (currentDate.getMonth() + 1)
-        ).slice(-2)}-${("0" + currentDate.getDate()).slice(-2)}, ${(
-          "0" + currentDate.getHours()
-        ).slice(-2)}:${("0" + currentDate.getMinutes()).slice(-2)}`
-      );
-      setIsDateChangeAllowed(false);
-    }
+  const onDateChange = (event, selectedValue) => {
+    const currentDate = selectedValue || date;
+    setDate(currentDate);
+    setDateCita(
+      `${currentDate.getFullYear()}-${(
+        "0" +
+        (currentDate.getMonth() + 1)
+      ).slice(-2)}-${("0" + currentDate.getDate()).slice(-2)}`
+    );
+    setIsDatePickerVisible(false);
   };
+
+  const onTimeChange = (event, selectedValue) => {
+    const currentTime = selectedValue || date;
+    setTime(currentTime);
+    setTimeCita(
+      `${("0" + currentTime.getHours()).slice(-2)}:${(
+        "0" + currentTime.getMinutes()
+      ).slice(-2)}`
+    );
+    setIsTimePickerVisible(false);
+  };
+
+
 
   const confirmarCita = () => {
     Alert.alert(
@@ -77,21 +92,29 @@ const ModalEdicion = ({
   const handleGuardar = () => {
     const indexCita = citas.findIndex((c) => c.id === cita.id);
     const nuevasCitas = [...citas];
-    nuevasCitas[indexCita] = { ...cita, fecha }; // aqui se
-    setCitas(nuevasCitas);
-    setNombre(cita.nombre);
-    cita.state = "reagendada";
-    setState("reagendada");
-    console.log("Cita actualizada:", { fecha, nombre, state });
+    nuevasCitas[indexCita] = { ...cita, date, time }; // Actualiza la dateCita de la cita    setCitas(nuevasCitas);
+    //console.log("Citas actualizadas:", time);
+    cita.time = timeCita;
+    cita.date = dateCita;
+    setName(cita.name);
+    cita.status = "reagendada";
+    setStatus("reagendada");
+    console.log("Cita actualizada:", { dateCita, name, status });
     setIsDatePickerVisible(false);
     //Hacer la petición a la API
     onClose();
     confirmarCita();
   };
 
+  const showTimePicker = () => {
+    setIsDateChangeAllowed(true);
+    setMode("time");
+    setIsTimePickerVisible(true);
+  };
+
   const showDatePicker = () => {
     setIsDateChangeAllowed(true);
-
+    setMode("date");
     setIsDatePickerVisible(true);
   };
 
@@ -150,12 +173,14 @@ const ModalEdicion = ({
 
               <View style={{ flexDirection: "row", marginTop: 10 }}>
                 <Text style={{ fontWeight: "bold" }}>Nombre : </Text>
-                <Text>{cita.nombre}</Text>
+                <Text>{cita.name}</Text>
               </View>
 
               <View style={{ flexDirection: "row", marginTop: 10 }}>
                 <Text style={{ fontWeight: "bold" }}>Fecha : </Text>
-                <Text>{cita.fecha}</Text>
+                <Text>
+                  {cita.date}, {cita.time}
+                </Text>
               </View>
             </View>
             <Text style={{ marginTop: 25, marginLeft: 10 }}>
@@ -176,17 +201,30 @@ const ModalEdicion = ({
                   textAlignVertical: "top",
                 },
               ]}
-              placeholder={"Escribe un mensaje para " + cita.nombre}
+              placeholder={"Escribe un mensaje para " + cita.name}
               borderRadius={10}
               multiline={true}
-              //onChangeText={setNombre}
+              //onChangeText={setName}
             />
-            {/* <Text style={{ marginTop: 10, marginLeft: 10 }}>Fecha : </Text>
+            {/* <Text style={{ marginTop: 10, marginLeft: 10 }}>dateCita : </Text>
             <TextInput
               style={CardConfig.input}
-              onChangeText={setFecha}
-              placeholder={cita ? cita.fecha : ""}
+              onChangeText={setDateCita}
+              placeholder={cita ? cita.dateCita : ""}
             /> */}
+
+            <Button
+              onPress={showTimePicker}
+              style={{
+                marginBottom: 15,
+                marginTop: 5,
+              }}
+              size="sm"
+              variant="subtle"
+              colorScheme="cyan"
+            >
+              <Text style={{ textAlign: "left" }}>Cambiar hora</Text>
+            </Button>
 
             <Button
               onPress={showDatePicker}
@@ -198,17 +236,30 @@ const ModalEdicion = ({
               variant="subtle"
               colorScheme="cyan"
             >
-              <Text style={{ textAlign: "left" }}>Cambiar fecha y hora</Text>
+              <Text style={{ textAlign: "left" }}>Cambiar fecha</Text>
             </Button>
             <View style={{ width: "85%" }}>
               {isDatePickerVisible && (
                 <DateTimePicker
-                  testID="datePicker"
+                  testID="dateTimePicker"
                   value={date}
-                  mode={"datetime"}
+                  mode={mode}
                   is24Hour={true}
                   display="default"
                   onChange={onDateChange}
+                />
+              )}
+            </View>
+
+            <View style={{ width: "85%" }}>
+              {isTimePickerVisible && (
+                <DateTimePicker
+                  testID="TimePicker"
+                  value={date}
+                  mode={"time"}
+                  is24Hour={true}
+                  display="default"
+                  onChange={onTimeChange}
                 />
               )}
             </View>

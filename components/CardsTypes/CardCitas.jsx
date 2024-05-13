@@ -23,7 +23,7 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const Card = ({ name, date,time, img }) => {
+const Card = ({ cita, key, setCitasProximas, img}) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
   const [isRejected, setIsRejected] = useState(false);
@@ -79,8 +79,8 @@ const Card = ({ name, date,time, img }) => {
       <Image style={styles.image} source={img} />
 
       <View style={styles.textContainer}>
-        <Text style={styles.title}>{name}</Text>
-        <Text style={styles.body}>{date} at {time}</Text>
+        <Text style={styles.title}>{cita.name}</Text>
+        <Text style={styles.body}>{cita.date} at {cita.time}</Text>
         
 
         {!isCollapsed && (
