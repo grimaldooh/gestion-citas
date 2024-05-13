@@ -95,7 +95,7 @@ export const styles = StyleSheet.create({
     calendarContainer: {
         flex: 1,
         width: '100%',
-        marginTop: 10,
+        marginTop: 40,
     },
     iconStyle: {
         marginRight: 10,

@@ -1,14 +1,15 @@
 import { View } from "react-native";
-import CalendarComponent from "../../components/CalendarComponent";
+import CalendarComponent from "../../components/CalendarComponent"; // Importa el componente CalendarComponent
 import  citasData from '../../data/citas.json'; // Importa los datos del archivo JSON
 
 const CalendarioScreen = () => {
   
 
   return (
-    <View>
-      <CalendarComponent citas={citasData}/>
-    </View>
+    
+      <CalendarComponent citas={citasData} />
+
+ 
   );
 };
 

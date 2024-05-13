@@ -19,14 +19,15 @@ const SolicitudCitasScreen = () => {
             {/* Recorre todos los datos del archivo JSON y crea los componentes Card dinámicamente */}
             {citasData.map((cita, index) => (
                 <CardCitas
-                    id={index}
+                    key={index} // Agrega la clave única aquí
                     img={getImageByFilename(cita.img)} 
                     name={cita.name} 
                     date={cita.date} 
                     time={cita.time} 
-                />
-            ))}
-        </ScrollView>
+        />
+    ))}
+</ScrollView>
+
     );
 };
 

@@ -19,7 +19,7 @@ const CitasActivasScreen = () => {
             {/* Itera sobre los datos del archivo JSON y crea los componentes Card dinámicamente */}
             {citasData.map((cita, index) => (
                 <Card 
-                    id={index}
+                    key={index}
                     img={getImageByFilename(cita.img)} 
                     name={cita.name} 
                     date={cita.date} 
