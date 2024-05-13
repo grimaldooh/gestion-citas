@@ -104,6 +104,8 @@ const ModalEdicion = ({
     //Hacer la petición a la API
     onClose();
     confirmarCita();
+
+    
   };
 
   const showTimePicker = () => {
