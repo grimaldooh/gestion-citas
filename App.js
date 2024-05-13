@@ -9,6 +9,7 @@ import LoginScreen from './screen/LoginScreen';
 import AppointmentScreen from './screen/AppointmentScreen';
 import RegisterScreen from './screen/RegisterScreen';
 import CalendarioScreen from './screen/dashboard/CalendarioScreen';
+import UserSettingsScreen from './screen/UserSettingsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,9 +41,11 @@ const App = () => {
         screenOptions={{...navigationStyles,
           headerShown: false,}}>
         
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name ="CalendarioScreen" component={CalendarioScreen}/>
         <Stack.Screen name="Login" component={LoginScreen} />
         
+        <Stack.Screen name="User" component={UserSettingsScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="AppointmentScreen" component={AppointmentScreen} /> 
       </Stack.Navigator>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text , TextInput, Button, Modal} from 'react-native';
-import { globalStyles, colors, footer } from "../styles/global";
+
 import { useNavigation } from '@react-navigation/native';
 import { CardConfig } from "../themes/PantallasStyles/SettingsTheme";
 
