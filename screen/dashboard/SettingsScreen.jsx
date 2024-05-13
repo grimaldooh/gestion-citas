@@ -35,7 +35,7 @@ const SettingsScreen = () => {
                 rightIconName="chevron-right"
                 title="Configuracion de Perfil"
                 description="Foto de perfil, descripción, etc."
-                onRightIconPress={() => navigation.navigate('SettingsNavigator', { screen: 'UserSettingsScreen' })}                />
+                onRightIconPress={() => navigation.navigate('User')}                />
             <CardSettings
                 leftIconName="bell"
                 rightIconName="chevron-right"
