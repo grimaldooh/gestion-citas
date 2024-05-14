@@ -40,11 +40,12 @@ const App = () => {
       <Stack.Navigator
         screenOptions={{...navigationStyles,
           headerShown: false,}}>
-        
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name ="CalendarioScreen" component={CalendarioScreen}/>
         <Stack.Screen name="User" component={UserSettingsScreen} />
-       
-        <Stack.Screen name="Register" component={RegisterScreen} />
+        
+        
         <Stack.Screen name="AppointmentScreen" component={AppointmentScreen} /> 
       </Stack.Navigator>
     </NavigationContainer>
