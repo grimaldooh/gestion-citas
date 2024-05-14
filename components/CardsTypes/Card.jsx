@@ -14,9 +14,8 @@ const Card = ({ name, date, time, img }) => {
       />
       <View style={styles.card.textContainer}>
         <Text style={styles.card.title}>{name}</Text>
-        <Text style={styles.card.body}>{date} at {time}</Text>
+        <Text style={styles.card.body}>{date} - {time}</Text>
       </View>
-        <Icon style={styles.card.iconButton} name={iconName} size={18} color="#000" />
     </View>
   );
 };

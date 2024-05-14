@@ -1,41 +1,93 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import { styles } from '../themes/theme';
 import { LocaleConfig } from 'react-native-calendars';
-import moment from 'moment-timezone'; // added for date formatting
-
-const localeConfig = {
-  monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-  monthNamesShort: ['Ene.', 'Feb.', 'Mar.', 'Abr.', 'May.', 'Jun.', 'Jul.', 'Ago.', 'Sep.', 'Oct.', 'Nov.', 'Dic.'],
-  dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-  dayNamesShort: ['Dom.', 'Lun.', 'Mar.', 'Mié.', 'Jue.', 'Vie.', 'Sáb.'],
-  today: 'Hoy'
-};
-
-LocaleConfig.locales.es = localeConfig;
-LocaleConfig.defaultLocale = 'es';
+import Card from './CardsTypes/Card';
+import moment from 'moment-timezone';
+import DefaulImage from '../assets/images/default.jpg';
 
 const CalendarComponent = ({ citas }) => {
+  LocaleConfig.locales['es'] = {
+    monthNames: [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
+    ],
+    monthNamesShort: [
+      'Ene.',
+      'Feb.',
+      'Mar.',
+      'Abr.',
+      'May.',
+      'Jun.',
+      'Jul.',
+      'Ago.',
+      'Sep.',
+      'Oct.',
+      'Nov.',
+      'Dic.',
+    ],
+    dayNames: [
+      'Domingo',
+      'Lunes',
+      'Martes',
+      'Miércoles',
+      'Jueves',
+      'Viernes',
+      'Sábado',
+    ],
+    dayNamesShort: ['Dom.', 'Lun.', 'Mar.', 'Mié.', 'Jue.', 'Vie.', 'Sáb.'],
+  };
+  
+  LocaleConfig.defaultLocale = 'es';
   const today = moment().tz('America/Tijuana'); // use moment-timezone for date formatting
   const currentDate = today.format('YYYY-MM-DD');
-  console.log(today, currentDate)
+  const [items, setItems] = useState({});
 
-  // Función para renderizar los elementos en la Agenda
-  const renderItem = (reservation, isFirst) => {
-    return (
-      <View style={styles.item}>
-        <Text>{reservation.name}</Text>
-      </View>
-    );
+  useEffect(() => {
+    const loadedItems = loadItems();
+    setItems(loadedItems);
+  }, [citas]);
+
+  const loadItems = () => {
+    const newItems = {};
+  
+    citas.forEach(cita => {
+      const fechaCita = moment(cita.date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+      if (!newItems[fechaCita]) {
+        newItems[fechaCita] = [];
+      }
+      newItems[fechaCita].push({
+        name: cita.name,
+        date: cita.date,
+        time: cita.time,
+        img: cita.img,
+        height: 50,
+      });
+    });
+  
+    return newItems;
   };
-
-  // Función para renderizar los días en la Agenda
-  const renderDay = (date, item) => {
-    return (
-      <View style={styles.day}>
-        <Text>{date ? date.day : 'No hay día'}</Text>
-      </View>
+  const renderItem = (item) => {
+      return (
+        <Card
+          name ={item.name} 
+          time = {item.time}
+          date = {item.date}
+          img = {DefaulImage}
+        >
+  
+        </Card>
     );
   };
 
@@ -45,18 +97,8 @@ const CalendarComponent = ({ citas }) => {
       <View style={styles.calendarContainer}>
         <Agenda
           selected={currentDate}
-          items={{
-            '2012-05-22': [{name: 'item 1 - any js object'}],
-            '2012-05-23': [{name: 'item 2 - any js object', height: 80}],
-            '2012-05-24': [],
-            '2012-05-25': [{name: 'item 3 - any js object'}, {name: 'any js object'}]
-          }}
-          markedDates={{
-            '2024-05-16': { marked: true },
-            '2024-05-17': { marked: true },
-            '2024-05-18': { marked: true },
-            '2021-05-19': { marked: true }
-          }}
+          items={items}
+          renderItem={renderItem}
           theme={{
             calendarBackground: '#001D3D',
             textSectionTitleColor: '#FFD353',
@@ -71,7 +113,6 @@ const CalendarComponent = ({ citas }) => {
             textDayFontSize: 14,
             arrowColor: "#ffd353",
           }}
-
         />
       </View>
     </View>
