@@ -23,7 +23,7 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const Card = ({ name, date,time, img }) => {
+const Card = ({ cita, key, setCitasProximas, img}) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
   const [isRejected, setIsRejected] = useState(false);
@@ -62,16 +62,37 @@ const Card = ({ name, date,time, img }) => {
     setIsAccepted(true);
     setCardColor("#36A831");
     setIsRejected(false);
+    cita.status = "aceptada";
+    console.log("ID de la cita : ", cita.id);
+    
     // Lógica para aceptar la cita con API
-  };
 
-  const handleReject = () => {
+    // Generar el JSON para la cita aceptada
+    const acceptedCitaJson = JSON.stringify({
+        id: cita.id,
+        status: cita.status,
+    });
+
+    console.log("Cita aceptada JSON:", acceptedCitaJson);
+};
+
+const handleReject = () => {
     console.log("Rechazar");
     setIsRejected(true);
     setCardColor("#D23737");
     setIsAccepted(false);
+    cita.status = "rechazada";
+
     // Lógica para rechazar la cita con API
-  };
+
+    // Generar el JSON para la cita rechazada
+    const rejectedCitaJson = JSON.stringify({
+        id: cita.id,
+        status: cita.status,
+    });
+
+    console.log("Cita rechazada JSON:", rejectedCitaJson);
+};
 
   return (
     <Animated.View style={{ ...styles.card, backgroundColor: cardColor }}>
@@ -79,8 +100,8 @@ const Card = ({ name, date,time, img }) => {
       <Image style={styles.image} source={img} />
 
       <View style={styles.textContainer}>
-        <Text style={styles.title}>{name}</Text>
-        <Text style={styles.body}>{date} at {time}</Text>
+        <Text style={styles.title}>{cita.name}</Text>
+        <Text style={styles.body}>{cita.date} at {cita.time}</Text>
         
 
         {!isCollapsed && (

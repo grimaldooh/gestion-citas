@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Modal, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { ModalForms } from '../../themes/Appointments/modalFormsTheme';
+import { duration } from 'moment-timezone';
 
 const ModalForm = ({ onClose }) => {
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState(new Date());
+    const [duration, setDuration] = useState(0);
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showTimePicker, setShowTimePicker] = useState(false);
 
@@ -28,6 +30,20 @@ const ModalForm = ({ onClose }) => {
         console.log(`Número de Teléfono: ${phoneNumber}`);
         console.log(`Fecha: ${date.toLocaleDateString()}`);
         console.log(`Hora: ${time.toLocaleTimeString()}`);
+        console.log(`Duración: ${duration}`);
+
+        const appointmentJson = JSON.stringify({
+            name: name,
+            phoneNumber: phoneNumber,
+            date: date.toLocaleDateString(),
+            time: time.toLocaleTimeString(),
+            duration: duration,
+            img : "predeterminada.jpg",
+        });
+
+        console.log("Cita JSON:", appointmentJson);
+
+
         onClose(); // Cerrar el modal después de guardar
     };
 
@@ -59,6 +75,10 @@ const ModalForm = ({ onClose }) => {
                         <Text style={ModalForms.buttonText}>Seleccionar Hora</Text>
                     </TouchableOpacity>
                     {showTimePicker && <DateTimePicker value={time} mode="time" display="default" onChange={onChangeTime} />}
+
+                    <Text style={ModalForms.label}>Duración (minutos):</Text>
+                    <TextInput style={ModalForms.input} value={duration} editable={true} placeholder='Duración de la cita' onChangeText={setDuration} />
+
 
                     <TouchableOpacity style={ModalForms.button} onPress={saveAppointment}>
                         <Text style={ModalForms.buttonText}>Guardar Cita</Text>
