@@ -62,16 +62,37 @@ const Card = ({ cita, key, setCitasProximas, img}) => {
     setIsAccepted(true);
     setCardColor("#36A831");
     setIsRejected(false);
+    cita.status = "aceptada";
+    console.log("ID de la cita : ", cita.id);
+    
     // Lógica para aceptar la cita con API
-  };
 
-  const handleReject = () => {
+    // Generar el JSON para la cita aceptada
+    const acceptedCitaJson = JSON.stringify({
+        id: cita.id,
+        status: cita.status,
+    });
+
+    console.log("Cita aceptada JSON:", acceptedCitaJson);
+};
+
+const handleReject = () => {
     console.log("Rechazar");
     setIsRejected(true);
     setCardColor("#D23737");
     setIsAccepted(false);
+    cita.status = "rechazada";
+
     // Lógica para rechazar la cita con API
-  };
+
+    // Generar el JSON para la cita rechazada
+    const rejectedCitaJson = JSON.stringify({
+        id: cita.id,
+        status: cita.status,
+    });
+
+    console.log("Cita rechazada JSON:", rejectedCitaJson);
+};
 
   return (
     <Animated.View style={{ ...styles.card, backgroundColor: cardColor }}>

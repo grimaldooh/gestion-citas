@@ -8,12 +8,45 @@ import { CardConfig } from "../themes/PantallasStyles/SettingsTheme";
 function SettingsView() {
     const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [profession, setProfession] = useState('');
+
   const [user, setUser] = useState({
-    nombre: 'Juan Pérez',
-    correo: 'juan.perez@example.com',
-    domicilio: 'Cortez 123, Ensenada, Baja California',
-    profesion: 'Dentista',
+    id: 1,
+    name: 'Juan Pérez',
+    email: 'juan.perez@example.com',
+    address: 'Cortez 123, Ensenada, Baja California',
+    profession: 'Dentista',
   });
+
+  const saveChanges = () => {
+    // Actualizar el estado del usuario con los nuevos valores
+    setUser({
+        ...user,
+        name: name,
+        email: email,
+        address: address,
+        profession: profession
+    });
+
+    // Generar el JSON para el usuario actualizado
+    const updatedUserJson = JSON.stringify({
+        id: user.id,
+        name: name,
+        email: email,
+        address: address,
+        profession: profession
+    });
+
+    console.log("Usuario actualizado JSON:", updatedUserJson);
+
+    // Aquí puedes hacer la petición a la API con el JSON del usuario actualizado
+    // ...
+
+    setModalVisible(!modalVisible);
+};
 
   const handlePress = () => {
     setModalVisible(true);
@@ -21,16 +54,18 @@ function SettingsView() {
 
   const handleChange = (name, value) => {
     setUser({...user, [name]: value});
+
+
   };
 
   return (
     <View style={CardConfig.container}>
       <View style={CardConfig.userContainer}>
         <Text style={CardConfig.title}>Datos del usuario</Text>
-        <Text style={CardConfig.userInformation}>Nombre: {user.nombre}</Text>
-        <Text style={CardConfig.userInformation}>Correo: {user.correo}</Text>
-        <Text style={CardConfig.userInformation}>Domicilio: {user.domicilio}</Text>
-        <Text style={CardConfig.userInformation}>Profesión: {user.profesion}</Text>
+        <Text style={CardConfig.userInformation}>Nombre: {user.name}</Text>
+        <Text style={CardConfig.userInformation}>Correo: {user.email}</Text>
+        <Text style={CardConfig.userInformation}>Domicilio: {user.address}</Text>
+        <Text style={CardConfig.userInformation}>Profesión: {user.profession}</Text>
         <View style={{justifyContent: 'flex-end' }}>
             <Button title="Modificar información" onPress={handlePress} />
         </View>
@@ -51,30 +86,30 @@ function SettingsView() {
             <TextInput
                 style={[CardConfig.input, {justifyContent : "flex-start"}]}
                 
-                onChangeText={(value) => handleChange('nombre', value)}
-                value={user.nombre}
+                onChangeText={setName}
+                value={name}
             />
             <Text style={{marginTop : 10, marginLeft:10}}>Correo electronico: </Text>
             <TextInput
               style={CardConfig.input}
-              onChangeText={(value) => handleChange('correo', value)}
-              value={user.correo}
+              onChangeText={setEmail}
+              value={email}
             />
             <Text style={{marginTop : 10, marginLeft:10}}>Domicilio: </Text>
             <TextInput
               style={CardConfig.input}
-              onChangeText={(value) => handleChange('domicilio', value)}
-              value={user.domicilio}
+              onChangeText={setAddress}
+              value={address}
             />
             <Text style={{marginTop : 10, marginLeft:10}}>Profesión: </Text>
             <TextInput
               style={CardConfig.input}
-              onChangeText={(value) => handleChange('profesion', value)}
-              value={user.profesion}
+              onChangeText={setProfession}
+              value={profession}
             />
             <Button
               title="Guardar cambios"
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={() => saveChanges() }
             />
           </View>
         </View>

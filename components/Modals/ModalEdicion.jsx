@@ -34,6 +34,7 @@ const ModalEdicion = ({
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
   const [isTimePickerVisible, setIsTimePickerVisible] = useState(false);
   const [isDateChangeAllowed, setIsDateChangeAllowed] = useState(false);
+  const [duration, setDuration] = useState(0);
   const [isOldCita, setIsOldCita] = useState(oldCita);
 
   const [mode, setMode] = useState("date"); // Add this line
@@ -78,8 +79,6 @@ const ModalEdicion = ({
     setIsTimePickerVisible(false);
   };
 
-
-
   const confirmarCita = () => {
     Alert.alert(
       "Petición enviada",
@@ -97,15 +96,25 @@ const ModalEdicion = ({
     cita.time = timeCita;
     cita.date = dateCita;
     setName(cita.name);
-    cita.status = "reagendada";
+    cita.duration = duration;
+    cita.status = "aceptada";
     setStatus("reagendada");
     console.log("Cita actualizada:", { dateCita, name, status });
     setIsDatePickerVisible(false);
     //Hacer la petición a la API
+    // Generar el JSON para la cita actualizada
+    const updatedCitaJson = JSON.stringify({
+      id: cita.id,
+      status: cita.status,
+      date: cita.date,
+      time: cita.time,
+      duration: cita.duration,
+  });
+
+  // Hacer la petición a la API con el JSON de la cita actualizada
+
     onClose();
     confirmarCita();
-
-    
   };
 
   const showTimePicker = () => {
@@ -265,6 +274,18 @@ const ModalEdicion = ({
                 />
               )}
             </View>
+            <Divider style={{ marginTop: 15 }} />
+            <View style={{ flexDirection: "row", marginTop: 15 , marginBottom: 10}}>
+              <Text style={{marginTop:3, fontWeight:"bold"}}>Duración de la cita (minutos) :   </Text>
+              <TextInput
+                style={{borderWidth:1, borderColor:"black", textAlign:"center", width:35}}
+                placeholder={""}
+                borderRadius={10}
+
+                onChangeText={setDuration}
+              />
+            </View>
+
             <View
               style={{ flexDirection: "row", justifyContent: "space-around" }}
             >

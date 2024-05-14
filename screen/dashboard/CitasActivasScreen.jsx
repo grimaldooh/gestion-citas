@@ -43,6 +43,7 @@ const CitasActivasScreen = () => {
       time: "10:45AM",
       id: 1,
       status: "pendiente",
+      duration: 30,
     },
     {
       img: "persona1.jpg",
@@ -51,6 +52,7 @@ const CitasActivasScreen = () => {
       time: "02:30PM",
       id: 2,
       status: "pendiente",
+      duration: 45,
     },
     {
       img: "persona2.jpg",
@@ -59,6 +61,7 @@ const CitasActivasScreen = () => {
       time: "03:15PM",
       id: 3,
       status: "pendiente",
+      duration: 60,
     },
     {
       img: "persona3.jpg",
@@ -67,6 +70,7 @@ const CitasActivasScreen = () => {
       time: "11:20AM",
       id: 4,
       status: "pendiente",
+      duration: 30,
     },
     {
       img: "persona4.jpg",
@@ -75,6 +79,7 @@ const CitasActivasScreen = () => {
       time: "09:00AM",
       id: 5,
       status: "pendiente",
+      duration: 45,
     },
     {
       img: "persona5.jpg",
@@ -83,6 +88,7 @@ const CitasActivasScreen = () => {
       time: "01:55PM",
       id: 6,
       status: "pendiente",
+      duration: 60,
     },
     {
       img: "persona5.jpg",
@@ -91,6 +97,7 @@ const CitasActivasScreen = () => {
       time: "01:55PM",
       id: 7,
       status: "pendiente",
+      duration: 60,
     },
     {
       img: "persona5.jpg",
@@ -99,6 +106,7 @@ const CitasActivasScreen = () => {
       time: "01:55PM",
       id: 8,
       status: "pendiente",
+      duration: 60,
     },
   ]);
 
