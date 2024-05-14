@@ -17,7 +17,24 @@ const RegisterScreen = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [fullName, setFullName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
+    const [profession, setProfession] = useState('');
     const navigation = useNavigation();
+
+    const handleRegister = () => {
+        // Generar el JSON para los datos de inicio de sesión
+        const registerDataJson = JSON.stringify({
+            fullName: fullName,
+            email: email,
+            password: password,
+            phone: phone,
+            address: address,
+            profession: profession
+        });
+
+        console.log("Datos de registro JSON:", registerDataJson);
+    }
 
     const PaypalHandle = () => {
         Alert.alert('Paypal', 'Pago exitoso');
@@ -62,6 +79,23 @@ const RegisterScreen = () => {
                     value={email}
                 />
                 <TextInput
+                    placeholder="Teléfono"
+                    onChangeText={(text) => setPhone(text)}
+                    value={phone}
+                    keyboardType="numeric"
+                />
+                <TextInput
+                    placeholder="Dirección"
+                    onChangeText={(text) => setAddress(text)}
+                    value={address}
+                />
+                <TextInput
+                    placeholder="Profesión"
+                    onChangeText={(text) => setProfession(text)}
+                    value={profession}
+                />
+
+                <TextInput
                     placeholder="Contraseña"
                     onChangeText={(text) => setPassword(text)}
                     value={password}
@@ -72,7 +106,7 @@ const RegisterScreen = () => {
                     fontSize="small"
                     width="extraLarge"
                     height="extraLarge"
-                /* onPress={handleRegister} */
+                  onPress={handleRegister} 
                 >
                     Registrate
                 </ButtonGeneric>

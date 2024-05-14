@@ -21,9 +21,20 @@ const LoginScreen = () => {
     const navigation = useNavigation(); // Initialize the hook to use it in the handleLogin function}
 
     const handleLogin = () => {
+        // Generar el JSON para los datos de inicio de sesión
+        const loginDataJson = JSON.stringify({
+            username: username,
+            password: password
+        });
+    
+        console.log("Datos de inicio de sesión JSON:", loginDataJson);
+    
+        // Aquí puedes hacer la petición a la API con el JSON de los datos de inicio de sesión
+        // ...
+    
         // Simula un inicio de sesión exitoso
         console.log('Inicio de sesión exitoso');
-
+    
         // Una vez que el usuario ha iniciado sesión correctamente, restablece la pila de navegación
         navigation.reset({
             index: 0,
@@ -68,7 +79,7 @@ const LoginScreen = () => {
                 <Text style={styles.title}>¡Bienvenido a FastBooking!</Text>
                 <Text style={styles.description}>Ingresa tus datos para iniciar sesión.</Text>
                 <TextInput
-                    placeholder="Nombre de Usuario"
+                    placeholder="Email"
                     onChangeText={(text) => setUsername(text)}
                     value={username}
                     secureTextEntry={false}
