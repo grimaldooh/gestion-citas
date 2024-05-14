@@ -94,7 +94,7 @@ const SolicitudCitasScreen = () => {
       {/* Recorre todos los datos del archivo JSON y crea los componentes Card dinámicamente */}
       {citas.map((cita, index) => (
         <CardCitas
-          key={cita.id}
+          id={cita.id}
           cita={cita}
           setCitasPendientes={setCitasPendientes}
           img={getImageByFilename(cita.img)} 

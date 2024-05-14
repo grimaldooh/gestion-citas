@@ -13,7 +13,6 @@ import { NativeBaseProvider } from "native-base";
 
 
 // Importa los datos del archivo JSON
-import citasData from "../../data/citas.json";
 
 const CitasActivasScreen = () => {
 
