@@ -3,20 +3,23 @@
         "img": "persona.jpg",
         "name": "Juan Pérez",
         "date": "13-05-2024",
-        "time": "10:45AM"
+        "time": "10:45AM",
+        "status": ""
            
     },
     {
         "img": "persona1.jpg",
         "name": "María Rodríguez",
         "date": "12-05-2024",
-        "time": "02:30PM" 
+        "time": "02:30PM",
+        "status": ""
     },
     {
         "img": "persona2.jpg",
         "name": "Luisa Gómez",
         "date": "14-05-2024",
-        "time": "03:15PM"    
+        "time": "03:15PM",
+        "status": "" 
     },
     {
         "img": "persona3.jpg",
@@ -29,24 +32,28 @@
         "img": "persona4.jpg",
         "name": "Pedro Sánchez",
         "date": "17-05-2024",
-        "time": "09:00AM"
+        "time": "09:00AM",
+        "status": ""
     },
     {
         "img": "persona5.jpg",
         "name": "Ana López",
         "date": "17-05-2024",
-        "time": "02:55PM"    
+        "time": "02:55PM",
+        "status": ""
     },
     {
         "img": "persona6.jpg",
         "name": "Karina Lopez",
         "date": "15-05-2024",
-        "time": "03:55PM"    
+        "time": "03:55PM",
+        "status": ""
     },
     {
         "img": "persona7.jpg",
         "name": "Ofelia Jimenez",
         "date": "16-05-2024",
-        "time": "04:55PM"    
+        "time": "04:55PM",
+        "status": ""  
     }
 ]
