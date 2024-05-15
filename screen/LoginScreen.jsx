@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, ImageBackground, Image } from 'react-native';
 import { KeyboardAvoidingView, Platform } from 'react-native';
-
 import TextInput from '../components/InputsType/TextInput';
 import FacebookLoginButton from '../components/FacebookLoginButton';
 import ButtonGeneric from '../components/ButtonGeneric';
@@ -90,8 +89,7 @@ const LoginScreen = () => {
                             onPress={() => navigation.navigate('Register')}>Registrate 😃</Text>
                     </Text>
                 </View>
-            </KeyboardAvoidingView>
-            
+            </KeyboardAvoidingView>    
         );
     };
 
