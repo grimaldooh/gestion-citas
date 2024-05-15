@@ -93,25 +93,43 @@ const ModalEdicion = ({
     const nuevasCitas = [...citas];
     nuevasCitas[indexCita] = { ...cita, date, time }; // Actualiza la dateCita de la cita    setCitas(nuevasCitas);
     //console.log("Citas actualizadas:", time);
-    cita.time = timeCita;
+    cita.time = `${timeCita}:00`;
     cita.date = dateCita;
     setName(cita.name);
     cita.duration = duration;
-    cita.status = "aceptada";
+    cita.status = 1;
     setStatus("reagendada");
     console.log("Cita actualizada:", { dateCita, name, status });
     setIsDatePickerVisible(false);
+    console.log("dateCita:", cita.date);
+    console.log("timeCita:", cita.time);
+    console.log("duration:", cita.duration);
+    console.log("status:", cita.status);
     //Hacer la petición a la API
     // Generar el JSON para la cita actualizada
     const updatedCitaJson = JSON.stringify({
-      id: cita.id,
+      startDate: cita.date,
+      startTime: cita.time,
+      durationMinutes: cita.duration,
       status: cita.status,
-      date: cita.date,
-      time: cita.time,
-      duration: cita.duration,
-  });
+    });
 
-  // Hacer la petición a la API con el JSON de la cita actualizada
+    // Hacer la petición a la API con el JSON de la cita actualizada
+
+    fetch(`https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/update/${cita.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: updatedCitaJson
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 
     onClose();
     confirmarCita();
@@ -275,13 +293,21 @@ const ModalEdicion = ({
               )}
             </View>
             <Divider style={{ marginTop: 15 }} />
-            <View style={{ flexDirection: "row", marginTop: 15 , marginBottom: 10}}>
-              <Text style={{marginTop:3, fontWeight:"bold"}}>Duración de la cita (minutos) :   </Text>
+            <View
+              style={{ flexDirection: "row", marginTop: 15, marginBottom: 10 }}
+            >
+              <Text style={{ marginTop: 3, fontWeight: "bold" }}>
+                Duración de la cita (minutos) :{" "}
+              </Text>
               <TextInput
-                style={{borderWidth:1, borderColor:"black", textAlign:"center", width:35}}
+                style={{
+                  borderWidth: 1,
+                  borderColor: "black",
+                  textAlign: "center",
+                  width: 35,
+                }}
                 placeholder={""}
                 borderRadius={10}
-
                 onChangeText={setDuration}
               />
             </View>
