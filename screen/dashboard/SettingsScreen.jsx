@@ -47,13 +47,6 @@ const SettingsScreen = () => {
                 onRightIconPress={() => setModalVisibleNotification(true)}
             />
             <CardSettings
-                leftIconName="globe"
-                rightIconName="chevron-right"
-                title="Idioma de la aplicación"
-                description="Cambiar el idioma de la aplicación"
-                onRightIconPress={() => console.log('Idioma presionado')}
-            />
-            <CardSettings
                 leftIconName="info-circle"
                 rightIconName="chevron-right"
                 title="Acerca de la aplicación"

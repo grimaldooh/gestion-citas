@@ -24,7 +24,7 @@ if (
 }
 
 const Card = ({ cita, key, setCitasProximas, img}) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const [isAccepted, setIsAccepted] = useState(false);
   const [isRejected, setIsRejected] = useState(false);
   const [cardColor, setCardColor] = useState("#FFD353");
