@@ -25,25 +25,42 @@ const ModalForm = ({ onClose }) => {
         setTime(currentTime);
     };
 
+    const appointmentCreateAPI = async (appointment) => {  
+       
+    }
+
     const saveAppointment = () => {
-        console.log(`Nombre: ${name}`);
-        console.log(`Número de Teléfono: ${phoneNumber}`);
-        console.log(`Fecha: ${date.toLocaleDateString()}`);
-        console.log(`Hora: ${time.toLocaleTimeString()}`);
-        console.log(`Duración: ${duration}`);
-
+        // Formatear la cita para que se adapte al JSON que pide la API
         const appointmentJson = JSON.stringify({
-            name: name,
+            clientName: name,
             phoneNumber: phoneNumber,
-            date: date.toLocaleDateString(),
-            time: time.toLocaleTimeString(),
-            duration: duration,
-            img : "predeterminada.jpg",
+            startDate: date.toISOString().split('T')[0], // Formato "YYYY-MM-DD"
+            startTime: time.toTimeString().split(' ')[0], // Formato "HH:MM:SS"
+            durationMinutes: duration,
+            userImage: "si",
+            serviceProviderId: 2,
+            clientFBID: 0,
+            status: 2
         });
-
+    
         console.log("Cita JSON:", appointmentJson);
-
-
+    
+        // Hacer la petición POST a la API
+        fetch('https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: appointmentJson
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    
         onClose(); // Cerrar el modal después de guardar
     };
 

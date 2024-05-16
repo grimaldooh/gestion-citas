@@ -16,8 +16,9 @@ import { NativeBaseProvider } from "native-base";
 
 const CitasActivasScreen = () => {
 
-    const [modalEdicionVisible, setModalEdicionVisible] = useState(false);
+  const [modalEdicionVisible, setModalEdicionVisible] = useState(false);
   const [selectedCita, setselectedCita] = useState(null);
+  
 
   const closeModal = () => {
     setModalEdicionVisible(false);
