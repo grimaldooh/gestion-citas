@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, View, Text, Switch } from 'react-native';
-import ButtonGeneric from '../ButtonGeneric';
+import ButtonGeneric from '../Buttons/ButtonGeneric';
 import { ModalForms } from '../../themes/Appointments/modalFormsTheme';
 import { styles } from '../../themes/theme';
 

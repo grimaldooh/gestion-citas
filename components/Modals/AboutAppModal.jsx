@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, View, Text, Image } from 'react-native';
 
 //Importamos componentes nesesarios
-import ButtonGeneric from '../ButtonGeneric';
+import ButtonGeneric from '../Buttons/ButtonGeneric';
 
 //Importamos Estilos Nesesarios
 import { ModalForms } from '../../themes/Appointments/modalFormsTheme';

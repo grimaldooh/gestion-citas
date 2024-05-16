@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 //Importamos componentes nesesarios
-import ButtonGeneric from "../ButtonGeneric";
+import ButtonGeneric from "../Buttons/ButtonGeneric";
 
 //Importamos Estilos Nesesarios
 import { ModalForms } from "../../themes/Appointments/modalFormsTheme";

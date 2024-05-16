@@ -3,7 +3,7 @@ import { Modal, View, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 //Importamos los componentes nesesarios
-import ButtonGeneric from '../ButtonGeneric';
+import ButtonGeneric from '../Buttons/ButtonGeneric';
 
 //Importamos los estilo
 import { ModalForms } from '../../themes/Appointments/modalFormsTheme';
