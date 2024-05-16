@@ -44,14 +44,14 @@ export const CardConfig = StyleSheet.create({
         
         shadowColor: "#000",
         shadowOffset: {
-          width: 0,
-          height: 2
+        width: 0,
+        height: 2
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5
-      },
-      input: {
+    },
+    input: {
         height: 40,
         borderColor: 'black',
         borderWidth: 1,
@@ -60,7 +60,7 @@ export const CardConfig = StyleSheet.create({
         paddingLeft: 10,
         borderRadius : 20,
         
-      },
+    },
     container: {
 		flex: 1,
 		justifyContent : "flex-start",

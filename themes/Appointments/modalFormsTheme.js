@@ -1,3 +1,4 @@
+import { Container } from "native-base";
 import { StyleSheet } from "react-native";
 
 export const ModalForms = StyleSheet.create({
@@ -41,10 +42,20 @@ export const ModalForms = StyleSheet.create({
         left: -5,
         reject:{
             backgroundColor: 'red',
+            
         },
+        modify:{
+            backgroundColor: '#4380BE',
+            margin: 5,
+            borderRadius: 5,
+            alignItems: 'center',
+            padding: 8,
+            width: '100%', // Ajustar al ancho del contenedor
+            left: -5,
+        }
     },
     buttonText: {
-        color: '#000000',
+        color: '#fff',
         fontSize: 15,
         fontWeight: '400'
     },

@@ -4,9 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 
 //Importamos los componentes nesesarios
 import CardSettings from '../../components/CardsTypes/CardSettings';
-import ButtonGeneric from '../../components/ButtonGeneric'
 import NotificationSettingsModal from '../../components/Modals/notificationsSettingsModal';
 import AboutAppModal from '../../components/Modals/AboutAppModal';
+import PefilModal from '../../components/Modals/PerfilModal';
 
 // Importamos los estilos
 import { styles } from '../../themes/theme';
@@ -15,6 +15,7 @@ const SettingsScreen = () => {
     const navigation = useNavigation();
     const [modalVisibleAbout, setModalVisibleAbout] = useState(false);
     const [ModalVisibleNotification, setModalVisibleNotification] = useState(false);
+    const [ModalVisiblePerfil, setModaVisiblePerfil] = useState(false);
 
     const handleLogout = () => {
         // Lógica de cierre de sesión...
@@ -35,7 +36,9 @@ const SettingsScreen = () => {
                 rightIconName="chevron-right"
                 title="Configuracion de Perfil"
                 description="Foto de perfil, descripción, etc."
-                onRightIconPress={() => navigation.navigate('User')}                />
+                //onRightIconPress={() => navigation.navigate('User')}
+                onRightIconPress={() => setModaVisiblePerfil(true)}
+            />
             <CardSettings
                 leftIconName="bell"
                 rightIconName="chevron-right"
@@ -71,6 +74,10 @@ const SettingsScreen = () => {
             <AboutAppModal
                 visible={modalVisibleAbout}
                 onClose={() => setModalVisibleAbout(false)}
+            />
+            <PefilModal
+                visible={ModalVisiblePerfil}
+                onClose={() => setModaVisiblePerfil(false)}
             />
         </View>
     );

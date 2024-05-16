@@ -3,6 +3,7 @@ import { View, Text , TextInput, Button, Modal} from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { CardConfig } from "../themes/PantallasStyles/SettingsTheme";
+import TextInputModal from '../components/InputsType/TextInputModal';
 
 
 function SettingsView() {
@@ -82,7 +83,8 @@ function SettingsView() {
         <View style={[CardConfig.modalView, { justifyContent: 'flex-start' }]}>
             <Text style={{fontWeight : "bold"}}>Modificar información</Text>
 
-            <Text style={{marginTop : 25, marginLeft:10}}>Nombre : </Text>
+            <Text style={{marginTop : 25, marginLeft:10}}>Nombre: </Text>
+            <TextInput style={ModalForms.input} editable={true} placeholder='Duración de la cita'  />
             <TextInput
                 style={[CardConfig.input, {justifyContent : "flex-start"}]}
                 

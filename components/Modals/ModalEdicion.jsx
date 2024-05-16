@@ -1,34 +1,13 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Image,
-  Modal,
-  TextInput,
-  Platform,
-  Alert,
-} from "react-native";
-import {
-  Divider,
-  NativeBaseProvider,
-  Heading,
-  Stack,
-  Button,
-  Text,
-} from "native-base";
-import { CardConfig } from "../../themes/PantallasStyles/SettingsTheme";
+import {View, TouchableOpacity,Image, Modal, TextInput, Platform, Alert } from "react-native";
+import { Divider, NativeBaseProvider, Heading, Stack, Button, Text } from "native-base";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import backArrow from "../../assets/images/backArrow.png";
 
-const ModalEdicion = ({
-  cita,
-  onClose,
-  modalVisible,
-  citas,
-  setCitas,
-  oldCita,
-}) => {
+import { CardConfig } from "../../themes/PantallasStyles/SettingsTheme";
+import { ModalForms } from "../../themes/Appointments/modalFormsTheme";
+
+const ModalEdicion = ({cita, onClose, modalVisible, citas, setCitas, oldCita}) => {
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(new Date());
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
@@ -36,9 +15,7 @@ const ModalEdicion = ({
   const [isDateChangeAllowed, setIsDateChangeAllowed] = useState(false);
   const [duration, setDuration] = useState(0);
   const [isOldCita, setIsOldCita] = useState(oldCita);
-
   const [mode, setMode] = useState("date"); // Add this line
-
   const [name, setName] = useState(cita.name);
   const [dateCita, setDateCita] = useState(cita.date);
   const [timeCita, setTimeCita] = useState(cita.time);
@@ -112,7 +89,6 @@ const ModalEdicion = ({
   });
 
   // Hacer la petición a la API con el JSON de la cita actualizada
-
     onClose();
     confirmarCita();
   };
@@ -130,7 +106,6 @@ const ModalEdicion = ({
   };
 
   return (
-    <View style={[{}]}>
       <Modal
         animationType="fade"
         transparent={true}
@@ -138,25 +113,16 @@ const ModalEdicion = ({
         visible={modalVisible}
         onRequestClose={onClose}
       >
-        <View style={CardConfig.overlay}>
-          <View
-            style={[CardConfig.modalView, { justifyContent: "flex-start" }]}
-          >
-            <View
-              style={{
-                position: "absolute",
-                padding: 10,
-              }}
-            >
+        <View style={ModalForms.overlay}>
+          <View style={[CardConfig.modalView, { justifyContent: "flex-start" }]}>
+            <View style={{ position: "absolute", padding: 10 }}>
               <TouchableOpacity onPress={onClose}>
-                <Image
-                  source={backArrow}
+                <Image source={backArrow}
                   style={{
-                    width: 30, // Ajusta el ancho de la imagen
-                    height: 30, // Ajusta la altura de la imagen
-                    // Posiciona la imagen de manera absoluta
-                    top: 10, // Ajusta la distancia desde la parte superior del modal
-                    left: 10, // Ajusta la distancia desde el lado izquierdo del modal
+                    width: 30,
+                    height: 30,
+                    top: 33,
+                    left: 25,
                   }}
                 />
               </TouchableOpacity>
@@ -317,7 +283,6 @@ const ModalEdicion = ({
           </View>
         </View>
       </Modal>
-    </View>
   );
 };
 
