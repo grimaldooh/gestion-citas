@@ -43,7 +43,6 @@ const App = () => {
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="AppointmentScreen" component={AppointmentScreen} /> 
         <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="User" component={UserSettingsScreen} />
         <Stack.Screen name ="CalendarioScreen" component={CalendarioScreen}/>
         
       </Stack.Navigator>
