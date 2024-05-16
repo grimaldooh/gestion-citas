@@ -217,6 +217,7 @@ const CalendarComponent = () => {
           selected={currentDate}
           items={items}
           renderItem={renderItem}
+          minDate='2022-01-01'
           theme={{
             calendarBackground: '#001D3D',
             textSectionTitleColor: '#FFD353',

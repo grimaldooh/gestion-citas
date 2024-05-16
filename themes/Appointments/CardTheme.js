@@ -65,6 +65,7 @@ export const styles = StyleSheet.create({
         },
         iconButton: {
             justifyContent: 'flex-end',
+            alignItems: 'center',
             marginLeft: 40,
             right: 10,
             left: 55,

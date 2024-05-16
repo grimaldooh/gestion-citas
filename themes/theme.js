@@ -91,6 +91,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#001D3D',
+        height: '100%',
     },
     calendarContainer: {
         flex: 1,
