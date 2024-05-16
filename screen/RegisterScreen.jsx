@@ -13,48 +13,34 @@ import PayPalButton from '../components/PaypalButton';
 
 const RegisterScreen = () => {
     //Aqui sale que no se usan por que esta comentado el fetch
-    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [fullName, setFullName] = useState('');
-    const [phone, setPhone] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
     const [profession, setProfession] = useState('');
+    const [imgUrl, setImgUrl] = useState('');
     const navigation = useNavigation();
 
     const handleRegister = () => {
-        // Generar el JSON para los datos de inicio de sesión
-        const registerDataJson = JSON.stringify({
-            fullName: fullName,
-            email: email,
-            password: password,
-            phone: phone,
-            address: address,
-            profession: profession
+        RegisterAPI(fullName,email, password, phoneNumber, address, profession,imgUrl)
+        .then((response) => {
+            if (response.status === 200) {
+                console.log('Usuario registrado correctamente');
+                navigation.navigate('LoginScreen');
+            } else {
+                console.log('Usuario no registrado');
+            }
+        })
+        .catch((error) => {
+            console.error(error);
         });
-
-        console.log("Datos de registro JSON:", registerDataJson);
     }
 
     const PaypalHandle = () => {
         Alert.alert('Paypal', 'Pago exitoso');
     };
 
-    /*
-        const handleLogin = async () => {
-            try {
-                const response = await RegisterAPI(fullName, email, password);
-                if (response.ok) {
-                    Alert.alert('Inicio de sesión exitoso');
-                } else {
-                    Alert.alert('Error', 'Inicio de sesión fallido. Por favor, verifica tus credenciales.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                Alert.alert('Error', 'Ocurrió un error al intentar iniciar sesión. Por favor, intenta nuevamente más tarde.');
-            }
-        };
-    */
 
     return (
         <ImageBackground
@@ -79,9 +65,15 @@ const RegisterScreen = () => {
                     value={email}
                 />
                 <TextInput
+                    placeholder="Contraseña"
+                    onChangeText={(text) => setPassword(text)}
+                    value={password}
+                    secureTextEntry={true}
+                />
+                <TextInput
                     placeholder="Teléfono"
-                    onChangeText={(text) => setPhone(text)}
-                    value={phone}
+                    onChangeText={(text) => setPhoneNumber(text)}
+                    value={phoneNumber}
                     keyboardType="numeric"
                 />
                 <TextInput
@@ -94,12 +86,10 @@ const RegisterScreen = () => {
                     onChangeText={(text) => setProfession(text)}
                     value={profession}
                 />
-
                 <TextInput
-                    placeholder="Contraseña"
-                    onChangeText={(text) => setPassword(text)}
-                    value={password}
-                    secureTextEntry={true}
+                    placeholder="Img"
+                    onChangeText={(text) => setImgUrl(text)}
+                    value={imgUrl}
                 />
                 <ButtonGeneric
                     backgroundColor="loginColor"

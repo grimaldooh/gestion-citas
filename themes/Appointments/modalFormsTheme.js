@@ -59,4 +59,25 @@ export const ModalForms = StyleSheet.create({
         fontSize: 15,
         fontWeight: '400'
     },
+    title : {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#FFD353',
+        textAlign: 'center',
+        marginBottom: 10,
+    },
+    description: {
+        fontSize: 15,
+        color: '#FFD353',
+        textAlign: 'center',
+        marginBottom: 10,
+    },
+    modalContainerCenter: {
+        position: 'absolute',
+        bottom: 280,
+        width: '100%', // Reducir el ancho para centrar el contenido
+        backgroundColor: '#001D4D',
+        borderRadius: 20, // Redondear todas las esquinas
+        padding: 20,
+    },
 });
