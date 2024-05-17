@@ -6,7 +6,7 @@ import { Login } from '../themes/PantallasStyles/LoginTheme';
 const FacebookLoginButton = ({title}) => {
     return (
         <TouchableOpacity onPress={() => console.log('Ingresar con Facebook')} style={Login.facebookButton}>
-            <Image source={require('../assets/images/facebook.png')} style={Login.facebookButton.facebookLogo} />
+            <Image source={require('../assets/images/gmailPng.png')} style={Login.facebookButton.facebookLogo} />
             <Text style={Login.facebookButton.facebookButtonText}>{title}</Text>
         </TouchableOpacity>
     );

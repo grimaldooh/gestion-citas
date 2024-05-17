@@ -7,9 +7,8 @@ import ButtonGeneric from '../components/Buttons/ButtonGeneric';
 import { RegisterAPI } from '../services/authService';
 
 import { useNavigation } from '@react-navigation/native';
-import FacebookLoginButton from '../components/FacebookLoginButton';
+import GmailLoginButton from '../components/FacebookLoginButton';
 import { Login } from '../themes/PantallasStyles/LoginTheme';
-import PayPalButton from '../components/PaypalButton';
 
 const RegisterScreen = () => {
     const [password, setPassword] = useState('');
@@ -40,10 +39,6 @@ const RegisterScreen = () => {
                 console.error(error);
             });
     }
-
-    const PaypalHandle = () => {
-        Alert.alert('Paypal', 'Pago exitoso');
-    };
 
     return (
         <ImageBackground
@@ -104,9 +99,7 @@ const RegisterScreen = () => {
                     >
                         Registrate
                     </ButtonGeneric>
-                    <FacebookLoginButton title="Registrate con Facebook" />
-                    <PayPalButton
-                        onPress={PaypalHandle} />
+                    <GmailLoginButton title="Registrate con Gmail" />
                         </ScrollView>
             </View>
         </ImageBackground>

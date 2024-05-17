@@ -4,7 +4,7 @@ import { KeyboardAvoidingView, Platform } from 'react-native';
 
 //importamos los componentes que vamos a utilizar en la pantalla de login
 import TextInput from '../components/InputsType/TextInput';
-import FacebookLoginButton from '../components/FacebookLoginButton';
+import GmailLoginButton from '../components/FacebookLoginButton';
 import ButtonGeneric from '../components/Buttons/ButtonGeneric';
 import SessionModal from '../components/Modals/SessionModal';
 
@@ -83,7 +83,7 @@ const LoginScreen = () => {
                     >
                         Iniciar Sesión
                     </ButtonGeneric>
-                    <FacebookLoginButton title="Inicia sesion con Facebook" />
+                    <GmailLoginButton title="Inicia sesion con Gmail" />
                     <Text
                         style={Login.signupText}
                     >

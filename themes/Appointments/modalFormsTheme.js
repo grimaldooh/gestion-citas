@@ -113,5 +113,41 @@ export const ModalForms = StyleSheet.create({
         backgroundColor: '#001D4D',
         borderRadius: 20, // Redondear todas las esquinas
         padding: 20,
+    },    
+    modalContainerEdicion: {
+        position: 'absolute',
+        bottom: 140,
+        width: '85%', // Reducir el ancho para centrar el contenido
+        backgroundColor: '#001D4D',
+        borderRadius: 20, // Redondear todas las esquinas
+        padding: 20,
+    },
+    text: {
+        color: '#FFF',
+        fontSize: 13,
+        marginBottom: 0,
+    },
+    inputLarge: {
+        //borderWidth: 0.5,
+        //borderColor: '#DDD',
+        padding: 5,
+        fontSize: 13,
+        borderRadius: 12,
+        color: '#FFF',
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        width: '100%',
+        marginBottom: 10,
+        height: 100,
+    },
+    inputSmall: {
+        padding: 5,
+        fontSize: 13,
+        borderRadius: 6,
+        color: '#FFF',
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        width: '20%',
+        right: -10,
+        marginBottom: 10,
+        height: 30,
     },
 });

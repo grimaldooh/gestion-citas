@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, TouchableOpacity,Image, Modal, TextInput, Platform, Alert } from "react-native";
+import { View, TouchableOpacity, Image, Modal, TextInput, Platform, Alert } from "react-native";
 import { Divider, NativeBaseProvider, Heading, Stack, Button, Text } from "native-base";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import backArrow from "../../assets/images/backArrow.png";
@@ -7,7 +7,7 @@ import backArrow from "../../assets/images/backArrow.png";
 import { CardConfig } from "../../themes/PantallasStyles/SettingsTheme";
 import { ModalForms } from "../../themes/Appointments/modalFormsTheme";
 
-const ModalEdicion = ({cita, onClose, modalVisible, citas, setCitas, oldCita}) => {
+const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitas, oldCita }) => {
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(new Date());
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
@@ -94,19 +94,19 @@ const ModalEdicion = ({cita, onClose, modalVisible, citas, setCitas, oldCita}) =
     // Hacer la petición a la API con el JSON de la cita actualizada
 
     fetch(`https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/update/${cita.id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: updatedCitaJson
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: updatedCitaJson
     })
-    .then(response => response.json())
-    .then(data => {
+      .then(response => response.json())
+      .then(data => {
         console.log('Success:', data);
-    })
-    .catch((error) => {
+      })
+      .catch((error) => {
         console.error('Error:', error);
-    });
+      });
 
     onClose();
     confirmarCita();
@@ -125,191 +125,111 @@ const ModalEdicion = ({cita, onClose, modalVisible, citas, setCitas, oldCita}) =
   };
 
   return (
-      <Modal
-        animationType="fade"
-        transparent={true}
-        // visible={modalVisible}
-        visible={modalVisible}
-        onRequestClose={onClose}
-      >
-        <View style={ModalForms.overlay}>
-          <View style={[CardConfig.modalView, { justifyContent: "flex-start" }]}>
-            <View style={{ position: "absolute", padding: 10 }}>
-              <TouchableOpacity onPress={onClose}>
-                <Image source={backArrow}
-                  style={{
-                    width: 30,
-                    height: 30,
-                    top: 33,
-                    left: 25,
-                  }}
-                />
-              </TouchableOpacity>
-            </View>
-            <View style={[{ width: 250, marginTop: 15 }]}>
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  alignSelf: "center",
-                  fontSize: 20,
-                }}
-              >
-                Modificar cita
-              </Text>
-
-              <Text
-                style={{
-                  alignSelf: "flex-start",
-                  marginTop: 25,
-                  fontWeight: "bold",
-                }}
-              >
-                Informacion de la cita{" "}
-              </Text>
-
-              <View style={{ flexDirection: "row", marginTop: 10 }}>
-                <Text style={{ fontWeight: "bold" }}>Nombre : </Text>
-                <Text>{cita.name}</Text>
-              </View>
-
-              <View style={{ flexDirection: "row", marginTop: 10 }}>
-                <Text style={{ fontWeight: "bold" }}>Fecha : </Text>
-                <Text>
-                  {cita.date}, {cita.time}
-                </Text>
-              </View>
-            </View>
-            <Text style={{ marginTop: 25, marginLeft: 10 }}>
-              Añadir mensaje :{" "}
+    <Modal
+      animationType="fade"
+      transparent={true}
+      // visible={modalVisible}
+      visible={modalVisible}
+      onRequestClose={onClose}
+    >
+      <View style={ModalForms.overlay}>
+        <View style={[ModalForms.modalContainerEdicion]}>
+          <View>
+            <Text style={ModalForms.title}>Modificar cita</Text>
+            <Text style={ModalForms.label}>
+              <Text style={{ color: 'white' }}>Informacion de la cita{" "}</Text>
             </Text>
-            <TextInput
-              style={[
-                CardConfig.input,
-                {
-                  justifyContent: "flex-start",
-                  padding: 10,
-                  width: 250,
-                  height: 100,
-                  borderColor: "black",
-                  borderWidth: 1,
-                  borderRadius: 10,
-                  margin: 10,
-                  textAlignVertical: "top",
-                },
-              ]}
-              placeholder={"Escribe un mensaje para " + cita.name}
-              borderRadius={10}
-              multiline={true}
-              //onChangeText={setName}
-            />
-            {/* <Text style={{ marginTop: 10, marginLeft: 10 }}>dateCita : </Text>
-            <TextInput
-              style={CardConfig.input}
-              onChangeText={setDateCita}
-              placeholder={cita ? cita.dateCita : ""}
-            /> */}
 
-            <Button
-              onPress={showTimePicker}
-              style={{
-                marginBottom: 15,
-                marginTop: 5,
-              }}
-              size="sm"
-              variant="subtle"
-              colorScheme="cyan"
-            >
-              <Text style={{ textAlign: "left" }}>Cambiar hora</Text>
-            </Button>
-
-            <Button
-              onPress={showDatePicker}
-              style={{
-                marginBottom: 15,
-                marginTop: 5,
-              }}
-              size="sm"
-              variant="subtle"
-              colorScheme="cyan"
-            >
-              <Text style={{ textAlign: "left" }}>Cambiar fecha</Text>
-            </Button>
-            <View style={{ width: "85%" }}>
-              {isDatePickerVisible && (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={date}
-                  mode={mode}
-                  is24Hour={true}
-                  display="default"
-                  onChange={onDateChange}
-                />
-              )}
+            <View style={{ flexDirection: "row", alignItems: 'center' }}>
+              <Text style={ModalForms.label}>Nombre : </Text>
+              <Text style={ModalForms.text}>{cita.name}</Text>
             </View>
 
-            <View style={{ width: "85%" }}>
-              {isTimePickerVisible && (
-                <DateTimePicker
-                  testID="TimePicker"
-                  value={date}
-                  mode={"time"}
-                  is24Hour={true}
-                  display="default"
-                  onChange={onTimeChange}
-                />
-              )}
-            </View>
-            <Divider style={{ marginTop: 15 }} />
-            <View
-              style={{ flexDirection: "row", marginTop: 15, marginBottom: 10 }}
-            >
-              <Text style={{ marginTop: 3, fontWeight: "bold" }}>
-                Duración de la cita (minutos) :{" "}
-              </Text>
-              <TextInput
-                style={{
-                  borderWidth: 1,
-                  borderColor: "black",
-                  textAlign: "center",
-                  width: 35,
-                }}
-                placeholder={""}
-                borderRadius={10}
-                onChangeText={setDuration}
-              />
-            </View>
-
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-around" }}
-            >
-              {isOldCita && (
-                <Button
-                  onPress={onClose}
-                  style={{ marginTop: 15 }}
-                  size="sm"
-                  variant="subtle"
-                  colorScheme="red"
-                >
-                  <Text>Cancelar cita</Text>
-                </Button>
-              )}
-              <Button
-                onPress={() => {
-                  console.log("Botón Guardar cambios presionado");
-                  handleGuardar();
-                  onClose();
-                }}
-                style={{ marginTop: 15 }}
-                size="sm"
-                variant="subtle"
-                colorScheme="cyan"
-              >
-                <Text>Enviar solicitud </Text>
-              </Button>
+            <View style={{ flexDirection: "row", alignItems: 'center' }}>
+              <Text style={ModalForms.label}>Fecha : </Text>
+              <Text style={ModalForms.text}>{cita.date}, {cita.time}</Text>
             </View>
           </View>
+          <Divider style={{ marginTop: 10, marginBottom: 10 }} />
+          <Text style={ModalForms.label}>Añadir mensaje :{" "}</Text>
+          <TextInput style={ModalForms.inputLarge}
+            placeholder={"Escribe un mensaje para " + cita.name}
+            borderRadius={10}
+            multiline={true}></TextInput>
+
+          <TouchableOpacity style={ModalForms.button.modify} onPress={showTimePicker}>
+            <Text style={ModalForms.buttonText}>Cambiar Hora</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={ModalForms.button.modify} onPress={showDatePicker}>
+            <Text style={ModalForms.buttonText}>Cambiar Fecha</Text>
+          </TouchableOpacity>
+
+          <View style={{ width: "85%" }}>
+            {isDatePickerVisible && (
+              <DateTimePicker
+                testID="dateTimePicker"
+                value={date}
+                mode={mode}
+                is24Hour={true}
+                display="default"
+                onChange={onDateChange}
+              />
+            )}
+          </View>
+
+          <View style={{ width: "85%" }}>
+            {isTimePickerVisible && (
+              <DateTimePicker
+                testID="TimePicker"
+                value={date}
+                mode={"time"}
+                is24Hour={true}
+                display="default"
+                onChange={onTimeChange}
+              />
+            )}
+          </View>
+          <Divider style={{ marginTop: 15 }} />
+          <View style={{ flexDirection: "row", marginTop: 15, marginBottom: 10 }}>
+            <Text style={ModalForms.label}>Duración de la cita (minutos) :{" "}</Text>
+            <TextInput
+              style={ModalForms.inputSmall}
+              value={duration.toString()}
+              onChangeText={setDuration}
+              keyboardType="numeric"
+            />
+          </View>
+
+          <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+            {isOldCita && (
+              <Button
+                onPress={onClose}
+                style={{ marginTop: 15 }}
+                size="sm"
+                //variant="subtle"
+                colorScheme="red"
+              >
+                <Text style={{ color: 'white' }}>Cancelar cita</Text>
+              </Button>
+            )}
+            <Button
+              onPress={() => {
+                console.log("Botón Guardar cambios presionado");
+                handleGuardar();
+                onClose();
+              }}
+              style={{ marginTop: 15 }}
+              size="sm"
+              //variant="subtle"
+              colorScheme="green"
+            >
+              <Text style={{ color: 'white' }}>Enviar solicitud </Text>
+            </Button>
+          </View>
         </View>
-      </Modal>
+      </View>
+    </Modal>
   );
 };
 

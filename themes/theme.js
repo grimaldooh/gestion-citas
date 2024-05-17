@@ -108,6 +108,14 @@ export const styles = StyleSheet.create({
         top: -15,
         marginBottom: 20,
     },
+
+    cardContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginTop: 10,
+        
+    },
     
     
 //Estilo del componente ModalForms

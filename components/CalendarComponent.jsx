@@ -4,16 +4,19 @@ import { Agenda } from 'react-native-calendars';
 import { styles } from '../themes/theme';
 import { LocaleConfig } from 'react-native-calendars';
 import { NativeBaseProvider } from 'native-base';
-import Card from './CardsTypes/Card';
 import moment, { duration } from 'moment-timezone';
-import DefaulImage from '../assets/images/default.jpg';
+
+import Card from './CardsTypes/Card';
 import ModalEdicion from '../components/Modals/ModalEdicion';
+
+import DefaulImage from '../assets/images/default.jpg';
 import img1 from "../assets/images/persona.jpg"
 import img2 from "../assets/images/persona5.jpg";
 import img3 from "../assets/images/persona2.jpg";
 import img4 from "../assets/images/persona3.jpg";
 import img5 from "../assets/images/persona4.jpg";
 import img6 from "../assets/images/persona5.jpg";
+
 const CalendarComponent = () => {
   LocaleConfig.locales['es'] = {
     monthNames: [
@@ -181,7 +184,7 @@ const CalendarComponent = () => {
   const renderItem = item => {
     return (
       
-      <View>
+      <View style={styles.cardContainer}>
         <Card
         name={item.name}
         time={item.time}
@@ -201,10 +204,7 @@ const CalendarComponent = () => {
             oldCita={true}
           />
         )}
-        
       </View>
-      
-      
     );
   };
 

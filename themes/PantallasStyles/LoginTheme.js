@@ -20,18 +20,18 @@ export const Login = StyleSheet.create({
     facebookButton: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#3169FF',
+        backgroundColor: '#FFF',
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 10,
         marginTop: 15,
         facebookLogo: {
-            width: 20,
+            width: 30,
             height: 20,
             marginRight: 10,
         },
         facebookButtonText: {
-            color: '#FFFFFF',
+            color: '#000',
             fontWeight: 'bold',
             fontSize: 15,
         },
