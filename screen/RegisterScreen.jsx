@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, Image, Alert, ScrollView } from 'react-nat
 
 import TextInput from '../components/InputsType/TextInput';
 import { styles } from '../themes/theme';
-import ButtonGeneric from '../components/ButtonGeneric';
+import ButtonGeneric from '../components/Buttons/ButtonGeneric';
 import { RegisterAPI } from '../services/loginService';
 
 import { useNavigation } from '@react-navigation/native';

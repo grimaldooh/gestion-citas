@@ -9,7 +9,7 @@ import AboutAppModal from '../../components/Modals/AboutAppModal';
 import PefilModal from '../../components/Modals/PerfilModal';
 
 // Importamos la función de cierre de sesión
-import { LogoutAPI } from '../../services/authService';
+import { LogoutAPI } from '../../services/loginService';
 
 // Importamos los estilos
 import { styles } from '../../themes/theme';
