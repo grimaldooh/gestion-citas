@@ -20,6 +20,7 @@
     "@react-navigation/native-stack": "^6.9.26",
     "expo": "^51.0.2",
     "expo-status-bar": "~1.12.1",
+    "jwt-decode": "^4.0.0",
     "moment-timezone": "^0.5.45",
     "native-base": "^3.4.28",
     "normalize-css-color": "^1.0.2",

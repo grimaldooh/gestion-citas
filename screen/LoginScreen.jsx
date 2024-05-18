@@ -10,7 +10,7 @@ import { Login } from '../themes/PantallasStyles/LoginTheme';
 import { styles } from '../themes/theme';
 
 //Importamos los servicios
-import { LoginAPI } from '../services/authService';
+import { LoginAPI } from '../services/loginService';
 
 import { useNavigation } from '@react-navigation/native'; // Import the hook that helps us to navigate between screens between screens
 
@@ -19,21 +19,19 @@ const LoginScreen = () => {
     const [password, setPassword] = useState('');
     const navigation = useNavigation(); // Initialize the hook to use it in the handleLogin function
     const [modalSession, setModalSession] = useState(false);
-    const handleLogin = (e) => {
-        e.preventDefault();
-        LoginAPI(email, password)
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log('Usuario logueado correctamente');
-                    navigation.navigate('AppointmentScreen');
-                } else {
-                    console.log('Usuario no logueado');
-                    setModalSession(true);
-                }
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+    const [userData, setUserData] = useState({}); // Aqui se guarda la informacion del token decodificado
+    const handleLogin = async () => {
+        try {
+            const decodedToken = await LoginAPI(email, password);
+            setUserData(decodedToken);
+            const userId = decodedToken.userId;
+            console.log('Usuario logueado con Id:', userId);
+            navigation.navigate('AppointmentScreen');
+                
+        } catch (error) {
+            console.error('Error al iniciar sesion:', error);
+        }
+        
     };
         return (
             // El keyboardAvoidingView es un componente que nos ayuda a evitar que el teclado del dispositivo tape los inputs y

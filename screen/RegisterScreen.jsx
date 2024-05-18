@@ -4,7 +4,7 @@ import { View, Text, ImageBackground, Image, Alert } from 'react-native';
 import TextInput from '../components/InputsType/TextInput';
 import { styles } from '../themes/theme';
 import ButtonGeneric from '../components/ButtonGeneric';
-import { RegisterAPI } from '../services/authService';
+import { RegisterAPI } from '../services/loginService';
 
 import { useNavigation } from '@react-navigation/native';
 import FacebookLoginButton from '../components/FacebookLoginButton';
