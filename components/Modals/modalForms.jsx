@@ -81,14 +81,14 @@ const ModalForm = ({ onClose }) => {
 
                     <Text style={ModalForms.label}>Fecha:</Text>
                     <TextInput style={ModalForms.input} value={date.toLocaleDateString()} editable={false} />
-                    <TouchableOpacity style={ModalForms.button} onPress={() => setShowDatePicker(true)}>
+                    <TouchableOpacity style={ModalForms.button.modify} onPress={() => setShowDatePicker(true)}>
                         <Text style={ModalForms.buttonText}>Seleccionar Fecha</Text>
                     </TouchableOpacity>
                     {showDatePicker && <DateTimePicker value={date} mode="date" display="default" onChange={onChangeDate} />}
 
                     <Text style={ModalForms.label}>Hora:</Text>
                     <TextInput style={ModalForms.input} value={time.toLocaleTimeString()} editable={false} />
-                    <TouchableOpacity style={ModalForms.button} onPress={() => setShowTimePicker(true)}>
+                    <TouchableOpacity style={ModalForms.button.modify} onPress={() => setShowTimePicker(true)}>
                         <Text style={ModalForms.buttonText}>Seleccionar Hora</Text>
                     </TouchableOpacity>
                     {showTimePicker && <DateTimePicker value={time} mode="time" display="default" onChange={onChangeTime} />}
@@ -97,11 +97,11 @@ const ModalForm = ({ onClose }) => {
                     <TextInput style={ModalForms.input} value={duration} editable={true} placeholder='Duración de la cita' onChangeText={setDuration} />
 
 
-                    <TouchableOpacity style={ModalForms.button} onPress={saveAppointment}>
+                    <TouchableOpacity style={ModalForms.button.accept} onPress={saveAppointment}>
                         <Text style={ModalForms.buttonText}>Guardar Cita</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={ModalForms.button} onPress={onClose}>
+                    <TouchableOpacity style={ModalForms.button.reject} onPress={onClose}>
                         <Text style={ModalForms.buttonText}>Regresar</Text>
                     </TouchableOpacity>
                 </View>

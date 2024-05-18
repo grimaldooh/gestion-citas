@@ -4,13 +4,12 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Button,
   TextInput,
+  ScrollView,
 } from "react-native";
 
 //Importamos componentes nesesarios
-import ButtonGeneric from "../ButtonGeneric";
-import TextInputModal from "../InputsType/TextInputModal";
+import ButtonGeneric from "../Buttons/ButtonGeneric";
 
 //Importamos Estilos Nesesarios
 import { ModalForms } from "../../themes/Appointments/modalFormsTheme";
@@ -117,7 +116,6 @@ const AboutAppModal = ({ visible, onClose }) => {
             <Text style={ModalForms.buttonText}>Modificar información</Text>
           </TouchableOpacity>
           <ButtonGeneric onPress={onClose}>Cerrar</ButtonGeneric>
-
           <Modal
             animationType="fade"
             transparent={true}
@@ -126,10 +124,10 @@ const AboutAppModal = ({ visible, onClose }) => {
               setModalVisible(!modalVisible);
             }}>
             <View style={ModalForms.overlay}>
-              <View style={CardConfig.modalView}>
-                <Text style={styles.titleModal}>Modificar información</Text>
+              <View style={ModalForms.modalContainerCenter}>
+                <Text style={ModalForms.title.blanco}>Modificar información</Text>
 
-                <Text style={{ marginTop: 25, marginLeft: 10 }}>Nombre: </Text>
+                <Text style={ModalForms.label}>Nombre: </Text>
                 <TextInput
                   style={ModalForms.input}
                   value={name}
@@ -137,7 +135,7 @@ const AboutAppModal = ({ visible, onClose }) => {
                   placeholder="Ingresa el nombre a modificar                               "
                 />
 
-                <Text style={{ marginTop: 10, marginLeft: 10 }}>
+                <Text style={ModalForms.label}>
                   Correo electronico:{" "}
                 </Text>
                 <TextInput
@@ -147,7 +145,7 @@ const AboutAppModal = ({ visible, onClose }) => {
                   placeholder="Ingresa el Correo a modificar                                "
                 />
 
-                <Text style={{ marginTop: 10, marginLeft: 10 }}>
+                <Text style={ModalForms.label}>
                   Domicilio:{" "}
                 </Text>
                 <TextInput
@@ -157,7 +155,7 @@ const AboutAppModal = ({ visible, onClose }) => {
                   placeholder="Ingresa la direccion a modificar                             "
                 />
 
-                <Text style={{ marginTop: 10, marginLeft: 10 }}>
+                <Text style={ModalForms.label}>
                   Profesión:{" "}
                 </Text>
                 <TextInput
@@ -166,14 +164,15 @@ const AboutAppModal = ({ visible, onClose }) => {
                   value={profession}
                   placeholder="Ingresa la profesion a modificar                             "
                 />
-                <Button title="Guardar cambios" onPress={() => saveChanges()} />
+                <TouchableOpacity style={ModalForms.button.accept} onPress={() => saveChanges()}>
+                  <Text style={ModalForms.buttonText}>Guardar Informacion</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </Modal>
-          
         </View>
       </View>
-    </Modal>
+    </Modal >
   );
 };
 

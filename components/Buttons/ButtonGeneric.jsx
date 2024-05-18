@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
-import { styles } from '../themes/theme';
+import { styles } from '../../themes/theme';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const buttonStyles = {

@@ -8,6 +8,9 @@ import NotificationSettingsModal from '../../components/Modals/notificationsSett
 import AboutAppModal from '../../components/Modals/AboutAppModal';
 import PefilModal from '../../components/Modals/PerfilModal';
 
+// Importamos la función de cierre de sesión
+import { LogoutAPI } from '../../services/authService';
+
 // Importamos los estilos
 import { styles } from '../../themes/theme';
 
@@ -17,14 +20,14 @@ const SettingsScreen = () => {
     const [ModalVisibleNotification, setModalVisibleNotification] = useState(false);
     const [ModalVisiblePerfil, setModaVisiblePerfil] = useState(false);
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
         // Lógica de cierre de sesión...
+        await LogoutAPI();
         console.log("Cerrado de Sesion con Exito!");
-
         // Una vez que el usuario ha cerrado la sesión correctamente, restablece la pila de navegación
         navigation.reset({
             index: 0,
-            routes: [{ name: 'Login' }],
+            routes: [{ name: 'LoginScreen' }],
         });
     };
 

@@ -91,6 +91,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#001D3D',
+        height: '100%',
     },
     calendarContainer: {
         flex: 1,
@@ -106,6 +107,14 @@ export const styles = StyleSheet.create({
         fontSize: 12,
         top: -15,
         marginBottom: 20,
+    },
+
+    cardContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginTop: 10,
+        
     },
     
     

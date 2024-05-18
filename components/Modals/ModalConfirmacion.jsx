@@ -3,7 +3,7 @@ import React from "react";
 import { Modal, View, Text, TouchableHighlight } from "react-native";
 import { styles } from "../../themes/theme";
 import { ModalForms } from "../../themes/Appointments/modalFormsTheme";
-import ButtonGeneric from "../ButtonGeneric";
+import ButtonGeneric from "../Buttons/ButtonGeneric";
 
 const ModalConfirmacion = ({
   modalVisible,

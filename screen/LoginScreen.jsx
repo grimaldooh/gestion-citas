@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, ImageBackground, Image } from 'react-native';
 import { KeyboardAvoidingView, Platform } from 'react-native';
+
+//importamos los componentes que vamos a utilizar en la pantalla de login
 import TextInput from '../components/InputsType/TextInput';
-import FacebookLoginButton from '../components/FacebookLoginButton';
-import ButtonGeneric from '../components/ButtonGeneric';
+import GmailLoginButton from '../components/FacebookLoginButton';
+import ButtonGeneric from '../components/Buttons/ButtonGeneric';
 import SessionModal from '../components/Modals/SessionModal';
+
 //importamos los estilos de la pantalla de login
 import { Login } from '../themes/PantallasStyles/LoginTheme';
 import { styles } from '../themes/theme';
@@ -78,7 +81,7 @@ const LoginScreen = () => {
                     >
                         Iniciar Sesión
                     </ButtonGeneric>
-                    <FacebookLoginButton title="Inicia sesion con Facebook" />
+                    <GmailLoginButton title="Inicia sesion con Gmail" />
                     <Text
                         style={Login.signupText}
                     >

@@ -53,3 +53,24 @@ export const RegisterAPI = async (fullName,email, password, phoneNumber, address
         console.error(error);
     }
 }
+
+export const LogoutAPI = async () => {
+    const API_URL_LOGOUT = 'https://24a5-187-188-39-222.ngrok-free.app/api/User/login'
+    try {
+        const response = await fetch(API_URL_LOGOUT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Asegúrate de enviar el token en los encabezados si es necesario para la API
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+
+        // Elimina el token del almacenamiento local
+        localStorage.removeItem('token');
+
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+}
