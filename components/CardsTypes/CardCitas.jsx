@@ -62,7 +62,7 @@ const Card = ({ cita, key, setCitasProximas, img}) => {
     setIsAccepted(true);
     setCardColor("#36A831");
     setIsRejected(false);
-    cita.status = "aceptada";
+    cita.status = 2;
     console.log("ID de la cita : ", cita.id);
     
     // Lógica para aceptar la cita con API
@@ -74,6 +74,22 @@ const Card = ({ cita, key, setCitasProximas, img}) => {
     });
 
     console.log("Cita aceptada JSON:", acceptedCitaJson);
+
+    // Llamada a la API
+    fetch(`https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/update/${cita.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: acceptedCitaJson,
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 };
 
 const handleReject = () => {
@@ -81,7 +97,7 @@ const handleReject = () => {
     setIsRejected(true);
     setCardColor("#D23737");
     setIsAccepted(false);
-    cita.status = "rechazada";
+    cita.status = 0;
 
     // Lógica para rechazar la cita con API
 
@@ -92,6 +108,21 @@ const handleReject = () => {
     });
 
     console.log("Cita rechazada JSON:", rejectedCitaJson);
+
+    // Llamada a la API
+    fetch(`https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/delete/${cita.id}`, {
+      method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        // Actualizar el estado de las citas para excluir la cita rechazada
+        setCitasProximas(prevCitas => prevCitas.filter(c => c.id !== cita.id));
+  
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 };
 
   return (

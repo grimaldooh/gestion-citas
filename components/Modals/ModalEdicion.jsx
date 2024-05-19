@@ -7,7 +7,7 @@ import backArrow from "../../assets/images/backArrow.png";
 import { CardConfig } from "../../themes/PantallasStyles/SettingsTheme";
 import { ModalForms } from "../../themes/Appointments/modalFormsTheme";
 
-const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitas, oldCita }) => {
+const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitasPendientes, oldCita }) => {
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(new Date());
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
@@ -67,8 +67,6 @@ const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitas, oldCita })
 
   const handleGuardar = () => {
     const indexCita = citas.findIndex((c) => c.id === cita.id);
-    const nuevasCitas = [...citas];
-    nuevasCitas[indexCita] = { ...cita, date, time }; // Actualiza la dateCita de la cita    setCitas(nuevasCitas);
     //console.log("Citas actualizadas:", time);
     cita.time = `${timeCita}:00`;
     cita.date = dateCita;
@@ -86,7 +84,7 @@ const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitas, oldCita })
     // Generar el JSON para la cita actualizada
     const updatedCitaJson = JSON.stringify({
       startDate: cita.date,
-      startTime: cita.time,
+      startTime: cita.time.slice(0, 8), // Tomar solo las primeras 8 caracteres de la hora para asegurar el formato correcto
       durationMinutes: cita.duration,
       status: cita.status,
     });
@@ -107,10 +105,44 @@ const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitas, oldCita })
       .catch((error) => {
         console.error('Error:', error);
       });
-
+    const nuevasCitas = [...citas];
+    nuevasCitas[indexCita] = { ...cita}; // Actualiza la dateCita de la cita    setCitasPendientes(nuevasCitas);
+    setCitasPendientes(nuevasCitas); // Actualiza el estado citas con el nuevo array
     onClose();
     confirmarCita();
   };
+
+  const handleCancelar = () => {
+    // Lógica para cancelar la cita con API
+    // Generar el JSON para la cita cancelada
+    const canceledCitaJson = JSON.stringify({
+      id: cita.id,
+      status: 0,
+    });
+  
+    console.log("Cita cancelada JSON:", canceledCitaJson);
+  
+    // Llamada a la API
+    fetch(`https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/delete/${cita.id}`, {
+      method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+  
+      const indexCita = citas.findIndex((c) => c.id === cita.id);
+      const nuevasCitas = [...citas];
+      nuevasCitas.splice(indexCita, 1);
+      setCitasPendientes(nuevasCitas);
+      console.log("Cita cancelada:", { dateCita, name, status });
+      setCitasPendientes(prevCitas => prevCitas.filter(c => c.id !== cita.id));
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+    onClose();
+  };
+
 
   const showTimePicker = () => {
     setIsDateChangeAllowed(true);
@@ -204,7 +236,7 @@ const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitas, oldCita })
           <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
             {isOldCita && (
               <Button
-                onPress={onClose}
+                onPress={handleCancelar}
                 style={{ marginTop: 15 }}
                 size="sm"
                 //variant="subtle"
