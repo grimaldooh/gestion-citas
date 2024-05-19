@@ -90,7 +90,7 @@ export const ModalForms = StyleSheet.create({
         fontWeight: 'bold',
         color: '#FFD353',
         textAlign: 'center',
-        marginBottom: 10,
+        marginBottom: 5,
         blanco:{
             fontSize: 20,
             fontWeight: 'bold',
@@ -150,4 +150,7 @@ export const ModalForms = StyleSheet.create({
         marginBottom: 10,
         height: 30,
     },
+    iconModalEdicion: {
+        top: -30,
+    }
 });

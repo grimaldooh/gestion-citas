@@ -1,22 +1,11 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  Modal,
-  TextInput,
-  Alert,
-} from "react-native";
+import { View, Text, Image } from "react-native";
 import {
   Divider,
   NativeBaseProvider,
   Heading,
   Stack,
   Button,
-  IconButton,
-  CloseIcon,
 } from "native-base";
 
 import { citaGestor } from "../styles/global";
@@ -24,7 +13,7 @@ import checkmark from "../../Imagenes/checkmark.png";
 import crossmark from "../../Imagenes/crossmark.webp";
 import ModalEdicion from "./modalEdicion";
 
-export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
+export function CitasSolicitadasHoy({ citas, setCitasSolicitadasHoy }) {
   const [modalEdicionVisible, setModalEdicionVisible] = useState(false);
   const [selectedCitaId, setSelectedCitaId] = useState(null);
   const [selectedCita, setSelectedCita] = useState(null);
@@ -92,24 +81,22 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                 marginTop: 35,
                 backgroundColor: "white",
                 shadowColor: "#000",
-              shadowOffset: {
-                width: 0,
-                height: 2,
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+                elevation: 15,
               },
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              elevation: 15,
-              },
-            ]}
-          >
+            ]}>
             <View
               style={[
                 {
                   flexDirection: "row",
                   padding: 10,
                 },
-              ]}
-            >
+              ]}>
               <Image
                 source={cita.image}
                 style={{ width: 90, height: 90, borderRadius: 25 }}
@@ -119,8 +106,7 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                 style={[
                   citaGestor.citasContainer,
                   { borderRadius: 25, padding: 5 },
-                ]}
-              >
+                ]}>
                 <View style={[{ flexDirection: "column" }]}>
                   <View style={citaGestor.citasTop}>
                     <Heading size="md">{cita.nombre}</Heading>
@@ -133,8 +119,7 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
               </View>
             </View>
             <View
-              style={[{ marginTop: 10, marginBottom: 10, maxWidth: "95%" }]}
-            >
+              style={[{ marginTop: 10, marginBottom: 10, maxWidth: "95%" }]}>
               <Divider
                 bg="black"
                 thickness="1"
@@ -150,8 +135,7 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                   width: "80%",
                   marginLeft: "10%",
                   padding: 3,
-                }}
-              >
+                }}>
                 <Stack
                   mb="2.5"
                   mt="1.5"
@@ -163,24 +147,21 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                   mx={{
                     base: "auto",
                     md: "0",
-                  }}
-                >
+                  }}>
                   <Button
                     size="sm"
                     variant="subtle"
                     onPress={() => {
                       setSelectedCitaId(cita.id);
                       setSelectedAction("aceptar");
-                    }}
-                  >
+                    }}>
                     <Text>Aceptar</Text>
                   </Button>
                   <Button
                     size="sm"
                     variant="subtle"
                     colorScheme="emerald"
-                    onPress={() => editarCita(cita.id)}
-                  >
+                    onPress={() => editarCita(cita.id)}>
                     <Text>Modificar fecha</Text>
                   </Button>
                   <Button
@@ -190,8 +171,7 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                     onPress={() => {
                       setSelectedCitaId(cita.id);
                       setSelectedAction("rechazar");
-                    }}
-                  >
+                    }}>
                     <Text>Rechazar</Text>
                   </Button>
                 </Stack>
@@ -206,8 +186,7 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                   width: "80%",
                   marginLeft: "10%",
                   marginBottom: 10,
-                }}
-              >
+                }}>
                 <Button
                   size="sm"
                   variant="subtle"
@@ -223,8 +202,7 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                       cita.state = "rechazada";
                     }
                     //confirmarCita();
-                  }}
-                >
+                  }}>
                   <Text>Confirmar</Text>
                 </Button>
                 <Button
@@ -234,8 +212,7 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                   onPress={() => {
                     setSelectedCitaId(null);
                     // confirmarCita();
-                  }}
-                >
+                  }}>
                   <Text>Cancelar</Text>
                 </Button>
               </View>
@@ -262,16 +239,14 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                   borderRadius: 20,
                   alignItems: "center",
                   flexDirection: "column",
-                }}
-              >
+                }}>
                 <View
                   style={{
                     flexDirection: "row",
                     justifyContent: "center",
                     alignItems: "center",
                     marginTop: 20,
-                  }}
-                >
+                  }}>
                   <View>
                     <Image
                       source={checkmark}
@@ -304,16 +279,14 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                   borderRadius: 20,
                   alignItems: "center",
                   flexDirection: "column",
-                }}
-              >
+                }}>
                 <View
                   style={{
                     flexDirection: "row",
                     justifyContent: "center",
                     alignItems: "center",
                     marginTop: 20,
-                  }}
-                >
+                  }}>
                   <View>
                     <Image
                       source={crossmark}
@@ -346,16 +319,14 @@ export function CitasSolicitadasHoy({citas, setCitasSolicitadasHoy}) {
                   borderRadius: 20,
                   alignItems: "center",
                   flexDirection: "column",
-                }}
-              >
+                }}>
                 <View
                   style={{
                     flexDirection: "row",
                     justifyContent: "center",
                     alignItems: "center",
                     marginTop: 20,
-                  }}
-                >
+                  }}>
                   <View>
                     <Image
                       source={crossmark}

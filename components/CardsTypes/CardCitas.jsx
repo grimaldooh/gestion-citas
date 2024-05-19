@@ -23,7 +23,7 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const Card = ({ cita, key, setCitasProximas, img}) => {
+const Card = ({ cita, key, setCitasProximas, img }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [isAccepted, setIsAccepted] = useState(false);
   const [isRejected, setIsRejected] = useState(false);
@@ -64,35 +64,38 @@ const Card = ({ cita, key, setCitasProximas, img}) => {
     setIsRejected(false);
     cita.status = 2;
     console.log("ID de la cita : ", cita.id);
-    
+
     // Lógica para aceptar la cita con API
 
     // Generar el JSON para la cita aceptada
     const acceptedCitaJson = JSON.stringify({
-        id: cita.id,
-        status: cita.status,
+      id: cita.id,
+      status: cita.status,
     });
 
     console.log("Cita aceptada JSON:", acceptedCitaJson);
 
     // Llamada a la API
-    fetch(`https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/update/${cita.id}`, {
-        method: 'PUT',
+    fetch(
+      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/update/${cita.id}`,
+      {
+        method: "PUT",
         headers: {
-            'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: acceptedCitaJson,
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-};
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
-const handleReject = () => {
+  const handleReject = () => {
     console.log("Rechazar");
     setIsRejected(true);
     setCardColor("#D23737");
@@ -103,27 +106,31 @@ const handleReject = () => {
 
     // Generar el JSON para la cita rechazada
     const rejectedCitaJson = JSON.stringify({
-        id: cita.id,
-        status: cita.status,
+      id: cita.id,
+      status: cita.status,
     });
 
     console.log("Cita rechazada JSON:", rejectedCitaJson);
 
     // Llamada a la API
-    fetch(`https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/delete/${cita.id}`, {
-      method: 'DELETE',
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
+    fetch(
+      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/delete/${cita.id}`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
         // Actualizar el estado de las citas para excluir la cita rechazada
-        setCitasProximas(prevCitas => prevCitas.filter(c => c.id !== cita.id));
-  
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-};
+        setCitasProximas((prevCitas) =>
+          prevCitas.filter((c) => c.id !== cita.id)
+        );
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <Animated.View style={{ ...styles.card, backgroundColor: cardColor }}>
@@ -132,8 +139,9 @@ const handleReject = () => {
 
       <View style={styles.textContainer}>
         <Text style={styles.title}>{cita.name}</Text>
-        <Text style={styles.body}>{cita.date} at {cita.time}</Text>
-        
+        <Text style={styles.body}>
+          {cita.date} at {cita.time}
+        </Text>
 
         {!isCollapsed && (
           <View style={styles.buttonContainer}>

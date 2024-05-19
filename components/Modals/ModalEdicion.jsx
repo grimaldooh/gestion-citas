@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { View, TouchableOpacity, Image, Modal, TextInput, Platform, Alert } from "react-native";
-import { Divider, NativeBaseProvider, Heading, Stack, Button, Text } from "native-base";
+import { View, TouchableOpacity, Modal, TextInput, Alert } from "react-native";
+import { Divider, Button, Text } from "native-base";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import backArrow from "../../assets/images/backArrow.png";
+import Icon from "react-native-vector-icons/Ionicons";
 
-import { CardConfig } from "../../themes/PantallasStyles/SettingsTheme";
+//importamos componentes
 import { ModalForms } from "../../themes/Appointments/modalFormsTheme";
+import ModalConfirmacion from "../Modals/ModalConfirmacion";
 
-const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitasPendientes, oldCita }) => {
+const ModalEdicion = ({
+  cita,
+  onClose,
+  modalVisible,
+  citas,
+  setCitasPendientes,
+  oldCita,
+}) => {
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(new Date());
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
@@ -20,6 +28,8 @@ const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitasPendientes, 
   const [dateCita, setDateCita] = useState(cita.date);
   const [timeCita, setTimeCita] = useState(cita.time);
   const [status, setStatus] = useState(cita.status);
+  const [modalVisibleConfirmacion, setModalVisibleConfirmacion] =
+    useState(false);
 
   useEffect(() => {
     setName(cita.name);
@@ -91,22 +101,25 @@ const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitasPendientes, 
 
     // Hacer la petición a la API con el JSON de la cita actualizada
 
-    fetch(`https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/update/${cita.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: updatedCitaJson
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
+    fetch(
+      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/update/${cita.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: updatedCitaJson,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
     const nuevasCitas = [...citas];
-    nuevasCitas[indexCita] = { ...cita}; // Actualiza la dateCita de la cita    setCitasPendientes(nuevasCitas);
+    nuevasCitas[indexCita] = { ...cita }; // Actualiza la dateCita de la cita    setCitasPendientes(nuevasCitas);
     setCitasPendientes(nuevasCitas); // Actualiza el estado citas con el nuevo array
     onClose();
     confirmarCita();
@@ -119,30 +132,34 @@ const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitasPendientes, 
       id: cita.id,
       status: 0,
     });
-  
+
     console.log("Cita cancelada JSON:", canceledCitaJson);
-  
+
     // Llamada a la API
-    fetch(`https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/delete/${cita.id}`, {
-      method: 'DELETE',
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-  
-      const indexCita = citas.findIndex((c) => c.id === cita.id);
-      const nuevasCitas = [...citas];
-      nuevasCitas.splice(indexCita, 1);
-      setCitasPendientes(nuevasCitas);
-      console.log("Cita cancelada:", { dateCita, name, status });
-      setCitasPendientes(prevCitas => prevCitas.filter(c => c.id !== cita.id));
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    fetch(
+      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/delete/${cita.id}`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+
+        const indexCita = citas.findIndex((c) => c.id === cita.id);
+        const nuevasCitas = [...citas];
+        nuevasCitas.splice(indexCita, 1);
+        setCitasPendientes(nuevasCitas);
+        console.log("Cita cancelada:", { dateCita, name, status });
+        setCitasPendientes((prevCitas) =>
+          prevCitas.filter((c) => c.id !== cita.id)
+        );
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
     onClose();
   };
-
 
   const showTimePicker = () => {
     setIsDateChangeAllowed(true);
@@ -156,44 +173,62 @@ const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitasPendientes, 
     setIsDatePickerVisible(true);
   };
 
+  const handleConfirm = () => {};
+
   return (
     <Modal
       animationType="fade"
       transparent={true}
       // visible={modalVisible}
       visible={modalVisible}
-      onRequestClose={onClose}
-    >
+      onRequestClose={onClose}>
       <View style={ModalForms.overlay}>
         <View style={[ModalForms.modalContainerEdicion]}>
           <View>
-            <Text style={ModalForms.title}>Modificar cita</Text>
+            <View>
+              <Text style={ModalForms.title}>Modificar cita</Text>
+              <TouchableOpacity onPress={onClose}>
+                <Icon
+                  style={ModalForms.iconModalEdicion}
+                  name="close"
+                  size={26}
+                  color="#FFF"
+                />
+              </TouchableOpacity>
+            </View>
             <Text style={ModalForms.label}>
-              <Text style={{ color: 'white' }}>Informacion de la cita{" "}</Text>
+              <Text style={{ color: "white" }}>Informacion de la cita </Text>
             </Text>
 
-            <View style={{ flexDirection: "row", alignItems: 'center' }}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Text style={ModalForms.label}>Nombre : </Text>
               <Text style={ModalForms.text}>{cita.name}</Text>
             </View>
 
-            <View style={{ flexDirection: "row", alignItems: 'center' }}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Text style={ModalForms.label}>Fecha : </Text>
-              <Text style={ModalForms.text}>{cita.date}, {cita.time}</Text>
+              <Text style={ModalForms.text}>
+                {cita.date}, {cita.time}
+              </Text>
             </View>
           </View>
           <Divider style={{ marginTop: 10, marginBottom: 10 }} />
-          <Text style={ModalForms.label}>Añadir mensaje :{" "}</Text>
-          <TextInput style={ModalForms.inputLarge}
+          <Text style={ModalForms.label}>Añadir mensaje : </Text>
+          <TextInput
+            style={ModalForms.inputLarge}
             placeholder={"Escribe un mensaje para " + cita.name}
             borderRadius={10}
             multiline={true}></TextInput>
 
-          <TouchableOpacity style={ModalForms.button.modify} onPress={showTimePicker}>
+          <TouchableOpacity
+            style={ModalForms.button.modify}
+            onPress={showTimePicker}>
             <Text style={ModalForms.buttonText}>Cambiar Hora</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={ModalForms.button.modify} onPress={showDatePicker}>
+          <TouchableOpacity
+            style={ModalForms.button.modify}
+            onPress={showDatePicker}>
             <Text style={ModalForms.buttonText}>Cambiar Fecha</Text>
           </TouchableOpacity>
 
@@ -223,8 +258,11 @@ const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitasPendientes, 
             )}
           </View>
           <Divider style={{ marginTop: 15 }} />
-          <View style={{ flexDirection: "row", marginTop: 15, marginBottom: 10 }}>
-            <Text style={ModalForms.label}>Duración de la cita (minutos) :{" "}</Text>
+          <View
+            style={{ flexDirection: "row", marginTop: 15, marginBottom: 10 }}>
+            <Text style={ModalForms.label}>
+              Duración de la cita (minutos) :{" "}
+            </Text>
             <TextInput
               style={ModalForms.inputSmall}
               value={duration.toString()}
@@ -233,34 +271,40 @@ const ModalEdicion = ({ cita, onClose, modalVisible, citas, setCitasPendientes, 
             />
           </View>
 
-          <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-around" }}>
             {isOldCita && (
               <Button
-                onPress={handleCancelar}
+                onPress={() => {
+                  setModalVisibleConfirmacion(true);
+                }}
                 style={{ marginTop: 15 }}
                 size="sm"
-                //variant="subtle"
-                colorScheme="red"
-              >
-                <Text style={{ color: 'white' }}>Cancelar cita</Text>
+                colorScheme="red">
+                <Text style={{ color: "white" }}>Cancelar cita</Text>
               </Button>
             )}
             <Button
               onPress={() => {
-                console.log("Botón Guardar cambios presionado");
+                //setModalVisibleConfirmacion(true);
                 handleGuardar();
-                onClose();
               }}
               style={{ marginTop: 15 }}
               size="sm"
-              //variant="subtle"
-              colorScheme="green"
-            >
-              <Text style={{ color: 'white' }}>Enviar solicitud </Text>
+              colorScheme="green">
+              <Text style={{ color: "white" }}>Enviar solicitud </Text>
             </Button>
           </View>
         </View>
       </View>
+      <ModalConfirmacion
+        modalVisible={modalVisibleConfirmacion}
+        setModalVisible={setModalVisibleConfirmacion}
+        handleConfirm={() => {
+          setModalVisibleConfirmacion(false);
+          handleCancelar();
+        }}
+      />
     </Modal>
   );
 };

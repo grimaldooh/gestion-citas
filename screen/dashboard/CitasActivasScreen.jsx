@@ -1,8 +1,8 @@
-import React, { useState , useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Card from "../../components/CardsTypes/Card";
 import { View, Text, ScrollView, Image } from "react-native";
 import { styles } from "../../themes/theme";
-import UserIdContext from "../../context/userContext"; 
+import UserIdContext from "../../context/userContext";
 
 import img1 from "../../assets/images/persona.jpg";
 import img2 from "../../assets/images/persona5.jpg";
@@ -13,12 +13,10 @@ import img6 from "../../assets/images/persona5.jpg";
 import ModalEdicion from "../../components/Modals/ModalEdicion";
 import { NativeBaseProvider } from "native-base";
 
-
 // Importa los datos del archivo JSON
 
 const CitasActivasScreen = ({ citas, setCitasPendientes }) => {
-
-  const citasActivas = citas.filter(cita => cita.status === 2);
+  const citasActivas = citas.filter((cita) => cita.status === 2);
 
   const [modalEdicionVisible, setModalEdicionVisible] = useState(false);
   const [selectedCita, setselectedCita] = useState(null);
@@ -30,7 +28,7 @@ const CitasActivasScreen = ({ citas, setCitasPendientes }) => {
 
   const editarCita = (id) => {
     // Implementar la lógica para editar el usuario con `id`
-    
+
     console.log("Editar usuario con ID:", id);
     const citaSeleccionada = citas.find((cita) => cita.id === id);
     console.log("Editar usuario con ID:", citaSeleccionada);
@@ -40,37 +38,36 @@ const CitasActivasScreen = ({ citas, setCitasPendientes }) => {
     }
   };
 
-
   return (
     <NativeBaseProvider>
-    <ScrollView style={styles.container}>
-      <Text style={styles.titleScreen}>Citas Activas</Text>
-      {/* Itera sobre los datos del archivo JSON y crea los componentes Card dinámicamente */}
-      {citasActivas.map((cita, index) => (
-        <Card
-          id = {cita.id}
-          name = {cita.name}
-          time = {cita.time}
-          date = {cita.date}
-          status = {cita.status}
-          setCitasPendientes={setCitasPendientes}
-          img={getImageByFilename(cita.img)}
-          editarCita={editarCita}
-        />
-      ))}
-      <View>
-        {selectedCita && (
-          <ModalEdicion
-            cita={selectedCita}
-            onClose={closeModal}
-            modalVisible={modalEdicionVisible}
-            citas={citas}
+      <ScrollView style={styles.container}>
+        <Text style={styles.titleScreen}>Citas Activas</Text>
+        {/* Itera sobre los datos del archivo JSON y crea los componentes Card dinámicamente */}
+        {citasActivas.map((cita, index) => (
+          <Card
+            id={cita.id}
+            name={cita.name} 
+            time={cita.time}
+            date={cita.date}
+            status={cita.status}
             setCitasPendientes={setCitasPendientes}
-            oldCita={true}
+            img={getImageByFilename(cita.img)}
+            editarCita={editarCita}
           />
-        )}
-      </View>
-    </ScrollView>
+        ))}
+        <View>
+          {selectedCita && (
+            <ModalEdicion
+              cita={selectedCita}
+              onClose={closeModal}
+              modalVisible={modalEdicionVisible}
+              citas={citas}
+              setCitasPendientes={setCitasPendientes}
+              oldCita={true}
+            />
+          )}
+        </View>
+      </ScrollView>
     </NativeBaseProvider>
   );
 };

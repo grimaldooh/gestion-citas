@@ -2,20 +2,19 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     card: {
-        position: 'relative', // Para poder posicionar la imagen de manera absoluta
+        position: 'relative',
         padding: 5,
         backgroundColor: '#FFD353',
-        width: 315, // Ancho de la tarjeta
-        height: 70, // Altura de la tarjeta
+        width: 315,
+        height: 70,
         borderRadius: 10,
         top: -50,
-        marginLeft: 45, // Margen izquierdo para separar las tarjetas
-        marginTop: 115, // Margen superior para separar las tarjetas
-        flexDirection: 'row', // Para alinear la imagen y el texto en la misma fila
-        alignItems: 'center', // Para alinear verticalmente el contenido
-        alignSelf: 'center', // Para centrar la tarjeta en la pantalla  
-        marginVertical: -80, // Para agregar un margen vertical entre las tarjetas,
-        
+        marginLeft: 45,
+        marginTop: 100,
+        marginBottom: -40,
+        flexDirection: 'row',
+        alignItems: 'center',
+        alignSelf: 'center',
         image: {
             position: 'absolute', // Para posicionar la imagen encima del rectángulo
             top: -5, // Para centrar verticalmente la imagen
