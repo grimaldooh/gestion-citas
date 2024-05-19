@@ -18,14 +18,16 @@ const Card = ({ name, time, date, img, editarCita, status, id }) => {
             {date} at {time}
           </Text>
         </View>
-        <TouchableOpacity onPress={() => editarCita(id)}>
-          <Icon
-            style={styles.card.iconButton}
-            name='edit'
-            size={18}
-            color="#000"
-          />
-        </TouchableOpacity>
+<TouchableOpacity onPress={() => editarCita(id)}>
+  <View>
+    <Icon
+      style={styles.card.iconButton}
+      name='edit'
+      size={18}
+      color="#000"
+    />
+  </View>
+</TouchableOpacity>
       </View>
     </ScrollView>
   );

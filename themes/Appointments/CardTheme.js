@@ -3,15 +3,16 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     card: {
         position: 'relative',
-        padding: 5,
         backgroundColor: '#FFD353',
-        width: 315,
+        width: '80%',
+        //width: 315,
         height: 70,
         borderRadius: 10,
         top: -50,
         marginLeft: 45,
         marginTop: 100,
         marginBottom: -40,
+        padding: 5,
         flexDirection: 'row',
         alignItems: 'center',
         alignSelf: 'center',
