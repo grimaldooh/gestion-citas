@@ -10,12 +10,14 @@ import img5 from "../../assets/images/persona4.jpg";
 import img6 from "../../assets/images/persona5.jpg";
 
 const SolicitudCitasScreen = ({ citas, setCitasPendientes }) => {
+  // Filtrar las citas para incluir solo las que tienen status 1
+  const citasPendientes = citas.filter(cita => cita.status === 1);
 
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.titleScreen}>Citas Activas</Text>
       {/* Recorre todos los datos del archivo JSON y crea los componentes Card dinámicamente */}
-      {citas.map((cita, index) => (
+      {citasPendientes.map((cita, index) => (
         <CardCitas
           key={cita.id}
           id={cita.id}

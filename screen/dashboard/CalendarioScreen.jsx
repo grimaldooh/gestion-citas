@@ -8,12 +8,13 @@ import UserIdContext from "../../context/userContext";
 const CalendarioScreen = ({ citas, setCitasCalendario }) => {
 
   const { userId } = useContext(UserIdContext);
+  const citasActivas = citas.filter(cita => cita.status === 2);
 
   
 
   return (
     
-      <CalendarComponent citas={citas} setCitasPendientes={setCitasCalendario}/>
+      <CalendarComponent citas={citasActivas} setCitasPendientes={setCitasCalendario}/>
 
  
   );

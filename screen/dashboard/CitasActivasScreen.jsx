@@ -18,6 +18,8 @@ import { NativeBaseProvider } from "native-base";
 
 const CitasActivasScreen = ({ citas, setCitasPendientes }) => {
 
+  const citasActivas = citas.filter(cita => cita.status === 2);
+
   const [modalEdicionVisible, setModalEdicionVisible] = useState(false);
   const [selectedCita, setselectedCita] = useState(null);
   const { userId } = useContext(UserIdContext);
@@ -38,21 +40,13 @@ const CitasActivasScreen = ({ citas, setCitasPendientes }) => {
     }
   };
 
-  
-
-  console.log("userId", userId);
-
-  
-
-
-
 
   return (
     <NativeBaseProvider>
     <ScrollView style={styles.container}>
       <Text style={styles.titleScreen}>Citas Activas</Text>
       {/* Itera sobre los datos del archivo JSON y crea los componentes Card dinámicamente */}
-      {citas.map((cita, index) => (
+      {citasActivas.map((cita, index) => (
         <Card
           id = {cita.id}
           name = {cita.name}
