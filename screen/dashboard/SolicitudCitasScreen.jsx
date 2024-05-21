@@ -14,25 +14,27 @@ const SolicitudCitasScreen = ({ citas, setCitasPendientes }) => {
   const citasPendientes = citas.filter(cita => cita.status === 1);
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.titleScreen}>Citas Activas</Text>
-      {/* Si no hay citas pendientes, muestra un mensaje. De lo contrario, muestra las citas */}
-      {citasPendientes.length === 0 ? (
-        <View style={styles.centeredMessage}>
-          <Text style={styles.title.blank}>No hay citas activas en este momento</Text>
-        </View>
-      ) : (
-        citasPendientes.map((cita, index) => (
-          <CardCitas
-            key={cita.id}
-            id={cita.id}
-            cita={cita}
-            setCitasProximas={setCitasPendientes}
-            img={getImageByFilename(cita.img)} 
-          />
-        ))
-      )}
-    </ScrollView>
+      <ScrollView style={styles.scrollContainer}>
+        {/* Si no hay citas pendientes, muestra un mensaje. De lo contrario, muestra las citas */}
+        {citasPendientes.length === 0 ? (
+          <View style={styles.centeredMessage}>
+            <Text style={styles.title.blank}>No hay citas activas en este momento</Text>
+          </View>
+        ) : (
+          citasPendientes.map((cita, index) => (
+            <CardCitas
+              key={cita.id}
+              id={cita.id}
+              cita={cita}
+              setCitasProximas={setCitasPendientes}
+              img={getImageByFilename(cita.img)}
+            />
+          ))
+        )}
+      </ScrollView>
+    </View>
   );
 };
 

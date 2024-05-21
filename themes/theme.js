@@ -194,6 +194,9 @@ export const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
     },
+    scrollContainer: {
+        marginBottom: 115,
+    },
 });
 
 export const modalContentStyle = {

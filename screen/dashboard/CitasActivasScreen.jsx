@@ -40,34 +40,36 @@ const CitasActivasScreen = ({ citas, setCitasPendientes }) => {
 
   return (
     <NativeBaseProvider>
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.titleScreen}>Citas Activas</Text>
-        {/* Itera sobre los datos del archivo JSON y crea los componentes Card dinámicamente */}
-        {citasActivas.map((cita, index) => (
-          <Card
-            id={cita.id}
-            name={cita.name} 
-            time={cita.time}
-            date={cita.date}
-            status={cita.status}
-            setCitasPendientes={setCitasPendientes}
-            img={getImageByFilename(cita.img)}
-            editarCita={editarCita}
-          />
-        ))}
-        <View>
-          {selectedCita && (
-            <ModalEdicion
-              cita={selectedCita}
-              onClose={closeModal}
-              modalVisible={modalEdicionVisible}
-              citas={citas}
+        <ScrollView style={styles.scrollContainer}>
+          {/* Itera sobre los datos del archivo JSON y crea los componentes Card dinámicamente */}
+          {citasActivas.map((cita, index) => (
+            <Card
+              id={cita.id}
+              name={cita.name}
+              time={cita.time}
+              date={cita.date}
+              status={cita.status}
               setCitasPendientes={setCitasPendientes}
-              oldCita={true}
+              img={getImageByFilename(cita.img)}
+              editarCita={editarCita}
             />
-          )}
-        </View>
-      </ScrollView>
+          ))}
+          <View>
+            {selectedCita && (
+              <ModalEdicion
+                cita={selectedCita}
+                onClose={closeModal}
+                modalVisible={modalEdicionVisible}
+                citas={citas}
+                setCitasPendientes={setCitasPendientes}
+                oldCita={true}
+              />
+            )}
+          </View>
+        </ScrollView>
+      </View>
     </NativeBaseProvider>
   );
 };
