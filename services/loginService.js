@@ -28,7 +28,6 @@ export const LoginAPI = async (email, password) => {
         return decodedToken;
 
     } catch (error) {
-        console.error('Error al hacer la solicitud a la API:', error);
         throw error;
     }
 };
@@ -74,3 +73,12 @@ export const LogoutAPI = async () => {
         console.error(error);
     }
 }
+
+export const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+  

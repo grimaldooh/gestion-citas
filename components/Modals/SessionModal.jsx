@@ -25,7 +25,7 @@ const SessionModal = ({ visible, onClose }) => {
                     </View>
                     <Text style={ModalForms.description}>
                         Su usuario o contraseña son incorrectos. {'\n'}
-                        Por favor, verifique sus datos e intente de nuevo. Si olvidó su contraseña, puede
+                        Por favor, verifique sus datos e intente de nuevo.
                     </Text>
                     <ButtonGeneric onPress={onClose}>
                         Cerrar

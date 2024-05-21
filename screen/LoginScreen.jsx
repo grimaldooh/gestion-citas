@@ -1,5 +1,5 @@
 import React, { useState, useContext} from "react";
-import { View, Text, ImageBackground, Image } from "react-native";
+import { View, Text, ImageBackground, Image, StyleSheet } from "react-native";
 import { KeyboardAvoidingView, Platform } from "react-native";
 
 //importamos los componentes que vamos a utilizar en la pantalla de login
@@ -12,10 +12,12 @@ import UserIdContext  from '../context/userContext'; // Asegúrate de importar e
 
 //importamos los estilos de la pantalla de login
 import { Login } from "../themes/PantallasStyles/LoginTheme";
+import { validateEmail } from "../services/loginService";
 import { styles } from "../themes/theme";
 
 //Importamos los servicios
 import { LoginAPI } from "../services/loginService";
+
 
 import { useNavigation } from "@react-navigation/native"; // Import the hook that helps us to navigate between screens between screens
 
@@ -26,18 +28,29 @@ const LoginScreen = () => {
   const [modalSession, setModalSession] = useState(false);
   const [userData, setUserData] = useState({}); // Aqui se guarda la informacion del token decodificado
   const { setUserId } = useContext(UserIdContext);
+  const [emailError, setEmailError] = useState("");
 
 
   const handleLogin = async () => {
+    if (!validateEmail(email)) {
+        setEmailError("Favor de ingresar una email válido");
+        return;
+      }
     try {
       const decodedToken = await LoginAPI(email, password);
       setUserData(decodedToken);
       const userId = decodedToken.userId;
       setUserId(userId);
-      console.log("Usuario logueado con Id:", userId);
       navigation.navigate("AppointmentScreen");
     } catch (error) {
-      console.error("Error al iniciar sesion:", error);
+      setModalSession(true);
+    }
+  };
+
+  const handleEmailChange = (text) => {
+    setEmail(text);
+    if (emailError) {
+      setEmailError("");
     }
   };
   return (
@@ -68,9 +81,14 @@ const LoginScreen = () => {
           <Text style={styles.description}>
             Ingresa tus datos para iniciar sesión.
           </Text>
+
+          
+            <View style={localStyles.TextContainers}>
+            {emailError ? <Text style={localStyles.errorText}>{emailError}</Text> : null}
+            </View>
           <TextInput
             placeholder="Email"
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={handleEmailChange}
             value={email}
             secureTextEntry={false}
           />
@@ -106,3 +124,14 @@ const LoginScreen = () => {
 };
 
 export default LoginScreen;
+
+const localStyles = StyleSheet.create({
+    errorText: {
+      color: '#bc2c46'
+    },
+    TextContainers: {
+      marginBottom: 5,
+      alignSelf: 'flex-start',
+      marginLeft: 10
+    }
+  });
