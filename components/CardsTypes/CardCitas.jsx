@@ -1,16 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Animated,
-  LayoutAnimation,
-  Platform,
-  UIManager,
-  Modal,
-  TouchableHighlight,
-} from "react-native";
+import { View, Text, Image, TouchableOpacity, Animated, LayoutAnimation, Platform, UIManager } from "react-native";
 import { styles } from "../../themes/Appointments/CardCitas";
 import Button from "../Buttons/Button";
 import Icon from "react-native-vector-icons/FontAwesome5";

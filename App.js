@@ -39,14 +39,9 @@ const App = () => {
   return (
     <UserIdContext.Provider value={{ userId, setUserId }}>
       <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{ ...navigationStyles, headerShown: false }}
-        >
+        <Stack.Navigator screenOptions={{ ...navigationStyles, headerShown: false }}>
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen
-            name="AppointmentScreen"
-            component={AppointmentScreen}
-          />
+          <Stack.Screen name="AppointmentScreen" component={AppointmentScreen}/>
           <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="CalendarioScreen" component={CalendarioScreen} />
         </Stack.Navigator>

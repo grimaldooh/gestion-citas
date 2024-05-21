@@ -28,7 +28,7 @@ const AboutAppModal = ({ visible, onClose }) => {
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                         <Image
                             style={CardConfig.logoCamaleon}
-                            source={require('../../assets/images/camaleonLogo.png')} // Reemplaza './path-to-your-image.png' con la ruta de tu imagen
+                            source={require('../../assets/images/camaleonLogo.png')}
                         />
                     </View>
                     <Text style={styles.description}>Version Alpha 0.1</Text>

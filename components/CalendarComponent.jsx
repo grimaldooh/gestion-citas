@@ -110,6 +110,7 @@ const CalendarComponent = ({ citas, setCitasPendientes }) => {
           img={item.img === "persona.jpg" ? img1 : item.img === "persona1.jpg" ? img2 : item.img === "persona2.jpg" ? img3 : item.img === "persona3.jpg" ? img4 : item.img === "persona4.jpg" ? img5 : img6}
           id={item.id}
           editarCita={editarCita}
+          minDate={1}
         />
         {selectedCita && (
           <ModalEdicion
@@ -134,7 +135,7 @@ const CalendarComponent = ({ citas, setCitasPendientes }) => {
             selected={currentDate}
             items={items}
             renderItem={renderItem}
-            minDate='2022-01-01'
+            minDate='2024-04-01'
             theme={{
               calendarBackground: '#001D3D',
               textSectionTitleColor: '#FFD353',

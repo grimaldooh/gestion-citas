@@ -7,8 +7,6 @@ import ButtonGeneric from '../Buttons/ButtonGeneric';
 
 //Importamos los estilo
 import { ModalForms } from '../../themes/Appointments/modalFormsTheme';
-import { styles } from '../../themes/theme';
-
 const SessionModal = ({ visible, onClose }) => {
     return (
         <Modal

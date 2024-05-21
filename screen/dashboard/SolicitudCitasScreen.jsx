@@ -16,16 +16,22 @@ const SolicitudCitasScreen = ({ citas, setCitasPendientes }) => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.titleScreen}>Citas Activas</Text>
-      {/* Recorre todos los datos del archivo JSON y crea los componentes Card dinámicamente */}
-      {citasPendientes.map((cita, index) => (
-        <CardCitas
-          key={cita.id}
-          id={cita.id}
-          cita={cita}
-          setCitasProximas={setCitasPendientes}
-          img={getImageByFilename(cita.img)} 
-        />
-      ))}
+      {/* Si no hay citas pendientes, muestra un mensaje. De lo contrario, muestra las citas */}
+      {citasPendientes.length === 0 ? (
+        <View style={styles.centeredMessage}>
+          <Text style={styles.title.blank}>No hay citas activas en este momento</Text>
+        </View>
+      ) : (
+        citasPendientes.map((cita, index) => (
+          <CardCitas
+            key={cita.id}
+            id={cita.id}
+            cita={cita}
+            setCitasProximas={setCitasPendientes}
+            img={getImageByFilename(cita.img)} 
+          />
+        ))
+      )}
     </ScrollView>
   );
 };

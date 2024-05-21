@@ -123,6 +123,7 @@ const ModalForm = ({ onClose, crearCita }) => {
             editable={true}
             placeholder="Duración de la cita"
             onChangeText={setDuration}
+            keyboardType="numeric"
           />
 
           <TouchableOpacity
