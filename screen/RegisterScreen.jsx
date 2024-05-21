@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, Image, Alert, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, Image, Alert, ScrollView, StyleSheet } from 'react-native';
 
 import TextInput from '../components/InputsType/TextInput';
 import { styles } from '../themes/theme';
 import ButtonGeneric from '../components/Buttons/ButtonGeneric';
-import { RegisterAPI } from '../services/loginService';
+import { RegisterAPI, validateEmail } from '../services/loginService'; // Asegúrate de importar validateEmail
 
 import { useNavigation } from '@react-navigation/native';
 import GmailLoginButton from '../components/FacebookLoginButton';
@@ -18,18 +18,50 @@ const RegisterScreen = () => {
     const [address, setAddress] = useState('');
     const [profession, setProfession] = useState('');
     const [imgUrl, setImgUrl] = useState('');
+    const [emailError, setEmailError] = useState("");
+
     const navigation = useNavigation();
 
-    const handleRegister = () => {
-        if (!fullName || !email || !password || !profession) {
-            Alert.alert('Error', 'Los campos Nombre Completo, Correo, Contraseña y Profesión son obligatorios');
-            return;
+    const validateInputs = () => {
+        let errors = [];
+
+        if (!fullName) errors.push('Nombre Completo');
+        if (!email) errors.push('Correo');
+        if (!password) errors.push('Contraseña');
+        if (!profession) errors.push('Profesión');
+        if (!phoneNumber) errors.push('Número de teléfono');
+        if (!address) errors.push('Dirección');
+        if (!imgUrl) errors.push('URL de la imagen');
+
+        if (errors.length > 0) {
+            Alert.alert('Error', `Los siguientes campos son obligatorios: ${errors.join(', ')}`);
+            return false;
         }
 
+        return true;
+    }
+
+    const handleEmailChange = (text) => {
+        setEmail(text);
+        if (text && !validateEmail(text)) {
+            setEmailError("Favor de ingresar un email válido");
+        } else {
+            setEmailError("");
+        }
+    };
+
+    const handleRegister = () => {
+        if (!validateEmail(email)) {
+            setEmailError("Favor de ingresar un email válido");
+            return;
+        }
+        if (!validateInputs()) {
+            return;
+        }
         RegisterAPI(fullName, email, password, phoneNumber, address, profession, imgUrl)
             .then((response) => {
                 if (response.status === 200) {
-                    console.log('Usuario registrado correctamente');
+                    console.log('Usuario registrado');
                     navigation.navigate('LoginScreen');
                 } else {
                     console.log('Usuario no registrado');
@@ -50,45 +82,62 @@ const RegisterScreen = () => {
                 source={require('../assets/images/logo.png')}
                 style={Login.logoContainer} />
             <View style={Login.overlay}>
-                    <Text style={styles.title}>¡Registro a FastBooking!</Text>
-                    <Text style={styles.description}>Completa los siguientes campos para registrarte</Text>
+                <Text style={styles.title}>¡Registro a FastBooking!</Text>
+                <Text style={styles.description}>Completa los siguientes campos para registrarte</Text>
                 <ScrollView>
+                    <Text style={styles.TextSmall}>Nombre completo *</Text>
                     <TextInput
-                        placeholder="Nombre Completo"
+                        placeholder=" Ingresa tu nombre completo"
                         onChangeText={(text) => setFullName(text)}
                         value={fullName}
+                        textAlign="left"
                     />
+                    <View style={localStyles.labelContainer}>
+                        <Text style={styles.TextSmall}>Email *</Text>
+                        {emailError ? <Text style={localStyles.errorText}>{emailError}</Text> : null}
+                    </View>
                     <TextInput
-                        placeholder="Correo Electrónico"
-                        onChangeText={(text) => setEmail(text)}
+                        placeholder=" Ingresa tu correo electrónico"
+                        onChangeText={handleEmailChange}
                         value={email}
+                        textAlign="left"
                     />
+                    <Text style={styles.TextSmall}>Contraseña *</Text>
                     <TextInput
-                        placeholder="Contraseña"
+                        placeholder=" Ingresa tu password secretisimo"
                         onChangeText={(text) => setPassword(text)}
                         value={password}
+                        textAlign="left"
                         secureTextEntry={true}
                     />
+                    <Text style={styles.TextSmall}>Número de teléfono *</Text>
                     <TextInput
-                        placeholder="Teléfono"
+                        placeholder=" Ingresa tu cel"
                         onChangeText={(text) => setPhoneNumber(text)}
                         value={phoneNumber}
                         keyboardType="numeric"
+                        textAlign="left"
                     />
+                    <Text style={styles.TextSmall}>Dirección *</Text>
                     <TextInput
-                        placeholder="Dirección"
+                        placeholder=" Ingresa tu dirección"
                         onChangeText={(text) => setAddress(text)}
                         value={address}
+                        textAlign="left"
                     />
+                    <Text style={styles.TextSmall}>Profesión *</Text>
                     <TextInput
-                        placeholder="Profesión"
+                        placeholder=" Ahora tu profesión"
                         onChangeText={(text) => setProfession(text)}
                         value={profession}
+                        textAlign="left"
                     />
+                    <Text style={styles.TextSmall}>URL de tu imagen *</Text>
                     <TextInput
-                        placeholder="Img"
+                        placeholder=" Ingresa un url de tu img"
                         onChangeText={(text) => setImgUrl(text)}
                         value={imgUrl}
+                        textAlign="left"
                     />
                     <ButtonGeneric
                         backgroundColor="loginColor"
@@ -100,10 +149,24 @@ const RegisterScreen = () => {
                         Registrate
                     </ButtonGeneric>
                     <GmailLoginButton title="Registrate con Gmail" />
-                        </ScrollView>
+                </ScrollView>
             </View>
         </ImageBackground>
     );
 };
 
 export default RegisterScreen;
+
+const localStyles = StyleSheet.create({
+    errorText: {
+        color: '#bc2c46',
+        marginLeft: 10,
+        marginBottom: 5
+    },
+    labelContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 5,
+        alignSelf: 'flex-start'
+    }
+});

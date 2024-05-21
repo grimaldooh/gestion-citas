@@ -109,7 +109,13 @@ export const styles = StyleSheet.create({
         top: -15,
         marginBottom: 20,
     },
-
+    TextSmall: {
+        fontFamily: 'Plus Jakarta Sans',
+        color: '#FFC300',
+        fontSize: 12,
+        marginBottom: 5,
+        marginLeft: 10,
+    },
     cardContainer: {
         flex: 1,
         flexDirection: 'row',

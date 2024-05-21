@@ -53,6 +53,7 @@ const LoginScreen = () => {
       setEmailError("");
     }
   };
+  
   return (
     // El keyboardAvoidingView es un componente que nos ayuda a evitar que el teclado del dispositivo tape los inputs y
     // botones de nuestra pantalla. En este caso, le pasamos la propiedad behavior con el valor 'padding' para que
