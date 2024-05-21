@@ -48,8 +48,10 @@ const Navegacion = () => {
 
 console.log(userId);
 //const citasUser = citas;
-const citasUser = citas.filter(cita => Number(cita.serviceProviderId) === Number(userId) || Number(cita.serviceProviderId) === 2);console.log("lllllllllllllll");
-// console.log(citasUser);
+// Ordenar las citas por fecha de manera descendente
+const citasUser = citas
+  .filter(cita => (Number(cita.serviceProviderId) === Number(userId) || Number(cita.serviceProviderId) === 2) && new Date(cita.date) >= new Date())
+  .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   // En el componente Navegacion
 const crearCita = (appointmentJson) => {
