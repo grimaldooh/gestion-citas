@@ -26,8 +26,7 @@ const Navegacion = () => {
 
   useEffect(() => {
     fetch(
-      "https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/GetAppointmentsUser/" +
-        userId
+      "https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/GetAllAppointments/3" 
     )
       .then((response) => response.json())
       .then((data) => {
@@ -39,10 +38,18 @@ const Navegacion = () => {
           time: cita.startTime,
           status: cita.status,
           duration: cita.durationMinutes,
+          serviceProviderId: cita.serviceProviderId,
         }));
         setCitasPendientes(citasApi);
       });
   }, [userId,refresh]);
+
+  console.log(citas);
+
+console.log(userId);
+//const citasUser = citas;
+const citasUser = citas.filter(cita => Number(cita.serviceProviderId) === Number(userId) || Number(cita.serviceProviderId) === 2);console.log("lllllllllllllll");
+// console.log(citasUser);
 
   // En el componente Navegacion
 const crearCita = (appointmentJson) => {
@@ -110,7 +117,7 @@ const crearCita = (appointmentJson) => {
         >
           {() => (
             <SolicitudCitasScreen
-              citas={citas}
+              citas={citasUser}
               setCitasPendientes={setCitasPendientes}
             />
           )}
@@ -125,7 +132,7 @@ const crearCita = (appointmentJson) => {
         >
           {() => (
             <CitasActivasScreen
-              citas={citas}
+              citas={citasUser}
               setCitasPendientes={setCitasPendientes}
             />
           )}
@@ -140,7 +147,7 @@ const crearCita = (appointmentJson) => {
         >
           {() => (
             <CalendarioScreen
-              citas={citas}
+              citas={citasUser}
               setCitasCalendario={setCitasPendientes}
             />
           )}
@@ -159,7 +166,7 @@ const crearCita = (appointmentJson) => {
       {modalVisible && (
         <ModalForm
           onClose={() => setModalVisible(false)}
-          citasPendientes={citas}
+          citasPendientes={citasUser}
           setCitasPendientes={setCitasPendientes}
           crearCita={crearCita}
         />
