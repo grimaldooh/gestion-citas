@@ -4,6 +4,9 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { FAB } from "react-native-paper";
 import ModalForm from "./Modals/modalForms";
 
+import { fetchCitas , crearCita} from '../services/citaService'; // Asegúrate de ajustar la ruta del import según la ubicación de tu archivo api.js
+
+
 // Importamos los componentes de las pantallas
 import SolicitudCitasScreen from "../screen/dashboard/SolicitudCitasScreen";
 import CitasActivasScreen from "../screen/dashboard/CitasActivasScreen";
@@ -25,24 +28,11 @@ const Navegacion = () => {
 
 
   useEffect(() => {
-    fetch(
-      "https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/GetAllAppointments/3" 
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const citasApi = data.map((cita) => ({
-          id: cita.id,
-          img: cita.userImage,
-          name: cita.clientName,
-          date: cita.startDate,
-          time: cita.startTime,
-          status: cita.status,
-          duration: cita.durationMinutes,
-          serviceProviderId: cita.serviceProviderId,
-        }));
-        setCitasPendientes(citasApi);
-      });
-  }, [userId,refresh]);
+  fetchCitas(userId)
+    .then((citasApi) => {
+      setCitasPendientes(citasApi);
+    });
+}, [userId, refresh]);
 
   console.log(citas);
 
@@ -54,52 +44,18 @@ const citasUser = citas
   .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   // En el componente Navegacion
-const crearCita = (appointmentJson) => {
-    // Hacer la petición POST a la API
-    fetch("https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: appointmentJson,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-  
-        // Hacer la petición GET a la API para obtener los detalles de la cita recién creada
-        fetch(
-          `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/read/${data.id}`
-        )
-          .then((response) => response.json())
-          .then((newAppointment) => {
-            // Mapear las propiedades de la cita a un nuevo objeto
-            const mappedAppointment = {
-              id: newAppointment.id,
-              img: newAppointment.userImage,
-              name: newAppointment.clientName,
-              date: newAppointment.startDate,
-              time: newAppointment.startTime,
-              status: newAppointment.status,
-              duration: newAppointment.durationMinutes,
-            };
-  
-            // Añadir la nueva cita al array de citas
-            setCitasPendientes((prevCitas) => [
-              ...prevCitas,
-              mappedAppointment,
-            ]);
-            setRefresh(!refresh); // Cambiar el estado de refresh para forzar la actualización del efecto
-
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
+  const crearCitaHandler = (appointmentJson) => {
+    crearCita(appointmentJson)
+      .then((newAppointment) => {
+        setCitasPendientes((prevCitas) => [
+          ...prevCitas,
+          newAppointment,
+        ]);
+        setRefresh(!refresh); // Cambiar el estado de refresh para forzar la actualización del efecto
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-      
   };
   
 
@@ -170,7 +126,7 @@ const crearCita = (appointmentJson) => {
           onClose={() => setModalVisible(false)}
           citasPendientes={citasUser}
           setCitasPendientes={setCitasPendientes}
-          crearCita={crearCita}
+          crearCita={crearCitaHandler}
         />
       )}
     </>

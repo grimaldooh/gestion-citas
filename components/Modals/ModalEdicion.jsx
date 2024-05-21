@@ -56,7 +56,7 @@ const ModalEdicion = ({
   };
 
   const onTimeChange = (event, selectedValue) => {
-    const currentTime = selectedValue || date;
+    const currentTime = selectedValue;
     setTime(currentTime);
     setTimeCita(
       `${("0" + currentTime.getHours()).slice(-2)}:${(
@@ -82,7 +82,7 @@ const ModalEdicion = ({
     cita.date = dateCita;
     setName(cita.name);
     cita.duration = duration;
-    cita.status = 1;
+    cita.status = 2;
     setStatus("reagendada");
     console.log("Cita actualizada:", { dateCita, name, status });
     setIsDatePickerVisible(false);
@@ -162,7 +162,7 @@ const ModalEdicion = ({
   };
 
   const showTimePicker = () => {
-    setIsDateChangeAllowed(true);
+    //setIsDateChangeAllowed(true);
     setMode("time");
     setIsTimePickerVisible(true);
   };
