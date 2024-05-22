@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, TouchableOpacity, Modal, TextInput, Alert } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  Modal,
+  TextInput,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import { Divider, Button, Text } from "native-base";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -176,136 +184,141 @@ const ModalEdicion = ({
   const handleConfirm = () => {};
 
   return (
-    <Modal
-      animationType="fade"
-      transparent={true}
-      // visible={modalVisible}
-      visible={modalVisible}
-      onRequestClose={onClose}>
-      <View style={ModalForms.overlay}>
-        <View style={[ModalForms.modalContainerEdicion]}>
-          <View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+      keyboardVerticalOffset={Platform.select({ ios: 0, android: 80 })}>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        // visible={modalVisible}
+        visible={modalVisible}
+        onRequestClose={onClose}>
+        <View style={ModalForms.overlay}>
+          <View style={[ModalForms.modalContainerEdicion]}>
             <View>
-              <Text style={ModalForms.title}>Modificar cita</Text>
-              <TouchableOpacity onPress={onClose}>
-                <Icon
-                  style={ModalForms.iconModalEdicion}
-                  name="close"
-                  size={26}
-                  color="#FFF"
-                />
-              </TouchableOpacity>
-            </View>
-            <Text style={ModalForms.label}>
-              <Text style={{ color: "white" }}>Informacion de la cita </Text>
-            </Text>
-
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Text style={ModalForms.label}>Nombre : </Text>
-              <Text style={ModalForms.text}>{cita.name}</Text>
-            </View>
-
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Text style={ModalForms.label}>Fecha : </Text>
-              <Text style={ModalForms.text}>
-                {cita.date}, {cita.time}
+              <View>
+                <Text style={ModalForms.title}>Modificar cita</Text>
+                <TouchableOpacity onPress={onClose}>
+                  <Icon
+                    style={ModalForms.iconModalEdicion}
+                    name="close"
+                    size={26}
+                    color="#FFF"
+                  />
+                </TouchableOpacity>
+              </View>
+              <Text style={ModalForms.label}>
+                <Text style={{ color: "white" }}>Informacion de la cita </Text>
               </Text>
+
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text style={ModalForms.label}>Nombre : </Text>
+                <Text style={ModalForms.text}>{cita.name}</Text>
+              </View>
+
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text style={ModalForms.label}>Fecha : </Text>
+                <Text style={ModalForms.text}>
+                  {cita.date}, {cita.time}
+                </Text>
+              </View>
             </View>
-          </View>
-          <Divider style={{ marginTop: 10, marginBottom: 10 }} />
-          <Text style={ModalForms.label}>Añadir mensaje : </Text>
-          <TextInput
-            style={ModalForms.inputLarge}
-            placeholder={"Escribe un mensaje para " + cita.name}
-            borderRadius={10}
-            multiline={true}></TextInput>
-
-          <TouchableOpacity
-            style={ModalForms.button.modify}
-            onPress={showTimePicker}>
-            <Text style={ModalForms.buttonText}>Cambiar Hora</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={ModalForms.button.modify}
-            onPress={showDatePicker}>
-            <Text style={ModalForms.buttonText}>Cambiar Fecha</Text>
-          </TouchableOpacity>
-
-          <View style={{ width: "85%" }}>
-            {isDatePickerVisible && (
-              <DateTimePicker
-                testID="dateTimePicker"
-                value={date}
-                mode={mode}
-                is24Hour={true}
-                display="default"
-                onChange={onDateChange}
-              />
-            )}
-          </View>
-
-          <View style={{ width: "85%" }}>
-            {isTimePickerVisible && (
-              <DateTimePicker
-                testID="TimePicker"
-                value={date}
-                mode={"time"}
-                is24Hour={true}
-                display="default"
-                onChange={onTimeChange}
-              />
-            )}
-          </View>
-          <Divider style={{ marginTop: 15 }} />
-          <View
-            style={{ flexDirection: "row", marginTop: 15, marginBottom: 10 }}>
-            <Text style={ModalForms.label}>
-              Duración de la cita (minutos) :{" "}
-            </Text>
+            <Divider style={{ marginTop: 10, marginBottom: 10 }} />
+            <Text style={ModalForms.label}>Añadir mensaje : </Text>
             <TextInput
-              style={ModalForms.inputSmall}
-              value={duration.toString()}
-              onChangeText={setDuration}
-              keyboardType="numeric"
-            />
-          </View>
+              style={ModalForms.inputLarge}
+              placeholder={"Escribe un mensaje para " + cita.name}
+              borderRadius={10}
+              multiline={true}></TextInput>
 
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-around" }}>
-            {isOldCita && (
+            <TouchableOpacity
+              style={ModalForms.button.modify}
+              onPress={showTimePicker}>
+              <Text style={ModalForms.buttonText}>Cambiar Hora</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={ModalForms.button.modify}
+              onPress={showDatePicker}>
+              <Text style={ModalForms.buttonText}>Cambiar Fecha</Text>
+            </TouchableOpacity>
+
+            <View style={{ width: "85%" }}>
+              {isDatePickerVisible && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={date}
+                  mode={mode}
+                  is24Hour={true}
+                  display="default"
+                  onChange={onDateChange}
+                />
+              )}
+            </View>
+
+            <View style={{ width: "85%" }}>
+              {isTimePickerVisible && (
+                <DateTimePicker
+                  testID="TimePicker"
+                  value={date}
+                  mode={"time"}
+                  is24Hour={true}
+                  display="default"
+                  onChange={onTimeChange}
+                />
+              )}
+            </View>
+            <Divider style={{ marginTop: 15 }} />
+            <View
+              style={{ flexDirection: "row", marginTop: 15, marginBottom: 10 }}>
+              <Text style={ModalForms.label}>
+                Duración de la cita (minutos) :{" "}
+              </Text>
+              <TextInput
+                style={ModalForms.inputSmall}
+                value={duration.toString()}
+                onChangeText={setDuration}
+                keyboardType="numeric"
+              />
+            </View>
+
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-around" }}>
+              {isOldCita && (
+                <Button
+                  onPress={() => {
+                    setModalVisibleConfirmacion(true);
+                  }}
+                  style={{ marginTop: 15 }}
+                  size="sm"
+                  colorScheme="red">
+                  <Text style={{ color: "white" }}>Cancelar cita</Text>
+                </Button>
+              )}
               <Button
                 onPress={() => {
-                  setModalVisibleConfirmacion(true);
+                  //setModalVisibleConfirmacion(true);
+                  handleGuardar();
                 }}
                 style={{ marginTop: 15 }}
                 size="sm"
-                colorScheme="red">
-                <Text style={{ color: "white" }}>Cancelar cita</Text>
+                colorScheme="green">
+                <Text style={{ color: "white" }}>Enviar solicitud </Text>
               </Button>
-            )}
-            <Button
-              onPress={() => {
-                //setModalVisibleConfirmacion(true);
-                handleGuardar();
-              }}
-              style={{ marginTop: 15 }}
-              size="sm"
-              colorScheme="green">
-              <Text style={{ color: "white" }}>Enviar solicitud </Text>
-            </Button>
+            </View>
           </View>
         </View>
-      </View>
-      <ModalConfirmacion
-        modalVisible={modalVisibleConfirmacion}
-        setModalVisible={setModalVisibleConfirmacion}
-        handleConfirm={() => {
-          setModalVisibleConfirmacion(false);
-          handleCancelar();
-        }}
-      />
-    </Modal>
+        <ModalConfirmacion
+          modalVisible={modalVisibleConfirmacion}
+          setModalVisible={setModalVisibleConfirmacion}
+          handleConfirm={() => {
+            setModalVisibleConfirmacion(false);
+            handleCancelar();
+          }}
+        />
+      </Modal>
+    </KeyboardAvoidingView>
   );
 };
 

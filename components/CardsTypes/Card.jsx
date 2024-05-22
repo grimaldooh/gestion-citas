@@ -1,8 +1,10 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
-import { styles } from "../../themes/Appointments/CardTheme";
 import PropTypes from "prop-types";
 import Icon from "react-native-vector-icons/FontAwesome5";
+
+//Importamos los themes nesesarios
+import { styles } from "../../themes/Appointments/CardTheme";
 
 const Card = ({ name, time, date, img, editarCita, status, id }) => {
   const iconName = status === "pendiente" ? "clock" : "check";
@@ -17,19 +19,16 @@ const Card = ({ name, time, date, img, editarCita, status, id }) => {
           <Text style={styles.card.body}>
             {date} at {time}
           </Text>
-        </View>
-        <TouchableOpacity
-        >
-          <View>
+          <View style={styles.card.iconContainer}>
             <Icon
               onPress={() => editarCita(id)}
               style={styles.card.iconButton}
-              name='edit'
+              name="edit"
               size={18}
               color="#000"
             />
           </View>
-        </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );

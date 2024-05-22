@@ -70,5 +70,13 @@ export const styles = StyleSheet.create({
             right: 10,
             left: 55,
         },
+        iconContainer:{
+            position: 'absolute',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            left: 135,
+            marginTop: 19,
+        },
     },
 });

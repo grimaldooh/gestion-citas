@@ -1,17 +1,23 @@
-import React, { useState, useContext, useEffect } from "react";
-import Card from "../../components/CardsTypes/Card";
-import { View, Text, ScrollView, Image } from "react-native";
-import { styles } from "../../themes/theme";
-import UserIdContext from "../../context/userContext";
+import React, { useState, useContext } from "react";
+import { NativeBaseProvider } from "native-base";
+import { View, Text, ScrollView, KeyboardAvoidingView } from "react-native";
 
+//Importamos las imagenes ocupadas
 import img1 from "../../assets/images/persona.jpg";
 import img2 from "../../assets/images/persona5.jpg";
 import img3 from "../../assets/images/persona2.jpg";
 import img4 from "../../assets/images/persona3.jpg";
 import img5 from "../../assets/images/persona4.jpg";
 import img6 from "../../assets/images/persona5.jpg";
+
+//Importamos los componentes y archivos nesesarios
 import ModalEdicion from "../../components/Modals/ModalEdicion";
-import { NativeBaseProvider } from "native-base";
+import Card from "../../components/CardsTypes/Card";
+import UserIdContext from "../../context/userContext";
+
+//Importamos los themes nesesarios
+import { styles } from "../../themes/theme";
+
 
 // Importa los datos del archivo JSON
 
@@ -58,15 +64,15 @@ const CitasActivasScreen = ({ citas, setCitasPendientes }) => {
           ))}
           <View>
             {selectedCita && (
-              <ModalEdicion
-                cita={selectedCita}
-                onClose={closeModal}
-                modalVisible={modalEdicionVisible}
-                citas={citas}
-                setCitasPendientes={setCitasPendientes}
-                oldCita={true}
-              />
-            )}
+                <ModalEdicion
+                  cita={selectedCita}
+                  onClose={closeModal}
+                  modalVisible={modalEdicionVisible}
+                  citas={citas}
+                  setCitasPendientes={setCitasPendientes}
+                  oldCita={true}
+                />
+              )}
           </View>
         </ScrollView>
       </View>
