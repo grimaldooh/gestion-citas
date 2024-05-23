@@ -11,12 +11,13 @@ import RegisterScreen from "./screen/RegisterScreen";
 import CalendarioScreen from "./screen/dashboard/CalendarioScreen";
 
 import UserIdContext from "./context/userContext";
+import PaymentScreen from "./screen/PaymentScreen";
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [fontsLoaded, setFontsLoaded] = useState(false);
-  const [userId, setUserId] = useState(null); 
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     if (!fontsLoaded) {
@@ -41,9 +42,10 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ ...navigationStyles, headerShown: false }}>
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen name="AppointmentScreen" component={AppointmentScreen}/>
+          <Stack.Screen name="AppointmentScreen" component={AppointmentScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="CalendarioScreen" component={CalendarioScreen} />
+          <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </UserIdContext.Provider>
