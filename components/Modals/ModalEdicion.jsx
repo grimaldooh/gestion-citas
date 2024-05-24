@@ -43,7 +43,7 @@ const ModalEdicion = ({
     setName(cita.name);
     setDateCita(cita.date);
     setTimeCita(cita.time);
-    setTime(cita.time);
+    //setTime(cita.time);
     setIsDatePickerVisible(false);
     setIsDateChangeAllowed(false);
     setIsOldCita(oldCita);
@@ -261,7 +261,7 @@ const ModalEdicion = ({
               {isTimePickerVisible && (
                 <DateTimePicker
                   testID="TimePicker"
-                  value={date}
+                  value={time}
                   mode={"time"}
                   is24Hour={true}
                   display="default"

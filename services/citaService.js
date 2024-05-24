@@ -1,7 +1,7 @@
 // api.js
 export const fetchCitas = async (userId) => {
     const response = await fetch(
-      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/GetAllAppointments/${userId}`
+      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/GetAllAppointments/3`
     );
     const data = await response.json();
     return data.map((cita) => ({
