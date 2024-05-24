@@ -53,7 +53,7 @@ const getImageByFilename = (filename) => {
     case "persona5.jpg":
       return img6;
     default:
-      return null;
+      return { uri: filename };
   }
 };
 
