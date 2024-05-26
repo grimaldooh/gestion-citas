@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, Image, Alert, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ImageBackground, Image, Alert, ScrollView, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 
 import TextInput from '../components/InputsType/TextInput';
 import { styles } from '../themes/theme';
@@ -73,85 +73,90 @@ const RegisterScreen = () => {
     }
 
     return (
-        <ImageBackground
-            source={require('../assets/images/fondo.png')}
-            style={Login.backgroundImage}
-            resizeMode="cover"
+        <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "height" : "height"}
+            style={{ flex: 1 }}
         >
-            <Image
-                source={require('../assets/images/logo.png')}
-                style={Login.logoContainer} />
-            <View style={Login.overlay}>
-                <Text style={styles.title}>¡Registro a FastBooking!</Text>
-                <Text style={styles.description}>Completa los siguientes campos para registrarte</Text>
-                <ScrollView>
-                    <Text style={styles.TextSmall}>Nombre completo *</Text>
-                    <TextInput
-                        placeholder=" Ingresa tu nombre completo"
-                        onChangeText={(text) => setFullName(text)}
-                        value={fullName}
-                        textAlign="left"
-                    />
-                    <View style={localStyles.labelContainer}>
-                        <Text style={styles.TextSmall}>Email *</Text>
-                        {emailError ? <Text style={localStyles.errorText}>{emailError}</Text> : null}
-                    </View>
-                    <TextInput
-                        placeholder=" Ingresa tu correo electrónico"
-                        onChangeText={handleEmailChange}
-                        value={email}
-                        textAlign="left"
-                    />
-                    <Text style={styles.TextSmall}>Contraseña *</Text>
-                    <TextInput
-                        placeholder=" Ingresa tu password secretisimo"
-                        onChangeText={(text) => setPassword(text)}
-                        value={password}
-                        textAlign="left"
-                        secureTextEntry={true}
-                    />
-                    <Text style={styles.TextSmall}>Número de teléfono *</Text>
-                    <TextInput
-                        placeholder=" Ingresa tu cel"
-                        onChangeText={(text) => setPhoneNumber(text)}
-                        value={phoneNumber}
-                        keyboardType="numeric"
-                        textAlign="left"
-                    />
-                    <Text style={styles.TextSmall}>Dirección *</Text>
-                    <TextInput
-                        placeholder=" Ingresa tu dirección"
-                        onChangeText={(text) => setAddress(text)}
-                        value={address}
-                        textAlign="left"
-                    />
-                    <Text style={styles.TextSmall}>Profesión *</Text>
-                    <TextInput
-                        placeholder=" Ahora tu profesión"
-                        onChangeText={(text) => setProfession(text)}
-                        value={profession}
-                        textAlign="left"
-                    />
-                    <Text style={styles.TextSmall}>URL de tu imagen *</Text>
-                    <TextInput
-                        placeholder=" Ingresa un url de tu img"
-                        onChangeText={(text) => setImgUrl(text)}
-                        value={imgUrl}
-                        textAlign="left"
-                    />
-                    <ButtonGeneric
-                        backgroundColor="loginColor"
-                        fontSize="small"
-                        width="extraLarge"
-                        height="extraLarge"
-                        onPress={handleRegister}
-                    >
-                        Registrate
-                    </ButtonGeneric>
-                    <GmailLoginButton title="Registrate con Gmail" />
-                </ScrollView>
-            </View>
-        </ImageBackground>
+            <ImageBackground
+                source={require('../assets/images/fondo.png')}
+                style={Login.backgroundImage}
+                resizeMode="cover"
+            >
+                <Image
+                    source={require('../assets/images/logo.png')}
+                    style={Login.logoContainer} />
+                <View style={Login.overlay}>
+                    <Text style={styles.title}>¡Registro a FastBooking!</Text>
+                    <Text style={styles.description}>Completa los siguientes campos para registrarte</Text>
+                    <ScrollView>
+                        <Text style={styles.TextSmall}>Nombre completo *</Text>
+                        <TextInput
+                            placeholder=" Ingresa tu nombre completo"
+                            onChangeText={(text) => setFullName(text)}
+                            value={fullName}
+                            textAlign="left"
+                        />
+                        <View style={localStyles.labelContainer}>
+                            <Text style={styles.TextSmall}>Email *</Text>
+                            {emailError ? <Text style={localStyles.errorText}>{emailError}</Text> : null}
+                        </View>
+                        <TextInput
+                            placeholder=" Ingresa tu correo electrónico"
+                            onChangeText={handleEmailChange}
+                            value={email}
+                            textAlign="left"
+                        />
+                        <Text style={styles.TextSmall}>Contraseña *</Text>
+                        <TextInput
+                            placeholder=" Ingresa tu password secretisimo"
+                            onChangeText={(text) => setPassword(text)}
+                            value={password}
+                            textAlign="left"
+                            secureTextEntry={true}
+                        />
+                        <Text style={styles.TextSmall}>Número de teléfono *</Text>
+                        <TextInput
+                            placeholder=" Ingresa tu cel"
+                            onChangeText={(text) => setPhoneNumber(text)}
+                            value={phoneNumber}
+                            keyboardType="numeric"
+                            textAlign="left"
+                        />
+                        <Text style={styles.TextSmall}>Dirección *</Text>
+                        <TextInput
+                            placeholder=" Ingresa tu dirección"
+                            onChangeText={(text) => setAddress(text)}
+                            value={address}
+                            textAlign="left"
+                        />
+                        <Text style={styles.TextSmall}>Profesión *</Text>
+                        <TextInput
+                            placeholder=" Ahora tu profesión"
+                            onChangeText={(text) => setProfession(text)}
+                            value={profession}
+                            textAlign="left"
+                        />
+                        <Text style={styles.TextSmall}>URL de tu imagen *</Text>
+                        <TextInput
+                            placeholder=" Ingresa un url de tu img"
+                            onChangeText={(text) => setImgUrl(text)}
+                            value={imgUrl}
+                            textAlign="left"
+                        />
+                        <ButtonGeneric
+                            backgroundColor="loginColor"
+                            fontSize="small"
+                            width="extraLarge"
+                            height="extraLarge"
+                            onPress={handleRegister}
+                        >
+                            Registrate
+                        </ButtonGeneric>
+                        <GmailLoginButton title="Registrate con Gmail" />
+                    </ScrollView>
+                </View>
+            </ImageBackground>
+        </KeyboardAvoidingView>
     );
 };
 

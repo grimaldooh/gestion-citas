@@ -1,7 +1,7 @@
 // api.js
 export const fetchCitas = async (userId) => {
     const response = await fetch(
-      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/GetAllAppointments/3`
+      `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/GetAllAppointments/3`
     );
     const data = await response.json();
     return data.map((cita) => ({
@@ -18,7 +18,7 @@ export const fetchCitas = async (userId) => {
 
   // api.js
 export const crearCita = async (appointmentJson) => {
-    const response = await fetch("https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/create", {
+    const response = await fetch("https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export const crearCita = async (appointmentJson) => {
     });
   
     const data = await response.json();
-    const newAppointmentResponse = await fetch(`https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/read/${data.id}`);
+    const newAppointmentResponse = await fetch(`https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/read/${data.id}`);
     const newAppointment = await newAppointmentResponse.json();
   
     return {
@@ -57,7 +57,7 @@ export const crearCita = async (appointmentJson) => {
   
     try {
       const response = await fetch(
-        `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/update/${cita.id}`,
+        `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/update/${cita.id}`,
         {
           method: "PUT",
           headers: {
@@ -81,7 +81,7 @@ export const crearCita = async (appointmentJson) => {
   
     try {
       const response = await fetch(
-        `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/delete/${cita.id}`,
+        `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/delete/${cita.id}`,
         {
           method: "DELETE",
           headers: {

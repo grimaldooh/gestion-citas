@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { View, Text, ImageBackground, Image, StyleSheet, Alert } from "react-native";
+import { View, Text, ImageBackground, Image, StyleSheet, Alert, Linking } from "react-native";
 import { KeyboardAvoidingView, Platform } from "react-native";
 
 // Importamos los componentes que vamos a utilizar en la pantalla de login
@@ -12,6 +12,7 @@ import UserIdContext from '../context/userContext'; // Asegúrate de importar el
 // Importamos los estilos de la pantalla de login
 import { Login } from "../themes/PantallasStyles/LoginTheme";
 import { validateEmail } from "../services/loginService";
+import { checkPayment } from "../services/paypalService";
 import { styles } from "../themes/theme";
 
 // Importamos los servicios
@@ -33,17 +34,48 @@ const LoginScreen = () => {
       setEmailError("Favor de ingresar un email válido");
       return;
     }
-    try {
       const decodedToken = await LoginAPI(email, password);
-      if (decodedToken) {
-        setUserData(decodedToken);
-        const userId = decodedToken.userId;
-        setUserId(userId);
-        navigation.navigate("AppointmentScreen");
+      setUserData(decodedToken);
+      console.log(userData, "decoded1Token");
+      if (!decodedToken) {
+       setModalSession(true);
+       return;
       }
-    } catch (error) {
-      setModalSession(true);
-    }
+      else {
+        if (decodedToken.PaymentStatus==="True") {
+          const userId = decodedToken.userId;
+          setUserId(userId);
+          navigation.navigate("AppointmentScreen");
+        } else {
+          const paymentStatus = await checkPayment(userData.userId);
+          console.log(paymentStatus);
+          if (paymentStatus) {
+            const userId = decodedToken.userId;
+            setUserId(userId);
+            navigation.navigate("AppointmentScreen");
+          } else {
+            Alert.alert(
+              'Error de pago',
+              'No ha realizado el pago para acceder a la aplicación',
+              [
+                  {
+                      text: 'Cerrar',
+                      onPress: () => console.log('Cerrar presionado'),
+                      style: 'cancel'
+                  },
+                  {
+                      text: 'Pagar',
+                      onPress: () => {
+                          
+                          Linking.openURL(userData.PaypalPaymentUrl);
+                      }
+                  }
+              ]
+            );
+          }
+        }
+      }
+      
   };
 
   const handleEmailChange = (text) => {
@@ -55,7 +87,7 @@ const LoginScreen = () => {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === "ios" ? "height" : "height"}
       style={{ flex: 1 }}
     >
       <ImageBackground
