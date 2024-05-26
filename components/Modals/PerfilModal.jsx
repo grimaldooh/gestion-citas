@@ -37,7 +37,7 @@ const AboutAppModal = ({ visible, onClose }) => {
   useEffect(() => {
     // Llamada a la API para obtener la información del usuario
     fetch(
-      `https://24a5-187-188-39-222.ngrok-free.app/api/User/read/${userId}`,
+      `https://a4b3-187-190-138-154.ngrok-free.app/api/User/read/${userId}`,
       {
         method: "GET",
       }

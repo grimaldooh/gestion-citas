@@ -110,7 +110,7 @@ const ModalEdicion = ({
     // Hacer la petición a la API con el JSON de la cita actualizada
 
     fetch(
-      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/update/${cita.id}`,
+      `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/update/${cita.id}`,
       {
         method: "PUT",
         headers: {
@@ -145,7 +145,7 @@ const ModalEdicion = ({
 
     // Llamada a la API
     fetch(
-      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/delete/${cita.id}`,
+      `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/delete/${cita.id}`,
       {
         method: "DELETE",
       }
