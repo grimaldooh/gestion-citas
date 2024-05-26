@@ -33,21 +33,21 @@ const LoginScreen = () => {
     if (!validateEmail(email)) {
       setEmailError("Favor de ingresar un email válido");
       return;
-    }
+    } else {
       const decodedToken = await LoginAPI(email, password);
-      setUserData(decodedToken);
-      console.log(userData, "decoded1Token");
-      if (!decodedToken) {
+      if (decodedToken === undefined) {
        setModalSession(true);
        return;
       }
       else {
+        
         if (decodedToken.PaymentStatus==="True") {
           const userId = decodedToken.userId;
           setUserId(userId);
           navigation.navigate("AppointmentScreen");
         } else {
-          const paymentStatus = await checkPayment(userData.userId);
+          console.log("userId login",decodedToken.userId)
+          const paymentStatus = await checkPayment(decodedToken.userId);
           console.log(paymentStatus);
           if (paymentStatus) {
             const userId = decodedToken.userId;
@@ -65,9 +65,8 @@ const LoginScreen = () => {
                   },
                   {
                       text: 'Pagar',
-                      onPress: () => {
-                          
-                          Linking.openURL(userData.PaypalPaymentUrl);
+                      onPress: () => {   
+                          Linking.openURL(decodedToken.PaypalPaymentUrl);
                       }
                   }
               ]
@@ -75,7 +74,7 @@ const LoginScreen = () => {
           }
         }
       }
-      
+    }  
   };
 
   const handleEmailChange = (text) => {

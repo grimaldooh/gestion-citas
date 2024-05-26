@@ -1,10 +1,4 @@
 import { jwtDecode } from 'jwt-decode';
-import { Alert } from 'react-native';
-
-//importamos servicios adicionales
-import { Linking } from 'react-native';
-import { checkPayment } from './paypalService';
-
 
 export const LoginAPI = async (email, password) => {
     const API_URL_LOGIN = 'https://a4b3-187-190-138-154.ngrok-free.app/api/User/login';
@@ -18,16 +12,11 @@ export const LoginAPI = async (email, password) => {
         });
 
         if (!response.ok) {
-            throw new Error('Error en la respuesta de la API');
+            throw new Error('Error en la respuesta de la API, Login Services');
         }
-
         const data = await response.json();
-        
         const token = data.token;
-        
         const decodedToken = jwtDecode(token);
-    
-
         return decodedToken;
     }
     catch (error) {
