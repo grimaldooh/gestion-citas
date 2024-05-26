@@ -8,6 +8,8 @@ import ModalConfirmacion from "../Modals/ModalConfirmacion";
 
 //Importamos los themes nesesarios
 import { styles } from "../../themes/Appointments/CardCitas";
+import { rejectAppointment , acceptAppointment} from '../../services/citaService';
+
 
 
 if (
@@ -58,29 +60,9 @@ const Card = ({ cita, key, setCitasProximas, img }) => {
     setIsRejected(false);
     cita.status = 2;
     console.log("ID de la cita : ", cita.id);
-
-    // Lógica para aceptar la cita con API
-
-    // Generar el JSON para la cita aceptada
-    const acceptedCitaJson = JSON.stringify({
-      id: cita.id,
-      status: cita.status,
-    });
-
-    console.log("Cita aceptada JSON:", acceptedCitaJson);
-
+  
     // Llamada a la API
-    fetch(
-      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/update/${cita.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: acceptedCitaJson,
-      }
-    )
-      .then((response) => response.json())
+    acceptAppointment(cita)
       .then((data) => {
         console.log("Success:", data);
       })
@@ -95,25 +77,19 @@ const Card = ({ cita, key, setCitasProximas, img }) => {
     setCardColor("#D23737");
     setIsAccepted(false);
     cita.status = 0;
-
+  
     // Lógica para rechazar la cita con API
-
+  
     // Generar el JSON para la cita rechazada
     const rejectedCitaJson = JSON.stringify({
       id: cita.id,
       status: cita.status,
     });
-
+  
     console.log("Cita rechazada JSON:", rejectedCitaJson);
-
+  
     // Llamada a la API
-    fetch(
-      `https://24a5-187-188-39-222.ngrok-free.app/api/Appointment/delete/${cita.id}`,
-      {
-        method: "DELETE",
-      }
-    )
-      .then((response) => response.json())
+    rejectAppointment(cita.id)
       .then((data) => {
         console.log("Success:", data);
         // Actualizar el estado de las citas para excluir la cita rechazada

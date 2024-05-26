@@ -42,12 +42,6 @@ export const crearCita = async (appointmentJson) => {
   };
 
   export const updateAppointment = async (cita) => {
-
-    if (cita.time === undefined) {
-        console.error("Error: cita.time es undefined");
-        return;
-      }
-      
     const updatedCitaJson = JSON.stringify({
       startDate: cita.date,
       startTime: cita.time.slice(0, 8), // Tomar solo las primeras 8 caracteres de la hora para asegurar el formato correcto
@@ -73,26 +67,57 @@ export const crearCita = async (appointmentJson) => {
     }
   };
   
-  export const deleteAppointment = async (cita) => {
-    const canceledCitaJson = JSON.stringify({
-      id: cita.id,
-      status: 0,
-    });
-  
-    try {
-      const response = await fetch(
-        `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/delete/${cita.id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: canceledCitaJson, // Agrega esto
-        }
-      );
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  // api.js
+export const deleteAppointment = async (citaId) => {
+  try {
+    const response = await fetch(
+      `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/delete/${citaId}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const rejectAppointment = async (citaId) => {
+  try {
+    const response = await fetch(
+      `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/delete/${citaId}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const acceptAppointment = async (cita) => {
+  const acceptedCitaJson = JSON.stringify({
+    id: cita.id,
+    status: cita.status,
+  });
+
+  try {
+    const response = await fetch(
+      `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/update/${cita.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: acceptedCitaJson,
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};

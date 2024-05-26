@@ -16,6 +16,8 @@ import { ModalForms } from "../../themes/Appointments/modalFormsTheme";
 import { styles } from "../../themes/theme";
 import { CardConfig } from "../../themes/PantallasStyles/SettingsTheme";
 import UserIdContext from "../../context/userContext";
+import { updateUser } from '../../services/userService';
+
 
 const AboutAppModal = ({ visible, onClose }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -60,58 +62,33 @@ const AboutAppModal = ({ visible, onClose }) => {
       });
   }, [userId]); // Dependencia para el useEffect, se ejecutará cada vez que cambie el userId
 
-  const saveChanges = () => {
+  const saveChanges = async () => {
     // Actualizar el estado del usuario con los nuevos valores
-    setUser({
+    const updatedUser = {
       ...user,
       name: name,
       email: email,
       address: address,
       profession: profession,
       phoneNumber: phoneNumber,
-    });
-
-    // Generar el JSON para el usuario actualizado
-    const updatedUserJson = JSON.stringify({
-      id: user.id,
-      fullName: name,
+    };
+    setUser(updatedUser);
+  
+    // Llamada a la API
+    const data = await updateUser(updatedUser);
+    console.log("Success:", data);
+  
+    // Actualizar el estado del usuario con los datos actualizados
+    setUser({
+      id: data.id,
+      name: name,
       email: email,
       address: address,
       profession: profession,
       phoneNumber: phoneNumber,
     });
-
-    console.log("Usuario actualizado JSON:", updatedUserJson);
-
-    // Llamada a la API
-    fetch(
-      `https://24a5-187-188-39-222.ngrok-free.app/api/User/update/${user.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: updatedUserJson,
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:");
-        // Actualizar el estado del usuario con los datos actualizados
-        setUser({
-          id: data.id,
-          name: name,
-          email: email,
-          address: address,
-          profession: profession,
-          phoneNumber: phoneNumber,
-        });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-      onClose();
-
+  
+    onClose();
    
   };
 

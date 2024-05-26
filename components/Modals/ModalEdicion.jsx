@@ -11,6 +11,8 @@ import {
 import { Divider, Button, Text } from "native-base";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Icon from "react-native-vector-icons/Ionicons";
+import { deleteAppointment, updateAppointment } from '../../services/citaService';
+
 
 //importamos componentes
 import { ModalForms } from "../../themes/Appointments/modalFormsTheme";
@@ -85,7 +87,6 @@ const ModalEdicion = ({
 
   const handleGuardar = () => {
     const indexCita = citas.findIndex((c) => c.id === cita.id);
-    //console.log("Citas actualizadas:", time);
     cita.time = `${timeCita}:00`;
     cita.date = dateCita;
     setName(cita.name);
@@ -98,36 +99,18 @@ const ModalEdicion = ({
     console.log("timeCita:", cita.time);
     console.log("duration:", cita.duration);
     console.log("status:", cita.status);
-    //Hacer la petición a la API
-    // Generar el JSON para la cita actualizada
-    const updatedCitaJson = JSON.stringify({
-      startDate: cita.date,
-      startTime: cita.time.slice(0, 8), // Tomar solo las primeras 8 caracteres de la hora para asegurar el formato correcto
-      durationMinutes: cita.duration,
-      status: cita.status,
-    });
-
-    // Hacer la petición a la API con el JSON de la cita actualizada
-
-    fetch(
-      `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/update/${cita.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: updatedCitaJson,
-      }
-    )
-      .then((response) => response.json())
+  
+    // Llamada a la API
+    updateAppointment(cita)
       .then((data) => {
         console.log("Success:", data);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
+  
     const nuevasCitas = [...citas];
-    nuevasCitas[indexCita] = { ...cita }; // Actualiza la dateCita de la cita    setCitasPendientes(nuevasCitas);
+    nuevasCitas[indexCita] = { ...cita }; // Actualiza la dateCita de la cita
     setCitasPendientes(nuevasCitas); // Actualiza el estado citas con el nuevo array
     onClose();
     confirmarCita();
@@ -140,20 +123,14 @@ const ModalEdicion = ({
       id: cita.id,
       status: 0,
     });
-
+  
     console.log("Cita cancelada JSON:", canceledCitaJson);
-
+  
     // Llamada a la API
-    fetch(
-      `https://a4b3-187-190-138-154.ngrok-free.app/api/Appointment/delete/${cita.id}`,
-      {
-        method: "DELETE",
-      }
-    )
-      .then((response) => response.json())
+    deleteAppointment(cita.id)
       .then((data) => {
         console.log("Success:", data);
-
+  
         const indexCita = citas.findIndex((c) => c.id === cita.id);
         const nuevasCitas = [...citas];
         nuevasCitas.splice(indexCita, 1);
